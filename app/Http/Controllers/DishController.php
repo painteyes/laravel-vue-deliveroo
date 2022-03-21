@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Dish;
 use Illuminate\Http\Request;
 use App\User;
@@ -21,8 +23,8 @@ class DishController extends Controller
         $restaurant = User::findOrFail($id);
         $dishes = Dish::all()->where('user_id', '=', $id);
 
-        // Mancano ancora la rotta e la view
-        return dd('lista dei piatti del ristorante');
+        // Mancano ancora la rotta
+        return view('pages.admin.dishesList');
     }
 
     /**
@@ -34,7 +36,7 @@ class DishController extends Controller
     // Crea un nuovo piatto
     public function create()
     {
-        return dd('form per creare un nuovo piatto');
+        return view('pages.admin.createDish');
     }
 
     /**
@@ -45,7 +47,27 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // valida i dati del form "mancano le regole di validazione"
+        $request->validate();
+
+        // salva i dati del form sotto forma di array
+        $form_data = $request->all();
+
+        // manipoliamo l'array (form_data): 
+        // 1. aggiungendo una chiave user_id
+        $form_data['user_id'] = Auth::user()->id;
+        
+        // 2. sovrascrive il valore della chiave img_path dell'array ($form_data)
+        $img_path = Storage::put('upload', $form_data['img_path']);
+        $form_data['img_path'] = $img_path;
+
+        // creiamo una nuova istanza e facciamo il fill dell'array (form_data) manipolato
+        $dish = new Dish();
+        $dish->fill($form_data);
+        $dish->save();
+        
+        // Mancano le rotte
+        // return redirect()->route();
     }
 
     /**
@@ -65,9 +87,14 @@ class DishController extends Controller
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dish $dish)
+    public function edit(Dish $dish, $id)
     {
-        //
+        $dish = Dish::findOrFail($id);
+        $data = [
+            'dish' => $dish
+        ];
+        
+        return view('pages.admin.editDish', $data);
     }
 
     /**
@@ -77,9 +104,18 @@ class DishController extends Controller
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dish $dish)
+    public function update(Request $request, Dish $dish, $id)
     {
-        //
+        $request->validate();
+
+        // salva i dati del form sotto forma di array
+        $form_data = $request->all();
+
+        $dish = Dish::findOrFail($id);
+        $dish->update($form_data);
+
+        // Mancano le rotte
+        // return redirect()->route();
     }
 
     /**
@@ -88,8 +124,11 @@ class DishController extends Controller
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dish $dish)
+    public function destroy(Dish $dish, $id)
     {
-        //
+        $dish = Dish::findOrFail($id);
+        $dish->orders()->sync([]);
+        $dish->delete();
+        
     }
 }
