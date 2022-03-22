@@ -31,13 +31,6 @@ Route::middleware('auth')
 });
 
 
-<<<<<<< HEAD
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
-=======
-
-
-
-
->>>>>>> 4154b201c047f83007b6ba37daf94b02b113959e
