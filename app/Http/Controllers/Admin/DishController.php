@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Dish;
@@ -19,10 +20,17 @@ class DishController extends Controller
     // Ritorna una lista di tutti i piatti di un ristorante
     public function getRestaurantDishes($id)
     {
+        // $dishes = Dish::all();
+        // $data = [
+        //     'dishes' => $dishes
+        // ];
         $restaurant = User::findOrFail($id);
-        $dishes = Dish::all()->where('user_id', '=', $id);
+        $dishes = Dish::all()->where('user_id', '=', $restaurant->id);
 
-        return view('pages.admin.dishesList');
+        $data = [
+            'dishes' => $dishes
+        ];
+        return view('pages.admin.index', $data);
     }
 
     /**
