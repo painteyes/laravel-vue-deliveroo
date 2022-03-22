@@ -28,12 +28,6 @@ Route::middleware('auth')  // per privatizzare i controlli
 });
 
 
-Route::get("{any?}", function(){
-    return view("guests.home");
-})->where("any", ".*");
-
 // Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
