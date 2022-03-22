@@ -51,14 +51,18 @@ class DishController extends Controller
         // Salva in un array i dati del form
         $form_data = $request->all();
 
-        // Manipola l'array (form_data)
-            // 1. Aggiunge una chiave user_id
+        //** Manipola l'array (form_data) */ 
+        // 1. Aggiunge una chiave user_id
         $form_data['user_id'] = Auth::user()->id;
-            // 2.Sovrascrive il valore della chiave img_path 
-        $img_path = Storage::put('upload', $form_data['img_path']);
-        $form_data['img_path'] = $img_path;
-
-        // Crea una nuova istanza del piatto
+        // 2.Sovrascrive il valore della chiave img_path
+        if(isset($form_data['img_path'])) {
+            // Put the image in the storage folder
+            $img_path = Storage::put('upload', $form_data['img_path']);
+            // Save the path to the file in the cover column of the dish
+            $form_data['img_path'] = $img_path;
+        }
+    
+        // Crea un nuovo piatto
         $dish = new Dish();
 
         // Fa il fill dell'array (form_data)

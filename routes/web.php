@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 */
 
-// Rotta per la homepage pubblica
-Route::get('/', 'HomeController@home')->name('home');
-
 // Rotte per l'autenticazione (register, login, logout)
 Auth::routes();
+
+// Rotta per la homepage pubblica
+Route::get('/', 'HomeController@home')->name('home');
 
 // Rotte protette da autenticazione
 Route::middleware('auth')  
@@ -25,8 +25,7 @@ Route::middleware('auth')
 	->group(function() {
 
 	// Rotta per la pagina specifica del ristorante dopo l'accesso
-	Route::get('/', 'Admin/HomeController@home')->name('home');
+	Route::get('/', 'HomeController@home')->name('home');
 
 
 });
-
