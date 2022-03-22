@@ -13,7 +13,7 @@ class HomeController extends Controller
 
     public function home()
     {
-        return view('pages.guests.welcome');
+        return view('pages.guests.home');
     }
 
     /**

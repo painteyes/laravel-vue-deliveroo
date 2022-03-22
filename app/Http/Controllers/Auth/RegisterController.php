@@ -9,6 +9,9 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Support\Facades\Storage;
+
+
 class RegisterController extends Controller
 {
     /*
@@ -53,8 +56,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'restaurant_name' => ['required', 'string', 'max:50'],
             'address' => ['required', 'string', 'max:50'],
-            'vat_nuber' => ['required', 'string', 'max:11', 'unique:users'],
-            'img_path' => ['string', 'nullable'],
+            'vat_number' => ['required', 'string', 'numeric', 'between: 00000000000, 99999999999', 'unique:users'],
+            'img_path' => ['nullable'],
             'description' => ['nullable','string', 'max:255'],
         ]);
     }
@@ -67,15 +70,33 @@ class RegisterController extends Controller
     
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'restaurant_name' => $data['restaurant_name'],
-            'address' => $data['address'],
-            'vat_number' => $data['vat_number'],
-            'img_path' => $data['img_path'],
-            'description' => $data['description']
-        ]);
+        // Crea un nuovo ristorante
+        $user = new User();
+
+        // Cripta la password con la funzione di Hash
+        $data['password'] = Hash::make($data['password']);
+
+        if(isset($data['img_path'])) {
+            // Salva l'immagine in storage
+            $img_path = Storage::put('upload', $data['img_path']);
+            //  Sovrascrive la chiave 'img_path' con una stringa 
+            $data['img_path'] = $img_path;
+        }
+
+        // Salva la descrizione
+        if(isset($data['description'])) { 
+            $data['description'] = $data['description'];           
+        }
+
+        // Crea uno slug unico a partire da 'restaurant_name'
+        $data['slug'] = User::getUniqueSlugFromTitle($data['restaurant_name']);
+
+        // Fa il fill dell'array ($data)
+        $user->fill($data);
+
+        // Salva il ristorante
+        $user->save();
+
+        return $user;
     }
 }
