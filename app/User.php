@@ -47,16 +47,16 @@ class User extends Authenticatable
         return $this->hasMany('App\Dish');
     }
 
-    // Funzione che genera slug unici a partire dal "business_name"
-    public static function getUniqueSlugFromTitle($business_name) {
-        $slug = Str::slug($business_name);
+    // Funzione che genera slug unici a partire dal "restaurant_name"
+    public static function getUniqueSlugFromTitle($restaurant_name) {
+        $slug = Str::slug($restaurant_name);
         $slug_base = $slug;
 
-        $business_name_found = User::where('slug', '=', $slug)->first();
+        $restaurant_name_found = User::where('slug', '=', $slug)->first();
         $counter = 1;
-        while ($business_name_found) {
+        while ($restaurant_name_found) {
             $slug = $slug_base . '-' . $counter;
-            $business_name_found = User::where('slug', '=', $slug)->first();
+            $restaurant_name_found = User::where('slug', '=', $slug)->first();
             $counter++;
         }
 
