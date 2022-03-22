@@ -7,33 +7,30 @@ use Illuminate\Support\Facades\Storage;
 use App\Dish;
 use Illuminate\Http\Request;
 use App\User;
-use App\Dish;
+
 
 class DishController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
-     */
+    */
 
-    // Ritorna tutti i piatti di un ristorante
+    // Ritorna una lista di tutti i piatti di un ristorante
     public function getRestaurantDishes($id)
     {
         $restaurant = User::findOrFail($id);
         $dishes = Dish::all()->where('user_id', '=', $id);
 
-        // Mancano ancora la rotta
         return view('pages.admin.dishesList');
     }
 
     /**
      * Show the form for creating a new resource.
-     *
      * @return \Illuminate\Http\Response
-     */
+    */
 
-    // Crea un nuovo piatto
+    // Mostra il form per creare un nuovo piatto
     public function create()
     {
         return view('pages.admin.createDish');
@@ -41,41 +38,45 @@ class DishController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+    */
+
+    // Salva un nuovo piatto
     public function store(Request $request)
     {
-        // valida i dati del form "mancano le regole di validazione"
-        $request->validate();
+        // Valida i dati del form 
+        $request->validate(); /** aggiungere le regole di validazione */
 
-        // salva i dati del form sotto forma di array
+        // Salva in un array i dati del form
         $form_data = $request->all();
 
-        // manipoliamo l'array (form_data): 
-        // 1. aggiungendo una chiave user_id
+        // Manipola l'array (form_data)
+            // 1. Aggiunge una chiave user_id
         $form_data['user_id'] = Auth::user()->id;
-        
-        // 2. sovrascrive il valore della chiave img_path dell'array ($form_data)
+            // 2.Sovrascrive il valore della chiave img_path 
         $img_path = Storage::put('upload', $form_data['img_path']);
         $form_data['img_path'] = $img_path;
 
-        // creiamo una nuova istanza e facciamo il fill dell'array (form_data) manipolato
+        // Crea una nuova istanza del piatto
         $dish = new Dish();
+
+        // Fa il fill dell'array (form_data)
         $dish->fill($form_data);
+
+        // Salva il piatto
         $dish->save();
         
-        // Mancano le rotte
+        // Manca la rotta per il return
         // return redirect()->route();
     }
 
     /**
      * Display the specified resource.
-     *
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
-     */
+    */
+
     public function show(Dish $dish)
     {
         //
@@ -83,10 +84,10 @@ class DishController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
-     */
+    */
+
     public function edit(Dish $dish, $id)
     {
         $dish = Dish::findOrFail($id);
@@ -99,36 +100,43 @@ class DishController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
-     */
+    */
+
     public function update(Request $request, Dish $dish, $id)
     {
-        $request->validate();
+        // Valida i dati del form 
+        $request->validate(); /** aggiungere le regole di validazione */
 
-        // salva i dati del form sotto forma di array
+        // Salva in un array i dati del form
         $form_data = $request->all();
 
         $dish = Dish::findOrFail($id);
         $dish->update($form_data);
 
-        // Mancano le rotte
+        // Manca la rotta per il return
         // return redirect()->route();
     }
 
     /**
      * Remove the specified resource from storage.
-     *
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
-     */
+    */
+
     public function destroy(Dish $dish, $id)
     {
         $dish = Dish::findOrFail($id);
+
+        // Azzera tutte le relazioni nella tabella ponte
         $dish->orders()->sync([]);
-        $dish->delete();
+
+        // Elimina l'upload dell'immagine del piatto nella cartella storage
+        Storage::delete($dish->img_path);
         
+        // Elimina il piatto
+        $dish->delete();
     }
 }

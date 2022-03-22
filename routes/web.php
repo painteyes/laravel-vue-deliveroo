@@ -6,34 +6,38 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
 */
+
+// Rotta per la homepage pubblica
+Route::get('/', 'HomeController@home')->name('home');
+
+// Rotte per l'autenticazione (register, login, logout)
 Auth::routes();
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::middleware('auth')  // per privatizzare i controlli
+// Rotte protette da autenticazione
+Route::middleware('auth')  
 	->namespace('Admin')
 	->name('admin.')
 	->prefix('admin')
 	->group(function() {
-	// qui metto tutte le rotte private
-	Route::get('/', 'HomeController@index')->name('home');
+
+	// Rotta per la pagina specifica del ristorante dopo l'accesso
+	Route::get('/', 'Admin/HomeController@home')->name('home');
+
+
 });
 
 
-Route::get("{any?}", function(){
-    return view("guests.home");
-})->where("any", ".*");
-
+<<<<<<< HEAD
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+=======
+
+
+
+
+>>>>>>> 4154b201c047f83007b6ba37daf94b02b113959e
