@@ -25,6 +25,18 @@ Route::middleware('auth')
 	->group(function() {
 
 	// Rotta per la pagina specifica del ristorante dopo l'accesso
+<<<<<<< HEAD
+	Route::get('/', 'Admin/HomeController@home')->name('home');
+
+
+});
+
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home', 'HomeController@index')->name('home');
+=======
 	Route::get('/', 'HomeController@home')->name('home');
 	Route::get('/dishes/{id}', 'DishController@getRestaurantDishes');
 });
+>>>>>>> 8ccc65ad784c042eb880189a102cdcc9bc34f9c2
