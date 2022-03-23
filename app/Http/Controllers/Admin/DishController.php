@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Dish;
 use Illuminate\Http\Request;
 use App\User;
-
+use Error;
 
 class DishController extends Controller
 {
@@ -20,17 +20,19 @@ class DishController extends Controller
     // Ritorna una lista di tutti i piatti di un ristorante
     public function getRestaurantDishes($id)
     {
-        // $dishes = Dish::all();
-        // $data = [
-        //     'dishes' => $dishes
-        // ];
-        $restaurant = User::findOrFail($id);
-        $dishes = Dish::all()->where('user_id', '=', $restaurant->id);
+        $dishes = Dish::all()->where('user_id', '=', $id);
 
         $data = [
             'dishes' => $dishes
         ];
-        return view('pages.admin.index', $data);
+
+        // if per verificare 
+        if(Auth::user()->id == $id){
+            return view('pages.admin.index', $data);
+
+        }else{
+            return dd('404');
+        }
     }
 
     /**
