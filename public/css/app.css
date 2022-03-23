@@ -10962,3 +10962,12 @@ a.text-dark:focus {
   }
 }
 
+header .logo {
+  width: 50px;
+}
+
+header .btn {
+  margin: 10px;
+  width: 100px;
+}
+
