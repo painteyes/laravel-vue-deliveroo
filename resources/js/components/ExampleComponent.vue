@@ -3,10 +3,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Example Component</div>
+                    <h3 class="card-header">Componente di esempio</h3>
 
                     <div class="card-body">
-                        I'm an example component.
+                        <h5>Ciao sono un componente di Vue</h5>
                     </div>
                 </div>
             </div>

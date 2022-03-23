@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Dish;
 use Illuminate\Http\Request;
 use App\User;
-
+use Error;
 
 class DishController extends Controller
 {
@@ -19,10 +20,19 @@ class DishController extends Controller
     // Ritorna una lista di tutti i piatti di un ristorante
     public function getRestaurantDishes($id)
     {
-        $restaurant = User::findOrFail($id);
         $dishes = Dish::all()->where('user_id', '=', $id);
 
-        return view('pages.admin.dishesList');
+        $data = [
+            'dishes' => $dishes
+        ];
+
+        // if per verificare 
+        if(Auth::user()->id == $id){
+            return view('pages.admin.index', $data);
+
+        }else{
+            return dd('404');
+        }
     }
 
     /**
