@@ -37,7 +37,6 @@ Route::middleware('auth')
 Route::get('/home', 'HomeController@index')->name('home');
 =======
 	Route::get('/', 'HomeController@home')->name('home');
-
-
+	Route::get('/dishes/{id}', 'DishController@getRestaurantDishes');
 });
->>>>>>> 2e50968854a65e56c27bca5dc1a31064fa368044
+>>>>>>> 8ccc65ad784c042eb880189a102cdcc9bc34f9c2
