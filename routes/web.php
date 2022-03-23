@@ -25,7 +25,6 @@ Route::middleware('auth')
 	->group(function() {
 
 	// Rotta per la pagina specifica del ristorante dopo l'accesso
-<<<<<<< HEAD
 	Route::get('/', 'Admin/HomeController@home')->name('home');
 
 
@@ -35,9 +34,3 @@ Route::middleware('auth')
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
-=======
-	Route::get('/', 'HomeController@home')->name('home');
-
-
-});
->>>>>>> 2e50968854a65e56c27bca5dc1a31064fa368044
