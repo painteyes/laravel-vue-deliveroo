@@ -23,9 +23,10 @@ class SearchController extends Controller
         //** Ristoranti filtrati in base alla categorie */ 
         $filteredRestaurants = [];
 
-        /** Contiene l'id dei ristoranti già pushati in $filteredRestaurants, 
-         *  viene controllato per non ripetere lo stesso ristorante più volte
-         *  se questo ha più categorie */  
+        /** Pusho in un array l'id del ristorante prima di 
+         *  pushare il ristorante in $filteredRestaurants; 
+         *  per non avere duplicati verifico prima se l'id 
+         *  del ristorante non è già incluso in $users_id */
         $users_id = [];
 
         foreach ($categoriesWithRestaurants as $category) {

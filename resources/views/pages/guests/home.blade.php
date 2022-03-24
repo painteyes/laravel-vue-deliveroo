@@ -21,7 +21,7 @@
 
         {{-- Componente Vue per ricercare i ristoranti --}}
         <search-restaurants 
-                :randomRestaurants = "{{json_encode($randomRestaurants)}}"
+                :rand-restaurants = "{{json_encode($randomRestaurants)}}"
                 :categories = "{{json_encode($categories)}}"
         ></search-restaurants>
 

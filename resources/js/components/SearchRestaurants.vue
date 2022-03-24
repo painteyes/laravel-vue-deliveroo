@@ -5,7 +5,7 @@
                 <div class="card">
                     
                     <!-- stampo a schermo le tipologie per permettere all'utente di fare le ricerche -->
-                    <label class="check" v-for="category, index in categories" :key=index>
+                    <label class="check" v-for="category, index in categories" :key='index'>
 
                         <input 
                             type="checkbox"
@@ -45,12 +45,64 @@
                             </a>
                         </div>
                     </div>
-                    
-
                 </div>
             </div>
         </div>
+
+
+        <div v-if="categoriesFilter.length == 0">
+
+            <div
+                v-for="(randRestaurant, i) in randRestaurants"
+                :key="i"
+                class="restaurant-found restaurant-card"
+            >
+                    
+                <div class="card-body text-start">
+                    <!-- <a @click="showMenu(restaurant.id)"> -->
+                    <a href="#">
+                        <div class="container-image">
+                            <!-- <img
+                                class="card-img-top"
+                                :src="'/storage/images/' + restaurant.image"
+                                alt=""
+                            /> -->
+                        </div>
+                        <div class="container-text-card">
+                            <h5 class="card-title my-1">
+                                <strong> {{ randRestaurant.restaurant_name }}</strong>
+                            </h5>
+                            <!-- <p class="card-text my-1">
+                                {{ restaurant.restaurant_phone }}
+                            </p>
+                            <p class="card-text my-1">{{ restaurant.email }}</p>
+                            <p class="card-text my-1">{{ restaurant.address }}</p> -->
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
+
+
+    
+
+
+
+
 </template>
 
 <script>
@@ -58,7 +110,7 @@
     export default {
         props: {
             categories: Array,
-            randomRestaurants: Array,
+            randRestaurants: Array,
         }, 
         data: function() {
             return {

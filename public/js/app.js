@@ -1963,10 +1963,62 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     categories: Array,
-    randomRestaurants: Array
+    randRestaurants: Array
   },
   data: function data() {
     return {
@@ -37673,6 +37725,34 @@ var render = function () {
         ),
       ]),
     ]),
+    _vm._v(" "),
+    _vm.categoriesFilter.length == 0
+      ? _c(
+          "div",
+          _vm._l(_vm.randRestaurants, function (randRestaurant, i) {
+            return _c(
+              "div",
+              { key: i, staticClass: "restaurant-found restaurant-card" },
+              [
+                _c("div", { staticClass: "card-body text-start" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("div", { staticClass: "container-image" }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "container-text-card" }, [
+                      _c("h5", { staticClass: "card-title my-1" }, [
+                        _c("strong", [
+                          _vm._v(" " + _vm._s(randRestaurant.restaurant_name)),
+                        ]),
+                      ]),
+                    ]),
+                  ]),
+                ]),
+              ]
+            )
+          }),
+          0
+        )
+      : _vm._e(),
   ])
 }
 var staticRenderFns = []
