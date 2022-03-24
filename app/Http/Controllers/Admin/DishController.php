@@ -34,7 +34,7 @@ class DishController extends Controller
         }else{
             return dd('404');
         }
-    }
+    } 
 
     /**
      * Show the form for creating a new resource.
