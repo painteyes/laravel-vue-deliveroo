@@ -22,7 +22,7 @@ Route::middleware('auth')
 	->namespace('Admin')
 	->name('admin.')
 	->prefix('admin')
-	->group(function() {
+	->group(function(){
 
 	// Rotta per la pagina specifica del ristorante dopo l'accesso
 	Route::get('/', 'HomeController@home')->name('home');
