@@ -29,4 +29,4 @@ Route::middleware('auth')
 	Route::get('/dishes/{id}', 'DishController@getRestaurantDishes')->name('dishes');
 	Route::get('/dishes/create/{id}', 'DishController@create')->name('create');
 	Route::post('/dishes/store/{id}', 'DishController@store')->name('store');
-});
+}); 
