@@ -3,7 +3,7 @@
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{-- {{ config('app.name', 'Laravel') }} --}}
-                <img class="logo" src="{{ asset('images/logo.png') }}" alt="Logo">
+                <img class="logo" src="{{ asset('images/logo.svg') }}" alt="Logo">
                 
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -21,11 +21,11 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link btn btn-primary" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link btn left mr-3" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link btn btn-primary" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link btn right ml-3" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
