@@ -160,5 +160,7 @@ class DishController extends Controller
         
         // Elimina il piatto
         $dish->delete();
+
+        // redirect
     }
 }

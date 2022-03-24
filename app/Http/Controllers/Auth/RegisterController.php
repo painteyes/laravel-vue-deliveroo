@@ -8,8 +8,10 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Category;
 
 use Illuminate\Support\Facades\Storage;
+
 
 
 class RegisterController extends Controller
@@ -42,6 +44,13 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    //** Sovrascrive la funzione di default di laravel per poter 
+    /*   passare tutte le categorie al form di registrazione */ 
+    public function showRegistrationForm() {
+        $categories = Category::all();
+        return view('auth.register', compact( 'categories'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      * @param  array  $data
@@ -59,6 +68,7 @@ class RegisterController extends Controller
             'vat_number' => ['required', 'string', 'numeric', 'between: 00000000000, 99999999999', 'unique:users'],
             'img_path' => ['nullable'],
             'description' => ['nullable','string', 'max:255'],
+            'categories' => ['required'] 
         ]);
     }
 
@@ -97,6 +107,9 @@ class RegisterController extends Controller
         // Salva il ristorante
         $user->save();
 
+        // Aggiunge le categorie al ristorante
+        $user->categories()->sync($data['categories']);
+        
         return $user;
     }
 }
