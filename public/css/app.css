@@ -10963,11 +10963,16 @@ a.text-dark:focus {
 }
 
 header .logo {
-  width: 50px;
+  width: 60%;
 }
 
 header .btn {
   margin: 10px;
   width: 100px;
+}
+
+.login-card {
+  margin-top: 50px;
+  margin-bottom: 150px;
 }
 
