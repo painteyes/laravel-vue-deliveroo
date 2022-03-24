@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\User;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -13,13 +16,17 @@ class HomeController extends Controller
 
     public function home()
     {
-        return view('pages.guests.home');
+        $randomRestaurants = User::inRandomOrder()->limit(10)->get();
+        $categories = Category::all();
+        return view('pages.guests.home' , compact('randomRestaurants', 'categories'));
     }
 
     /**
      * Show the application dashboard.
      * @return \Illuminate\Contracts\Support\Renderable
     */
+
+    // funzione che ritorna json 
 
     
 }

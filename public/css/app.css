@@ -10963,11 +10963,30 @@ a.text-dark:focus {
 }
 
 header .logo {
-  width: 50px;
+  width: 60px;
+}
+
+header .navbar-light .navbar-nav .nav-link {
+  color: white;
+}
+
+header .navbar-light .navbar-nav .nav-link.left:hover {
+  color: whitesmoke;
+}
+
+header .navbar-light .navbar-nav .nav-link.right:hover {
+  color: whitesmoke;
 }
 
 header .btn {
-  margin: 10px;
-  width: 100px;
+  width: 170px;
+}
+
+header .btn.left {
+  background-color: orange;
+}
+
+header .btn.right {
+  background-color: #00ccbc;
 }
 

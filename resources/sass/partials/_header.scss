@@ -1,10 +1,29 @@
 header {
     .logo {
-        width: 50px;
+        width: 60px;
+    }
+
+    .navbar-light 
+    .navbar-nav 
+    .nav-link {
+        color: white;
+
+        &.left:hover {
+            color: whitesmoke;
+        }
+
+        &.right:hover {
+            color: whitesmoke;
+        }
     }
 
     .btn {
-        margin: 10px;
-        width: 100px;
+        width: 170px;
+        &.left {
+            background-color: orange;
+        }
+        &.right {
+            background-color: #00ccbc;
+        }
     }
 }
