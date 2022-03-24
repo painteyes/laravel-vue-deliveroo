@@ -130,16 +130,16 @@ class DishController extends Controller
     public function update(Request $request, Dish $dish, $id)
     {
         // Valida i dati del form 
-        $request->validate(); /** aggiungere le regole di validazione */
+        // $request->validate(); /** aggiungere le regole di validazione */
 
         // Salva in un array i dati del form
         $form_data = $request->all();
 
         $dish = Dish::findOrFail($id);
         $dish->update($form_data);
-
-        // Manca la rotta per il return
-        // return redirect()->route();
+        
+        // redirect
+        return redirect()->route('admin.dishes', ['id' => Auth::user()->id]);
     }
 
     /**
@@ -162,5 +162,6 @@ class DishController extends Controller
         $dish->delete();
 
         // redirect
+        return redirect()->route('admin.dishes', ['id' => Auth::user()->id]);
     }
 }

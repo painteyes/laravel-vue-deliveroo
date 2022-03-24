@@ -5,14 +5,26 @@
     <div class="d-flex flex-wrap m-10">
         @foreach ($dishes as $dish)
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('storage/' . $dish->img_path) }}" alt="{{ $dish->name }}">
                 <div class="card-body">
                     <h5 class="card-title">Nome: {{$dish->name}}</h5>
                     <p class="card-text">Ingredienti: {{$dish->ingredients}}</p>
                     <p class="card-text">Tipo: {{$dish->type}}</p>
                     <p class="card-text">Prezzo: {{$dish->price}}</p>
                     <h5>{{$dish->visible}}</h5>
-                    <a href="#" class="btn btn-primary">Visualizza</a>
+                    
+                    <form action="{{ route('admin.edit', ['id' => $dish->id]) }}">
+                        @csrf
+
+                        <button type="submit" class="btn btn-primary">Modifica</button>
+                    </form>
+
+                    <form action="{{ route('admin.destroy', ['id' => $dish->id]) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        
+                        <button type="submit" class="btn btn-danger">Cancella</button>
+                    </form>
                 </div>
             </div>
         @endforeach
