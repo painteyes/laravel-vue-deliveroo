@@ -20,20 +20,21 @@ class DishController extends Controller
     // Ritorna una lista di tutti i piatti di un ristorante
     public function getRestaurantDishes($id)
     {
-        $dishes = Dish::all()->where('user_id', '=', $id);
+        $restaurant = User::findOrFail($id);
+        $dishes = Dish::all()->where('user_id', '=', $restaurant->id);
 
         $data = [
             'dishes' => $dishes
         ];
 
-        // if per verificare 
+        // Mostra al ristorante solo la prorpia lista dei piatti verificandolo tramite $id
         if(Auth::user()->id == $id){
             return view('pages.admin.index', $data);
 
         }else{
             return dd('404');
         }
-    }
+    } 
 
     /**
      * Show the form for creating a new resource.
@@ -41,9 +42,14 @@ class DishController extends Controller
     */
 
     // Mostra il form per creare un nuovo piatto
-    public function create()
+    public function create($id)
     {
-        return view('pages.admin.createDish');
+        if(Auth::user()->id == $id){
+            return view('pages.admin.createDish');
+
+        }else{
+            return dd('404');
+        }
     }
 
     /**
@@ -55,8 +61,9 @@ class DishController extends Controller
     // Salva un nuovo piatto
     public function store(Request $request)
     {
+        
         // Valida i dati del form 
-        $request->validate(); /** aggiungere le regole di validazione */
+        // $request->validate(); /** aggiungere le regole di validazione */
 
         // Salva in un array i dati del form
         $form_data = $request->all();
@@ -64,6 +71,7 @@ class DishController extends Controller
         //** Manipola l'array (form_data) */ 
         // 1. Aggiunge una chiave user_id
         $form_data['user_id'] = Auth::user()->id;
+
         // 2.Sovrascrive il valore della chiave img_path
         if(isset($form_data['img_path'])) {
             // Put the image in the storage folder
@@ -82,7 +90,7 @@ class DishController extends Controller
         $dish->save();
         
         // Manca la rotta per il return
-        // return redirect()->route();
+        return redirect()->route('admin.dishes', ['id' => Auth::user()->id]);
     }
 
     /**
