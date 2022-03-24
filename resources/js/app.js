@@ -7,6 +7,12 @@
 require('./bootstrap');
 
 import Vue from 'vue';
+import ExampleComponent from './components/ExampleComponent.vue';
+import RestaurantMenu from './components/RestaurantMenu.vue';
+
+// Dichiaro componenti globali di Vue
+Vue.component('ExampleComponent', ExampleComponent);
+Vue.component('restaurant-menu', RestaurantMenu);
 // import ExampleComponent from './components/ExampleComponent.vue';
 import SearchRestaurants from './components/SearchRestaurants.vue';
 

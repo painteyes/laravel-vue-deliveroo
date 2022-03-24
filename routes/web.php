@@ -16,6 +16,8 @@ Auth::routes();
 
 // Rotta per la homepage pubblica
 Route::get('/', 'HomeController@home')->name('home');
+// Rotta per la pagina del singolo ristorante
+Route::get('/restaurant/{slug}', 'RestaurantController@show')->name('restaurant');
 
 // Rotte protette da autenticazione
 Route::middleware('auth')  
