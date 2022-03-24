@@ -21,7 +21,7 @@
             <div class="mb-3">
                 <label for="price">Prezzo</label>
                 <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}">
-            </div>
+            </div> 
 
             <div class="mb-3">
                 <label for="type">Tipologia</label>
