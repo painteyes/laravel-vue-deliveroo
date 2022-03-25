@@ -138,8 +138,7 @@ class DishController extends Controller
         // Elimina l'upload dell'immagine del piatto nella cartella storage
         // Storage::delete($dish->img_path);
         // $img_path = Storage::put('upload', $form_data['img_path']);
-
-        if($form_data['img_path'] != $dish->img_path) {
+        if(isset($form_data['img_path'])) {
             Storage::delete($dish->img_path);
             $img_path = Storage::put('upload', $form_data['img_path']);
             $form_data['img_path'] = $img_path;
