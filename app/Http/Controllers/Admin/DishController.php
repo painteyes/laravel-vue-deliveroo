@@ -169,7 +169,7 @@ class DishController extends Controller
             'ingredients' => 'required|max:80',
             'price' => 'required|numeric|between:1, 999.99',
             'type' => 'required|max:30',
-            'img_path' => 'required',
+            // 'img_path' => 'required',
             'visible' => 'numeric|min:0|max:1',
             'user_id' => 'exists:users,id', 
         ];
