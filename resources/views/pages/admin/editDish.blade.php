@@ -43,11 +43,18 @@
               Non disponibile
             </label>
         </div>
+        
 
-        {{-- <div class="form-group">
+        <div class="form-group">
             <label for="img_path">Scegli l'immagine del piatto</label>
             <input type="file" class="form-control-file" id="img_path">
-        </div> --}}
+        </div>
+
+        {{-- Anteprima dell'immagine --}}
+        <div>
+            <img class="card-img-top w-25" src="{{ asset('storage/' . $dish->img_path) }}" alt="{{ $dish->name }}">
+        </div>
+
 
         <button type="submit" class="btn btn-primary">Submit</button>
     <form>

@@ -134,6 +134,17 @@ class DishController extends Controller
         $form_data = $request->all();
 
         $dish = Dish::findOrFail($id);
+
+        // Elimina l'upload dell'immagine del piatto nella cartella storage
+        // Storage::delete($dish->img_path);
+        // $img_path = Storage::put('upload', $form_data['img_path']);
+
+        if($form_data['img_path'] != $dish->img_path) {
+            Storage::delete($dish->img_path);
+            $img_path = Storage::put('upload', $form_data['img_path']);
+            $form_data['img_path'] = $img_path;
+        }
+
         $dish->update($form_data);
         
         // redirect
@@ -152,6 +163,7 @@ class DishController extends Controller
 
         // Azzera tutte le relazioni nella tabella ponte
         $dish->orders()->sync([]);
+
 
         // Elimina l'upload dell'immagine del piatto nella cartella storage
         Storage::delete($dish->img_path);
