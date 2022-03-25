@@ -50424,8 +50424,13 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\andre\Classe 48\progetto finale\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\Users\andre\Classe 48\progetto finale\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! C:\Users\coman\OneDrive\Desktop\Boolean\9.30-13.00\repo\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\coman\OneDrive\Desktop\Boolean\9.30-13.00\repo\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> 01789ac4563d865dace2e735241eb5c597e2079f
 
 
 /***/ })
