@@ -27,12 +27,11 @@ class DishController extends Controller
             'dishes' => $dishes
         ];
 
-        // Mostra al ristorante solo la prorpia lista dei piatti verificandolo tramite $id
-        if(Auth::user()->id == $id){
+        // Mostra al ristorante solo la propria lista dei piatti verificandolo tramite $id
+        if(Auth::user()->id == $id) {
             return view('pages.admin.index', $data);
-
-        }else{
-            return dd('404');
+        } else {
+            abort('404');
         }
     } 
 
@@ -44,11 +43,10 @@ class DishController extends Controller
     // Mostra il form per creare un nuovo piatto
     public function create($id)
     {
-        if(Auth::user()->id == $id){
+        if(Auth::user()->id == $id) {
             return view('pages.admin.createDish');
-
-        }else{
-            return dd('404');
+        } else {
+            abort('404');
         }
     }
 
@@ -63,7 +61,7 @@ class DishController extends Controller
     {
         
         // Valida i dati del form 
-        // $request->validate(); /** aggiungere le regole di validazione */
+        $request->validate($this->getValidationRules()); 
 
         // Salva in un array i dati del form
         $form_data = $request->all();
@@ -130,7 +128,7 @@ class DishController extends Controller
     public function update(Request $request, Dish $dish, $id)
     {
         // Valida i dati del form 
-        // $request->validate(); /** aggiungere le regole di validazione */
+        $request->validate($this->getValidationRules());
 
         // Salva in un array i dati del form
         $form_data = $request->all();
@@ -163,5 +161,17 @@ class DishController extends Controller
 
         // redirect
         return redirect()->route('admin.dishes', ['id' => Auth::user()->id]);
+    }
+
+    protected function getValidationRules() {
+        return [
+            'name' => 'required|max:50',
+            'ingredients' => 'required|max:80',
+            'price' => 'required|numeric|between:1, 999.99',
+            'type' => 'required|max:30',
+            // 'img_path' => 'required',
+            'visible' => 'numeric|min:0|max:1',
+            'user_id' => 'exists:users,id', 
+        ];
     }
 }
