@@ -7,6 +7,7 @@
         
         <div class="hero text-center">
                 <div class="container-hp">
+
                    <div class="display-1 sfondo">
                      <div class="main-logo">
                       
@@ -16,6 +17,7 @@
                       <h3>Cerchi qualcosa?</h3>
                     </div>
                   </div>
+                  
                 </div>
         </div>
 

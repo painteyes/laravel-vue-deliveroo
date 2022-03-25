@@ -10967,7 +10967,7 @@ header .logo {
 }
 
 header .navbar-light .navbar-nav .nav-link {
-  color: white;
+  color: black;
 }
 
 header .navbar-light .navbar-nav .nav-link.left:hover {
@@ -10993,5 +10993,14 @@ header .btn.right {
 .login-card {
   margin-top: 50px;
   margin-bottom: 150px;
+}
+
+footer {
+  background-color: purple;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
 }
 

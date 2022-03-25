@@ -89,7 +89,7 @@ class RegisterController extends Controller
         if(isset($data['img_path'])) {
             // Salva l'immagine in storage
             $img_path = Storage::put('upload', $data['img_path']);
-            //  Sovrascrive la chiave 'img_path' con una stringa 
+            //  Sovrascrive la chiave 'img_path' con una stringa contenente il path
             $data['img_path'] = $img_path;
         }
 
