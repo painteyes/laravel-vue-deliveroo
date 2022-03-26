@@ -35,3 +35,7 @@ Route::middleware('auth')
 	Route::get('/dishes/edit/{id}', 'DishController@edit')->name('edit');
 	Route::put('/dishes/update/{id}', 'DishController@update')->name('update');
 });
+
+Route::get('{any?}', function() {
+    return view('guests.home');
+})->where('any', '.*')->name('guest');

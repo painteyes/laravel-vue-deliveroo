@@ -11004,3 +11004,15 @@ footer {
   color: whitesmoke;
 }
 
+i {
+  font-size: 20px;
+}
+
+i.red {
+  color: red;
+}
+
+i.green {
+  color: green;
+}
+
