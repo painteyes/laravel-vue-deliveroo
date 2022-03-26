@@ -31,20 +31,21 @@
             </select>
         </div>
 
+        {{-- Aviable --}}
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="visible" id="visible" value="1" {{ old('visible', $dish->visible) == '1' ? 'checked' : '' }}>
+            <input class="form-check-input" type="radio" name="visible" id="visible" value="1" {{ old('visible', $dish->visible) == '1' ? 'checked' : '' }}>
             <label class="form-check-label" for="visible">
               Disponibile
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="visible" id="visible" value="0" {{ old('visible', $dish->visible) == '0' ? 'checked' : '' }}>
+            <input class="form-check-input" type="radio" name="visible" id="visible" value="0" {{ old('visible', $dish->visible) == '0' ? 'checked' : '' }}>
             <label class="form-check-label" for="visible">
               Non disponibile
             </label>
         </div> 
-        
 
+        {{-- Image --}}
         <div class="form-group">
             <label for="img_path">Scegli l'immagine del piatto</label>
             <input type="file" class="form-control-file" id="img_path" name="img_path">
