@@ -1,7 +1,7 @@
 <template>
     <div class="container">
          <h1> {{restaurantInfo.name}}</h1>
-         <p> Via delle Baleari 1, Alghero</p>
+         <p> {{restaurantInfo.adress}}</p>
 
          <h3>Menu</h3>
          <ul>

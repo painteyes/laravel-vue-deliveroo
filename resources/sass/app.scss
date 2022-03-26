@@ -13,3 +13,12 @@
 @import "partials/register";
 @import "partials/footer";
 @import "partials/homepage";
+@import "partials/restaurant";
+
+body {
+    min-height: 100vh;
+}
+
+main {
+    padding-bottom: 2.5rem;
+}

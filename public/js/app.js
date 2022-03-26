@@ -37648,7 +37648,7 @@ var render = function () {
   return _c("div", { staticClass: "container" }, [
     _c("h1", [_vm._v(" " + _vm._s(_vm.restaurantInfo.name))]),
     _vm._v(" "),
-    _c("p", [_vm._v(" Via delle Baleari 1, Alghero")]),
+    _c("p", [_vm._v(" " + _vm._s(_vm.restaurantInfo.adress))]),
     _vm._v(" "),
     _c("h3", [_vm._v("Menu")]),
     _vm._v(" "),
@@ -37744,7 +37744,9 @@ var render = function () {
                 },
               }),
               _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(category.name))]),
+              _c("span", { staticClass: "category-name" }, [
+                _vm._v(_vm._s(category.name)),
+              ]),
             ])
           }),
           0

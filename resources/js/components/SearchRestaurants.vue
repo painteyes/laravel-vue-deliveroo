@@ -12,7 +12,7 @@
                             v-model="categoriesFilter"
                             @change="searchRestaurants()"
                       >
-                      <span>{{ category.name }}</span>
+                      <span class="category-name">{{ category.name }}</span>
                     </label>
                 </div>
 
