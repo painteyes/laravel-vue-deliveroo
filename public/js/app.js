@@ -2021,16 +2021,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     categories: Array,
@@ -2061,7 +2051,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.searchRestaurants();
-  }
+  } //     created() {
+  //         this.searchRestaurant();
+  //     }
+
 });
 
 /***/ }),
@@ -37696,145 +37689,164 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row justify-content-center mx-sm-5" }, [
+      _c("div", { staticClass: "col-sm-12 d-md-flex page" }, [
         _c(
           "div",
-          { staticClass: "card" },
-          [
-            _c("h2", [_vm._v("Scegli la categoria")]),
-            _vm._v(" "),
-            _vm._l(_vm.categories, function (category, index) {
-              return _c("label", { key: index, staticClass: "check" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.categoriesFilter,
-                      expression: "categoriesFilter",
+          {
+            staticClass:
+              "text-left d-sm-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-md-5 mx-auto",
+          },
+          _vm._l(_vm.categories, function (category, index) {
+            return _c("label", { key: index, staticClass: "check" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.categoriesFilter,
+                    expression: "categoriesFilter",
+                  },
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  value: category.name,
+                  checked: Array.isArray(_vm.categoriesFilter)
+                    ? _vm._i(_vm.categoriesFilter, category.name) > -1
+                    : _vm.categoriesFilter,
+                },
+                on: {
+                  change: [
+                    function ($event) {
+                      var $$a = _vm.categoriesFilter,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = category.name,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.categoriesFilter = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.categoriesFilter = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.categoriesFilter = $$c
+                      }
+                    },
+                    function ($event) {
+                      return _vm.searchRestaurants()
                     },
                   ],
-                  attrs: { type: "checkbox" },
-                  domProps: {
-                    value: category.name,
-                    checked: Array.isArray(_vm.categoriesFilter)
-                      ? _vm._i(_vm.categoriesFilter, category.name) > -1
-                      : _vm.categoriesFilter,
-                  },
-                  on: {
-                    change: [
-                      function ($event) {
-                        var $$a = _vm.categoriesFilter,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = category.name,
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              (_vm.categoriesFilter = $$a.concat([$$v]))
-                          } else {
-                            $$i > -1 &&
-                              (_vm.categoriesFilter = $$a
-                                .slice(0, $$i)
-                                .concat($$a.slice($$i + 1)))
-                          }
-                        } else {
-                          _vm.categoriesFilter = $$c
-                        }
-                      },
-                      function ($event) {
-                        return _vm.searchRestaurants()
-                      },
-                    ],
-                  },
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "nome-search" }, [
-                  _vm._v(_vm._s(category.name)),
-                ]),
-              ])
-            }),
-            _vm._v(" "),
-            _c("h2", { staticClass: "mt-5" }, [_vm._v("Tutti i ristoranti")]),
-            _vm._v(" "),
-            _vm._l(_vm.filteredRestaurants, function (restaurant, i) {
-              return _c(
-                "div",
-                { key: i, staticClass: "restaurant-found restaurant-card" },
-                [
-                  _c("div", { staticClass: "card-body text-start" }, [
-                    _c(
-                      "a",
-                      { attrs: { href: "restaurants/" + restaurant.slug } },
-                      [
-                        _c("div", { staticClass: "container-image" }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "container-text-card" }, [
-                          _c("h5", { staticClass: "card-title my-1" }, [
-                            _c("strong", [
-                              _vm._v(" " + _vm._s(restaurant.restaurant_name)),
-                            ]),
-                          ]),
-                        ]),
-                      ]
-                    ),
-                  ]),
-                ]
-              )
-            }),
-            _vm._v(" "),
-            _vm.categoriesFilter.length == 0
-              ? _c(
-                  "div",
-                  { staticClass: "mt-4" },
-                  _vm._l(_vm.randRestaurants, function (randRestaurant, i) {
-                    return _c(
-                      "div",
-                      {
-                        key: i,
-                        staticClass: "restaurant-found restaurant-card",
-                      },
-                      [
-                        _c("div", { staticClass: "card-body text-start" }, [
-                          _c(
-                            "a",
-                            {
+                },
+              }),
+              _vm._v(" "),
+              _c("span", [_vm._v(_vm._s(category.name))]),
+            ])
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _vm.categoriesFilter.length == 0
+          ? _c(
+              "div",
+              {
+                staticClass:
+                  "col-sm-12 col-md-10 d-flex flex-wrap align-items-start mt-md-5",
+              },
+              _vm._l(_vm.randRestaurants, function (randRestaurant, i) {
+                return _c("div", { key: i, staticClass: "user" }, [
+                  _c(
+                    "a",
+                    { attrs: { href: "/restaurants/" + randRestaurant.slug } },
+                    [
+                      _c("div", { staticClass: "image" }, [
+                        randRestaurant.img_path == null
+                          ? _c("img", {
+                              staticClass: "img-fluid",
                               attrs: {
-                                href: "restaurants/" + randRestaurant.slug,
+                                src: "/images/noimg.jpg",
+                                alt: _vm.randRestaurants.restaurant_name,
                               },
-                            },
-                            [
-                              _c("div", { staticClass: "container-image" }),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "container-text-card" },
-                                [
-                                  _c("h5", { staticClass: "card-title my-1" }, [
-                                    _c("strong", [
-                                      _vm._v(
-                                        " " +
-                                          _vm._s(randRestaurant.restaurant_name)
-                                      ),
-                                    ]),
-                                  ]),
-                                ]
-                              ),
-                            ]
+                            })
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "p-3 rest-info" }, [
+                        _c("h4", [
+                          _vm._v(_vm._s(randRestaurant.restaurant_name)),
+                        ]),
+                        _vm._v(" "),
+                        _c("span", [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(randRestaurant.address) +
+                              " "
+                          ),
+                          _c("br"),
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(randRestaurant.email) +
+                              "\n                            "
                           ),
                         ]),
-                      ]
-                    )
-                  }),
-                  0
-                )
-              : _vm._e(),
-          ],
-          2
-        ),
+                      ]),
+                    ]
+                  ),
+                ])
+              }),
+              0
+            )
+          : _c(
+              "div",
+              {
+                staticClass:
+                  "col-sm-12 col-md-10 d-flex flex-wrap align-items-start mt-md-5",
+              },
+              _vm._l(_vm.filteredRestaurants, function (restaurant, i) {
+                return _c("div", { key: i, staticClass: "user" }, [
+                  _c(
+                    "a",
+                    { attrs: { href: "/restaurants/" + restaurant.slug } },
+                    [
+                      _c("div", { staticClass: "image" }, [
+                        restaurant.img_path == null
+                          ? _c("img", {
+                              staticClass: "img-fluid",
+                              attrs: {
+                                src: "/images/noimg.jpg",
+                                alt: restaurant.restaurant_name,
+                              },
+                            })
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "p-3 rest-info" }, [
+                        _c("h4", [_vm._v(_vm._s(restaurant.restaurant_name))]),
+                        _vm._v(" "),
+                        _c("span", [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(restaurant.address) +
+                              " "
+                          ),
+                          _c("br"),
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(restaurant.email) +
+                              "\n                            "
+                          ),
+                        ]),
+                      ]),
+                    ]
+                  ),
+                ])
+              }),
+              0
+            ),
       ]),
     ]),
   ])
@@ -50308,8 +50320,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\andre\Classe 48\progetto finale\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\andre\Classe 48\progetto finale\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\1mill\Boolean\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\1mill\Boolean\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
