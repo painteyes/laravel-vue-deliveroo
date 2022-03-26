@@ -5,8 +5,8 @@
                 <div class="card">
                     
                     <!-- stampo a schermo le tipologie per permettere all'utente di fare le ricerche -->
+                    <h2>Scegli la categoria</h2>
                     <label class="check" v-for="category, index in categories" :key='index'>
-
                         <input 
                             type="checkbox"
                             :value="category.name"
@@ -16,7 +16,8 @@
                       <span class="nome-search">{{ category.name }}</span>
                     </label>
 
-                    <!-- card ristoranti -->
+                    <!-- card ristoranti filtrati  -->
+                    <h2 class="mt-5">Tutti i ristoranti</h2>
                     <div
                         v-for="(restaurant, i) in filteredRestaurants"
                         :key="i"
@@ -24,7 +25,7 @@
                     >
                         <div class="card-body text-start">
                             <!-- <a @click="showMenu(restaurant.id)"> -->
-                            <a href="#">
+                            <a :href="'restaurants/' + restaurant.slug">
                                 <div class="container-image">
                                     <!-- <img
                                         class="card-img-top"
@@ -45,64 +46,45 @@
                             </a>
                         </div>
                     </div>
+
+                    <!-- ristoranti random -->
+                    <div class="mt-4" v-if="categoriesFilter.length == 0">
+                            
+                        <div 
+                            class="restaurant-found restaurant-card"
+                            v-for="(randRestaurant, i) in randRestaurants" :key="i"
+                        >
+                                
+                            <div class="card-body text-start">
+                                <!-- <a @click="showMenu(restaurant.id)"> -->
+                                <a :href="'restaurants/' + randRestaurant.slug">
+                                    <div class="container-image">
+                                        <!-- <img
+                                            class="card-img-top"
+                                            :src="'/storage/images/' + restaurant.image"
+                                            alt=""
+                                        /> -->
+                                    </div>
+                                    <div class="container-text-card">
+                                        <h5 class="card-title my-1">
+                                            <strong> {{ randRestaurant.restaurant_name }}</strong>
+                                        </h5>
+                                        <!-- <p class="card-text my-1">
+                                            {{ restaurant.restaurant_phone }}
+                                        </p>
+                                        <p class="card-text my-1">{{ restaurant.email }}</p>
+                                        <p class="card-text my-1">{{ restaurant.address }}</p> -->
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>
-
-
-        <div v-if="categoriesFilter.length == 0">
-
-            <div
-                v-for="(randRestaurant, i) in randRestaurants"
-                :key="i"
-                class="restaurant-found restaurant-card"
-            >
-                    
-                <div class="card-body text-start">
-                    <!-- <a @click="showMenu(restaurant.id)"> -->
-                    <a href="#">
-                        <div class="container-image">
-                            <!-- <img
-                                class="card-img-top"
-                                :src="'/storage/images/' + restaurant.image"
-                                alt=""
-                            /> -->
-                        </div>
-                        <div class="container-text-card">
-                            <h5 class="card-title my-1">
-                                <strong> {{ randRestaurant.restaurant_name }}</strong>
-                            </h5>
-                            <!-- <p class="card-text my-1">
-                                {{ restaurant.restaurant_phone }}
-                            </p>
-                            <p class="card-text my-1">{{ restaurant.email }}</p>
-                            <p class="card-text my-1">{{ restaurant.address }}</p> -->
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
-
-
-    
-
-
-
-
 </template>
 
 <script>
@@ -137,8 +119,5 @@
         mounted() {
             this.searchRestaurants();
         },
-    //     created() {
-    //         this.searchRestaurant();
-    //     }
     }
 </script>

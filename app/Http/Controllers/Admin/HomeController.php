@@ -10,7 +10,6 @@ class HomeController extends Controller
 {
     public function home(){
         $user = Auth::user();
-
         $data = [
             'user' => $user
         ];
