@@ -2,6 +2,18 @@
 
 @section('content')
     <h2>Modifica il piatto {{ $dish->name }}</h2>
+
+    {{-- Alert messages for errors in the form --}}
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif 
+
     <form action="{{ route('admin.update', ['id' => $dish->id]) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
