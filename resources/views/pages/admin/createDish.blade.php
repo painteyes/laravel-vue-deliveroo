@@ -42,11 +42,12 @@
                 <label for="type">Tipologia</label>
                 <select class="form-select" id="type" name="type" aria-label="Default select example">
                     <option value="" selected>Seleziona la categoria del piatto</option>
-                    <option value="antipasto">Antipasto</option>
-                    <option value="primo">Primo</option>
-                    <option value="secondo">Secondo</option>
-                    <option value="secondo">Contorno</option>
-                    <option value="secondo">Dolce</option>
+                    <option value="Antipasto">Antipasto</option>
+                    <option value="Primo">Primo</option>
+                    <option value="Secondo">Secondo</option>
+                    <option value="Contorno">Contorno</option>
+                    <option value="Dolce">Dolce</option>
+                    <option value="Insalata">Insalata</option>
                 </select>
             </div>
 
