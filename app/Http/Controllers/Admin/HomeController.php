@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Dish;
+use App\User;
 
 class HomeController extends Controller
-{
+{   
+    // Ritorna la pagina del riepilogo del ristorante
     public function home(){
         $user = Auth::user();
         $data = [
@@ -16,36 +19,21 @@ class HomeController extends Controller
         return view('pages.admin.home', $data);
     }
 
-    // public function graph($id)
-    // {
-    //     $restaurant = User::findOrFail($id);
-    //     $dishes = Dish::all()->where('user_id', '=', $restaurant->id);
 
-    //     $data = [
-    //         'dishes' => $dishes
-    //     ];
-
-    //     // Mostra al ristorante solo la propria lista dei piatti verificandolo tramite $id
-    //     if(Auth::user()->id == $id) {
-    //         return view('pages.admin.index', $data);
-    //     } else {
-    //         abort('404');
-    //     }
-    // } 
-
+    // Ritorna la pagina delle statistiche di quel specifico ristorante
     public function graph($id){
 
-        // $user_id = $request->user()->id;
-        // $restaurant_id = User::find($user_id)->restaurant->id;
-        // $orders = Order::all()->where('restaurant_id', $restaurant_id);
-        
-        // foreach ($orders as $item) {
-        //   $item->order = $item->order;
-        // }
+        $restaurant = User::findOrFail($id);
+        $dishes = Dish::all()->where('user_id', '=', $restaurant->id);
+
+        $data = [
+            'dishes' => $dishes
+        ];
+
         if(Auth::user()->id == $id) {
-            return view('pages.admin.graph');
+            return view('pages.admin.graph', $data);
             } else {
                 abort('404');
             }
         }
-}
+    }

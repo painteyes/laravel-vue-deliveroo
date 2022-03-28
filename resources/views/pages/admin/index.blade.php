@@ -9,8 +9,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$dish->name}}</h5>
                     <p class="card-text">Ingredienti: {{$dish->ingredients}}</p>
-                    <p class="card-text">Tipo: {{$dish->type}}</p>
-                    <p class="card-text">Prezzo: {{$dish->price}}</p>
+                    <p class="card-text">Tipo di piatto: {{$dish->type}}</p>
+                    <p class="card-text"><strong>&euro; {{$dish->price}}</strong></p>
 
                     @if ($dish->visible == 1)
                         Disponibilità: <i class="fa-solid fa-circle-check green"></i>
