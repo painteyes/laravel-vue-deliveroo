@@ -11254,6 +11254,7 @@ footer .social-channels p {
   color: #00ccbc;
   font-size: 1.3rem;
   padding: 20px 40px;
+  cursor: pointer;
 }
 
 .cart-headline {
@@ -11263,7 +11264,7 @@ footer .social-channels p {
   width: 100%;
 }
 
-.cart-headline button {
+.cart-headline .checkout-not {
   background-color: lightgrey;
   border-radius: 5px;
   border: 1px solid lightgrey;
@@ -11277,6 +11278,55 @@ footer .social-channels p {
   color: grey;
   font-size: 1rem;
   padding-top: 20px;
+}
+
+.cart-headline .checkout {
+  width: 80%;
+  padding: 10px;
+}
+
+.cart-headline .item-test {
+  margin-bottom: 10px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-headline .quantity {
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-headline .quantity span {
+  display: inline-block;
+  width: 20px;
+}
+
+.cart-headline .quantity i {
+  cursor: pointer;
+  padding: 8px;
+  font-size: 0.9rem;
+}
+
+.cart-headline .quantity i:hover {
+  color: gray;
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 179px;
+  padding: 0 10px;
+  text-align: left;
+}
+
+.total {
+  padding-right: 8px;
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 992px) {

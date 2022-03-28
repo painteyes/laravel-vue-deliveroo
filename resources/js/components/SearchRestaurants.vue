@@ -29,11 +29,11 @@
                     >
                         <a :href="'/restaurants/' + randRestaurant.slug">
                             <div class="image">
-                                <img class="img-fluid" :src="'/storage/' + randRestaurant.img_path" :alt="randRestaurant.name" v-if="randRestaurant.img_path">
-                                <img class="img-fluid" :src="'/images/noimg.jpg'" :alt="randRestaurants.name" v-else>
+                                <img class="img-fluid" :src="'/storage/' + randRestaurant.img_path" :alt="randRestaurant.restaurant_name" v-if="randRestaurant.img_path">
+                                <img class="img-fluid" :src="'/images/noimg.jpg'" :alt="randRestaurants.restaurant_name" v-else>
                             </div>
                             <div class="p-3 rest-info">
-                                <h4>{{ randRestaurant.name }}</h4>
+                                <h4>{{ randRestaurant.restaurant_name }}</h4>
                                 <span>
                                     {{randRestaurant.address}} <br>
                                     {{randRestaurant.email}}
@@ -58,11 +58,11 @@
 
                         <a :href="'/restaurants/' + restaurant.slug">
                             <div class="image">
-                                <img class="img-fluid" :src="'/storage/' + restaurant.img_path" :alt="restaurant.name" v-if="restaurant.img_path">
-                                <img class="img-fluid" :src="'/images/noimg.jpg'" :alt="restaurant.name" v-else>
+                                <img class="img-fluid" :src="'/storage/' + restaurant.img_path" :alt="restaurant.restaurant_name" v-if="restaurant.img_path">
+                                <img class="img-fluid" :src="'/images/noimg.jpg'" :alt="restaurant.restaurant_name" v-else>
                             </div>
                             <div class="p-3 rest-info">
-                                <h4>{{ restaurant.name }}</h4>
+                                <h4>{{ restaurant.restaurant_name }}</h4>
                                 <span>
                                     {{restaurant.address}} <br>
                                     {{restaurant.email}}
