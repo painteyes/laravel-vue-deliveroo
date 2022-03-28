@@ -111,11 +111,17 @@ class DishController extends Controller
     public function edit(Dish $dish, $id)
     {
         $dish = Dish::findOrFail($id);
-        $data = [
-            'dish' => $dish
-        ];
-        
-        return view('pages.admin.editDish', $data);
+
+        /** Controllo sicurezza per manipolazione dell'url;
+         *  impedisce di modificare il piatto di altri */
+        if(Auth::user()->dishes->contains($dish)) {   
+            $data = [
+                'dish' => $dish
+            ];
+            return view('pages.admin.editDish', $data);
+        } else {
+            abort('404');
+        }
     }
 
     /**
@@ -127,22 +133,21 @@ class DishController extends Controller
 
     public function update(Request $request, Dish $dish, $id)
     {
-        // Valida i dati del form 
-        $request->validate($this->getValidationRules());
-
+    
         // Salva in un array i dati del form
         $form_data = $request->all();
+
+        // Valida i dati del form 
+        $request->validate($this->getValidationRules());
 
         $dish = Dish::findOrFail($id);
 
         // Elimina l'upload dell'immagine del piatto nella cartella storage
-        // Storage::delete($dish->img_path);
-        // $img_path = Storage::put('upload', $form_data['img_path']);
         if(isset($form_data['img_path'])) {
             Storage::delete($dish->img_path);
             $img_path = Storage::put('upload', $form_data['img_path']);
             $form_data['img_path'] = $img_path;
-        }
+        } 
 
         $dish->update($form_data);
         
@@ -162,7 +167,6 @@ class DishController extends Controller
 
         // Azzera tutte le relazioni nella tabella ponte
         $dish->orders()->sync([]);
-
 
         // Elimina l'upload dell'immagine del piatto nella cartella storage
         Storage::delete($dish->img_path);

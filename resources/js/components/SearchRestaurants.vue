@@ -1,86 +1,76 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    
-                    <!-- stampo a schermo le tipologie per permettere all'utente di fare le ricerche -->
-                    <h2>Scegli la categoria</h2>
+    <div class="container-fluid">
+        <div class="row justify-content-center mx-sm-5">
+            <div class="col-sm-12 d-md-flex page">
+
+                <div class="text-left d-sm-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-md-5 mx-auto">
+
+                    <!-- stampo le tipologie per permettere all'utente di fare le ricerche -->
                     <label class="check" v-for="category, index in categories" :key='index'>
-                        <input 
-                            type="checkbox"
+                      <input  type="checkbox"
                             :value="category.name"
                             v-model="categoriesFilter"
                             @change="searchRestaurants()"
-                        >
-                      <span class="nome-search">{{ category.name }}</span>
+                      >
+                      <span class="category-name">{{ category.name }}</span>
                     </label>
+                </div>
 
-                    <!-- card ristoranti filtrati  -->
-                    <h2 class="mt-5">Tutti i ristoranti</h2>
+                <!-- stampo ristoranti random se nessuna caegoria è selezionata-->
+                <div 
+                    class="col-sm-12 col-md-10 d-flex flex-wrap align-items-start mt-md-5" 
+                    v-if="categoriesFilter.length == 0"
+                >
+            
+                    <div
+                    v-for="(randRestaurant, i) in randRestaurants"
+                    :key="i"
+                    class="user"
+                    >
+                        <a :href="'/restaurants/' + randRestaurant.slug">
+                            <div class="image">
+                                <img class="img-fluid" :src="'/storage/' + randRestaurant.img_path" :alt="randRestaurant.restaurant_name" v-if="randRestaurant.img_path">
+                                <img class="img-fluid" :src="'/images/noimg.jpg'" :alt="randRestaurants.restaurant_name" v-else>
+                            </div>
+                            <div class="p-3 rest-info">
+                                <h4>{{ randRestaurant.restaurant_name }}</h4>
+                                <span>
+                                    {{randRestaurant.address}} <br>
+                                    {{randRestaurant.email}}
+                                </span>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+                <!-- stampo i ristoranti appartenenti alla categoria selezionata dall'utente -->
+                 <div 
+                    class="col-sm-12 col-md-10 d-flex flex-wrap align-items-start mt-md-5"
+                    v-else
+                >
+
                     <div
                         v-for="(restaurant, i) in filteredRestaurants"
                         :key="i"
-                        class="restaurant-found restaurant-card"
+                        class="user"
                     >
-                        <div class="card-body text-start">
-                            <!-- <a @click="showMenu(restaurant.id)"> -->
-                            <a :href="'restaurants/' + restaurant.slug">
-                                <div class="container-image">
-                                    <!-- <img
-                                        class="card-img-top"
-                                        :src="'/storage/images/' + restaurant.image"
-                                        alt=""
-                                    /> -->
-                                </div>
-                                <div class="container-text-card">
-                                    <h5 class="card-title my-1">
-                                        <strong> {{ restaurant.restaurant_name }}</strong>
-                                    </h5>
-                                    <!-- <p class="card-text my-1">
-                                        {{ restaurant.restaurant_phone }}
-                                    </p>
-                                    <p class="card-text my-1">{{ restaurant.email }}</p>
-                                    <p class="card-text my-1">{{ restaurant.address }}</p> -->
-                                </div>
-                            </a>
-                        </div>
-                    </div>
 
-                    <!-- ristoranti random -->
-                    <div class="mt-4" v-if="categoriesFilter.length == 0">
-                            
-                        <div 
-                            class="restaurant-found restaurant-card"
-                            v-for="(randRestaurant, i) in randRestaurants" :key="i"
-                        >
-                                
-                            <div class="card-body text-start">
-                                <!-- <a @click="showMenu(restaurant.id)"> -->
-                                <a :href="'restaurants/' + randRestaurant.slug">
-                                    <div class="container-image">
-                                        <!-- <img
-                                            class="card-img-top"
-                                            :src="'/storage/images/' + restaurant.image"
-                                            alt=""
-                                        /> -->
-                                    </div>
-                                    <div class="container-text-card">
-                                        <h5 class="card-title my-1">
-                                            <strong> {{ randRestaurant.restaurant_name }}</strong>
-                                        </h5>
-                                        <!-- <p class="card-text my-1">
-                                            {{ restaurant.restaurant_phone }}
-                                        </p>
-                                        <p class="card-text my-1">{{ restaurant.email }}</p>
-                                        <p class="card-text my-1">{{ restaurant.address }}</p> -->
-                                    </div>
-                                </a>
+                        <a :href="'/restaurants/' + restaurant.slug">
+                            <div class="image">
+                                <img class="img-fluid" :src="'/storage/' + restaurant.img_path" :alt="restaurant.restaurant_name" v-if="restaurant.img_path">
+                                <img class="img-fluid" :src="'/images/noimg.jpg'" :alt="restaurant.restaurant_name" v-else>
                             </div>
-                        </div>
+                            <div class="p-3 rest-info">
+                                <h4>{{ restaurant.restaurant_name }}</h4>
+                                <span>
+                                    {{restaurant.address}} <br>
+                                    {{restaurant.email}}
+                                </span>
+                            </div>
+                        </a>
 
                     </div>
-
                 </div>
             </div>
         </div>
@@ -119,5 +109,8 @@
         mounted() {
             this.searchRestaurants();
         },
+    //     created() {
+    //         this.searchRestaurant();
+    //     }
     }
 </script>

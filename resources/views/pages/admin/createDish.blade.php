@@ -4,6 +4,17 @@
     <div class="container">
         <h2>Crea il tuo piatto</h2>
 
+        {{-- Alert messages for errors in the form --}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif 
+
         <form action="{{ route('admin.store', ['id' => Auth::user()->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('POST')

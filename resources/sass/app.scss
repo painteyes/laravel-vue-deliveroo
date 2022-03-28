@@ -12,27 +12,13 @@
 @import "partials/login";
 @import "partials/register";
 @import "partials/footer";
+@import "partials/homepage";
+@import "partials/restaurant";
 
-
-i {
-    font-size: 20px;
+body {
+    min-height: 100vh;
 }
 
-i.red {
-    color: red;
-}
-
-i.green {
-    color: green;
-}
-
-.scheda-ristorante {
-    margin-top: 200px;
-}
-
-a {
-    i {
-        padding-right: 8px;
-        padding-left: 3px;
-    }
+main {
+    padding-bottom: 2.5rem;
 }
