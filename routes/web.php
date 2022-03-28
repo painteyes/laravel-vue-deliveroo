@@ -34,4 +34,10 @@ Route::middleware('auth')
 	Route::delete('/dishes/destroy/{id}', 'DishController@destroy')->name('destroy');
 	Route::get('/dishes/edit/{id}', 'DishController@edit')->name('edit');
 	Route::put('/dishes/update/{id}', 'DishController@update')->name('update');
+	Route::get('/graph/{id}', 'HomeController@graph')->name('graph');
+
 });
+
+Route::get('{any?}', function() {
+    return view('guests.home');
+})->where('any', '.*')->name('guest');

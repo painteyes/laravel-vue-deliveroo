@@ -11361,3 +11361,24 @@ main {
   padding-bottom: 2.5rem;
 }
 
+i {
+  font-size: 20px;
+}
+
+i.red {
+  color: red;
+}
+
+i.green {
+  color: green;
+}
+
+.scheda-ristorante {
+  margin-top: 200px;
+}
+
+a i {
+  padding-right: 8px;
+  padding-left: 3px;
+}
+
