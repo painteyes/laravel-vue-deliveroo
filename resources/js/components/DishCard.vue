@@ -67,7 +67,7 @@ export default {
             if (this.quantity > 0) {
                 this.currentCart = {
                     name: this.dish.name,
-                    price: this.dish.price * this.quantity,
+                    price: (this.dish.price * this.quantity).toFixed(2),
                     quantity: this.quantity,
                     user_id: this.dish.user_id,
                     id: this.dish.id,

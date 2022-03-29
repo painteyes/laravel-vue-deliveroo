@@ -21,7 +21,7 @@
                     class="col-sm-12 col-md-10 d-flex flex-wrap align-items-start mt-md-5" 
                     v-if="categoriesFilter.length == 0"
                 >
-            
+                
                     <div
                     v-for="(randRestaurant, i) in randRestaurants"
                     :key="i"
@@ -49,6 +49,8 @@
                     class="col-sm-12 col-md-10 d-flex flex-wrap align-items-start mt-md-5"
                     v-else
                 >
+
+                <Loader v-show="filteredRestaurants.length === 0" />
 
                     <div
                         v-for="(restaurant, i) in filteredRestaurants"
@@ -78,39 +80,40 @@
 </template>
 
 <script>
-    
-    export default {
-        props: {
-            categories: Array,
-            randRestaurants: Array,
-        }, 
-        data: function() {
-            return {
-                // Categorie selezionate dall'utente
-                categoriesFilter: [],
-                // Ristoranti filtrati in base alle categorie selezionate
-                filteredRestaurants: [],
-            }
-        },
-        methods: {
+import Loader from './Loader.vue'
 
-            // Filtra i ristoranti in base alle categorie selezionate            
-            searchRestaurants: function() {
-                axios.post('/api/search', {categories: this.categoriesFilter}).then((response)=>{
-                    if (response.data.success) {
-                        this.filteredRestaurants = response.data.result        
-                    } else {
-                        // this.$router.push({name: 'page-not-found'})
-                    }
-                })
-            }
-            
-        },
-        mounted() {
-            this.searchRestaurants();
-        },
-    //     created() {
-    //         this.searchRestaurant();
-    //     }
-    }
+export default {
+    components: {
+        Loader
+    },
+    props: {
+        categories: Array,
+        randRestaurants: Array,
+    }, 
+    data: function() {
+        return {
+            // Categorie selezionate dall'utente
+            categoriesFilter: [],
+            // Ristoranti filtrati in base alle categorie selezionate
+            filteredRestaurants: [],
+        }
+    },
+    methods: {
+
+        // Filtra i ristoranti in base alle categorie selezionate            
+        searchRestaurants: function() {
+            axios.post('/api/search', {categories: this.categoriesFilter}).then((response)=>{
+                if (response.data.success) {
+                    this.filteredRestaurants = response.data.result        
+                } else {
+                    // this.$router.push({name: 'page-not-found'})
+                }
+            })
+        }
+        
+    },
+    mounted() {
+        this.searchRestaurants();
+    },
+}
 </script>

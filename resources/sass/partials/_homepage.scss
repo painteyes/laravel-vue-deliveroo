@@ -48,12 +48,14 @@
     text-transform: uppercase;
     &:hover {
     border-left: 2px solid #4e4e4e;
+    margin-left: -2px;
     }
 }
 
 .check input:checked+span {
     color: #00ccbc;
     border-left: 2px solid #00ccbc;
+    margin-left: -2px;
 }
 
 .user {
@@ -98,7 +100,7 @@
     padding-bottom: 40px;
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 992px){
     .jumbotron-del {
     
         img {

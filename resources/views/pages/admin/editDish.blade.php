@@ -40,6 +40,8 @@
                 <option value="antipasto" {{ old('type', $dish->type) == "antipasto" ? 'selected' : '' }} >Antipasto</option>
                 <option value="primo" {{ old('type', $dish->type) == "primo" ? 'selected' : '' }}>Primo</option>
                 <option value="secondo" {{ old('type', $dish->type) == "secondo" ? 'selected' : '' }}>Secondo</option>
+                <option value="contorno" {{ old('type', $dish->type) == "contorno" ? 'selected' : '' }}>Contorno</option>
+                <option value="dolce" {{ old('type', $dish->type) == "dolce" ? 'selected' : '' }}>Dolce</option>
             </select>
         </div>
 
