@@ -26,28 +26,26 @@
     <!-- Sezione Menu -->
     <div class="row py-4">
       <div class="col-lg-8 col-md-12">
+        <div class="title mt-3">
+            <h2><i class="fas fa-utensils mr-2"></i>Menu</h2>
+            <p>Seleziona i piatti per scegliere la quantità e aggiungerli al carrello</p>
+        </div>
         <div class="section">
-          <div class="title">
-              <h2><i class="fas fa-utensils mr-2"></i>Menu</h2>
-              <p>Seleziona i piatti per scegliere la quantità e aggiungerli al carrello</p>
-          </div>
-
-              <div class="d-flex flex-column">
-
-                <div v-for="dish in restaurantMenu" :key='dish.id' class="dish card mb-4 p-1">
-                    <DishCard :dish='dish' @currentCart='getCart'/>
-                </div>
+          <div class="d-flex flex-column">
+            <div v-for="dish in restaurantMenu" :key='dish.id' class="dish card mb-4 p-1">
+                <DishCard :dish='dish' @currentCart='getCart'/>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Carrello -->
-        <div class="col-lg-4 col-md-12">
-          <div class="section">
-            <div class="title">
-              <h2><i class="fas fa-cart-arrow-down mr-2"></i>Carrello</h2>
-              <p>Conferma il carrello e vai al checkout</p>
-            </div>
+      <!-- Carrello -->
+      <div class="col-lg-4 col-md-12">
+          <div class="title mt-3">
+            <h2><i class="fas fa-cart-arrow-down mr-2"></i>Carrello</h2>
+            <p>Conferma il carrello e vai al checkout</p>
+          </div>
+          <div class="section sticky-top">
                 <!-- Carrello pieno -->
                 <div class="card cart-headline p-2" v-if="cart.length">
                   <div class="card-body">
@@ -95,15 +93,22 @@
           </div>
       </div>
     </div>
+    <!-- <Modal
+      :class="modal ? 'd-block' : ''"
+      :warning="''"
+      @close="modal = false"
+    /> -->
   </div>
 </template>
 
 <script>
 import DishCard from './DishCard.vue'
+import Modal from './Modal.vue'
 
 export default {
   components: {
-    DishCard
+    DishCard,
+    Modal
   },
   props: {
     restaurantInfo: Object,
@@ -115,8 +120,11 @@ export default {
     };
   },
   methods: {
+
       // funzione per aggiungere un piatto al carrello
       getCart: function(data) {
+
+       
           // se il cibo é giá presente nel carrello, aggiungo la nuova quantitá senza creare un nuovo oggetto
           let id = data.id;
           if (this.cart.find(x => x.id === id)) {
@@ -127,17 +135,38 @@ export default {
                   quantity: data.quantity
               };
               this.cart.push(item);
-          }
-          
+              this.saveCart();
+              // this.cart = JSON.parse(localStorage.getItem('cart'));
+          }          
       },
-      // funzione per rimuovere l'ultimo piatto dal carrello
+      saveCart: function() {
+        const parsed = JSON.stringify(this.cart);
+        localStorage.setItem('cart', parsed);
+        localStorage.setItem('restaurant_id', restaurantInfo.id);
+      },
+      // funzione per rimuovere tutti i piatti dal carrello
       removeCart: function() {
-          this.cart = [];
-          
+            if (confirm('Attenzione, sei sicuro di voler svuotare il carrello?')) {
+              this.cart = [];
+              localStorage.removeItem('cart');
+              this.saveCart();
+            }
+      },
+      modal: function() {
+         if (this.cart.length) {
+
+          if (this.cart[0].id !== data.id) {
+            // this.modal = true;
+            if (confirm('Attenzione, puoi ordinare soltanto da un ristorante alla volta. Se continui svuoterai il carrello precedente')) {
+              localStorage.clear();
+            }
+          }
+        }
       },
       // funzione per aumentare la quantitá nel carrello
       plusOneCart: function(i) {
           this.cart[i].quantity += 1;
+          this.saveCart();
           
       },
       // funzione per diminuire la quantitá nel carrello (senza andare in negativo)
@@ -153,6 +182,7 @@ export default {
                   if (cart.id == this.cart[i].id) {
                   
                     this.cart.splice(x, 1);
+                    this.saveCart();
                   }
                 } 
                 return -1;
@@ -170,6 +200,14 @@ export default {
           }
           return total;
       }
-  } 
+  },
+  mounted: function() {
+    // console.log(localStorage.getItem('cart'));
+    if (localStorage.getItem('cart')) {
+      this.cart = JSON.parse(localStorage.getItem('cart'));
+    } else {
+      this.cart = [];
+    }
+  }
 }
 </script>
