@@ -11117,11 +11117,13 @@ footer .social-channels p {
 
 .check span:hover {
   border-left: 2px solid #4e4e4e;
+  margin-left: -2px;
 }
 
 .check input:checked + span {
   color: #00ccbc;
   border-left: 2px solid #00ccbc;
+  margin-left: -2px;
 }
 
 .user {
@@ -11167,7 +11169,7 @@ footer .social-channels p {
   padding-bottom: 40px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 992px) {
   .jumbotron-del img {
     width: 100%;
     margin-top: 20px;
@@ -11214,7 +11216,7 @@ footer .social-channels p {
 }
 
 .section {
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 .section p {
@@ -11359,26 +11361,5 @@ body {
 
 main {
   padding-bottom: 2.5rem;
-}
-
-i {
-  font-size: 20px;
-}
-
-i.red {
-  color: red;
-}
-
-i.green {
-  color: green;
-}
-
-.scheda-ristorante {
-  margin-top: 200px;
-}
-
-a i {
-  padding-right: 8px;
-  padding-left: 3px;
 }
 

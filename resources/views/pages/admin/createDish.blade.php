@@ -47,7 +47,6 @@
                     <option value="Secondo">Secondo</option>
                     <option value="Contorno">Contorno</option>
                     <option value="Dolce">Dolce</option>
-                    <option value="Insalata">Insalata</option>
                 </select>
             </div>
 
