@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2>Crea il tuo piatto</h2>
+        <h2 class="dishes-title my-4">Crea il tuo piatto</h2>
 
         {{-- Alert messages for errors in the form --}}
         @if ($errors->any())
@@ -66,12 +66,12 @@
 
             {{-- Image --}}
             <div class="mb-3">
-                <label for="img_path" class="form-label">Image</label>
+                <label for="img_path" class="form-label">Immagine</label>
                 <input type="file" id="img_path" name="img_path">
             </div>
 
             
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-success">Crea</button>
         <form>
     </div>
 @endsection
