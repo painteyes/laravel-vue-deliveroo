@@ -11355,31 +11355,27 @@ footer .social-channels p {
   }
 }
 
-.card-header {
-  background-color: #00ccbc;
-  color: black;
-  text-align: center;
-}
-
 .dashboard {
   padding: 30px;
 }
 
 .dashboard .welcome {
-  font-size: 20px;
+  font-size: 22px;
   color: #00ccbc;
   font-weight: 600;
 }
 
-.btn-primary {
-  color: black;
+.btn-pr {
+  color: white;
+  font-size: 18px;
   background-color: #00ccbc;
   border-color: #00ccbc;
+  font-weight: 600;
   width: 100%;
   height: 50%;
 }
 
-.btn-primary:hover {
+.btn-pr:hover {
   background-color: #02beb2;
   border-color: #02beb2;
 }
@@ -11406,9 +11402,24 @@ a:hover {
 }
 
 .user_info ul li {
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600;
   list-style: none;
   margin: 10px 0;
+}
+
+.dishes-title {
+  font-weight: 600;
+  text-align: center;
+}
+
+.food-card {
+  padding: 20px;
+  margin: 20px;
+}
+
+.food-card .card-title {
+  font-weight: 600;
 }
 
 body {
