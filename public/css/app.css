@@ -11355,6 +11355,62 @@ footer .social-channels p {
   }
 }
 
+.card-header {
+  background-color: #00ccbc;
+  color: black;
+  text-align: center;
+}
+
+.dashboard {
+  padding: 30px;
+}
+
+.dashboard .welcome {
+  font-size: 20px;
+  color: #00ccbc;
+  font-weight: 600;
+}
+
+.btn-primary {
+  color: black;
+  background-color: #00ccbc;
+  border-color: #00ccbc;
+  width: 100%;
+  height: 50%;
+}
+
+.btn-primary:hover {
+  background-color: #02beb2;
+  border-color: #02beb2;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.user_info {
+  padding: 30px;
+}
+
+.user_info .img_account {
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+  width: 100%;
+}
+
+.user_info ul {
+  padding: 20px 0;
+}
+
+.user_info ul li {
+  font-size: 16px;
+  list-style: none;
+  margin: 10px 0;
+}
+
 body {
   min-height: 100vh;
 }
