@@ -14,4 +14,9 @@ class RestaurantController extends Controller
         }
         return view('pages.guests.singleRestaurant', compact('user'));
     }
+
+    public function checkout($id) {
+        $user = User::with('dishes')->findOrFail($id);
+        return view('pages.guests.checkout', compact('user'));
+    }
 }

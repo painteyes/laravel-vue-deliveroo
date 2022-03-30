@@ -9,10 +9,14 @@ require('./bootstrap');
 import Vue from 'vue';
 import SearchRestaurants from './components/SearchRestaurants.vue';
 import Restaurant from './components/Restaurant.vue';
+import Checkout from './components/Checkout.vue';
+
 
 // Dichiaro componenti globali di Vue
 Vue.component('search-restaurants', SearchRestaurants);
 Vue.component('restaurant', Restaurant);
+Vue.component('checkout', Checkout);
+
 
 // window.Vue = require('vue');
 

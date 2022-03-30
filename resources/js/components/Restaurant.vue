@@ -71,12 +71,13 @@
                       <span>{{ total().toFixed(2) }} &#8364;</span>
                     </div>
 
-                    <a href="#" class="text-center py-2">
+                    
+                  </div>
+                  <a :href="'/checkout/' + restaurantInfo.id" class="text-center py-2">
                         <button class="checkout btn btn-secondary">Vai alla cassa</button>
                     </a>
-                    <div class="text-center">
+                  <div class="text-center">
                       <button class="btn btn-default" @click="removeCart()">Rimuovi piatti</button>
-                    </div>
                   </div>
                 
                 </div>
@@ -117,39 +118,55 @@ export default {
   data() {
     return {
         cart: [],
+        oldCartFound: false,
         // modal: false,
     };
   },
   methods: {
     // funzione per aggiungere un piatto al carrello
     getCart: function(data) {
-      if (this.cart.length) {
-        // if (this.cart[0].user_id !== data.user_id) {
-          // this.modal = true;
-        // }
-      }
-      
-      // se il cibo é giá presente nel carrello, aggiungo la nuova quantitá senza creare un nuovo oggetto
-      let id = data.id;
-      if (this.cart.find(x => x.id === id)) {
-          this.cart.find(x => x.id === id).quantity += data.quantity;
-      } else {
-          let item = {
-              id: id,
-              quantity: data.quantity,
-              user_id: data.user_id
-          };
 
+      let slug = localStorage.getItem('slug');
+      let currentRestaurant = window.location.href;
+
+    
+      if (this.cart.length) {
+        if (currentRestaurant !== 'http://127.0.0.1:8000/restaurants/' + slug) {
+          if (this.cart[0].user_id !== data.user_id) {
+            if (confirm('Non è possibile aggiungere al carrello piatti di ristoranti diversi. Vuoi cancellare il carrello precedente ?')) {
+              localStorage.clear();
+              this.cart = [];
+              this.oldCartFound = false;
+            } else {
+              this.oldCartFound = true;
+            }
+          }
+        }
+      }
+  
+      // se il cibo é giá presente nel carrello, aggiungo la nuova quantitá senza creare un nuovo oggetto
+      if (this.oldCartFound == false) {
+        let id = data.id;
+        if (this.cart.find(x => x.id === id)) {
+            this.cart.find(x => x.id === id).quantity += data.quantity;
+        } else {
+          let item = {
+            id: id,
+            quantity: data.quantity,
+            user_id: data.user_id
+          };
           this.cart.push(item);
           this.saveCart();
           // this.cart = JSON.parse(localStorage.getItem('cart'));
-      }          
+        }   
+      }       
     },
     saveCart: function() {
       const parsed = JSON.stringify(this.cart);
       localStorage.setItem('cart', parsed);
-      localStorage.setItem('restaurant_id', this.restaurantInfo.id);
+      localStorage.setItem('user_id', this.restaurantInfo.id);
       localStorage.setItem('slug', this.restaurantInfo.slug);
+    
     },
     // funzione per rimuovere tutti i piatti dal carrello
     removeCart: function() {
@@ -159,17 +176,7 @@ export default {
         this.saveCart();
       }
     },
-    modal: function() {
-      if (this.cart.length) {
-
-        if (this.cart[0].id !== data.id) {
-          // this.modal = true;
-          if (confirm('Attenzione, puoi ordinare soltanto da un ristorante alla volta. Se continui svuoterai il carrello precedente')) {
-            localStorage.clear();
-          }
-        }
-      }
-    },
+    
     // funzione per aumentare la quantitá nel carrello
     plusOneCart: function(i) {
         this.cart[i].quantity += 1;
@@ -179,6 +186,7 @@ export default {
     minusOneCart: function(i) {
       if (this.cart[i].quantity > 1) { 
         this.cart[i].quantity -= 1; 
+        this.saveCart();
       }
       else {
         if (confirm('Attenzione, sei sicuro di eliminare questo piatto dal carrello?')) {
@@ -198,14 +206,15 @@ export default {
     // funzione per calcolare il totale del carrello
     total: function() {
         let total = 0;
-
         for (let i = 0; i < this.cart.length; i++) {
-            let foodPrice = this.restaurantMenu.find(x => x.id === this.cart[i].id).price;
-
-            total += foodPrice * this.cart[i].quantity;
+          let foodPrice = this.restaurantMenu.find(x => x.id === this.cart[i].id).price;
+          total += foodPrice * this.cart[i].quantity;
         }
         return total;
-    }
+    },
+
+    
+
   },
   mounted: function() {
     // console.log(localStorage.getItem('cart'));
@@ -216,15 +225,8 @@ export default {
     }
   },
   created() {
+    // localStorage.clear()
     
-    let slug = localStorage.getItem('slug');
-    let currentRestaurant = window.location.href;
-    // console.log(currentRestaurant);
-    // console.log('http://127.0.0.1:8000/restaurants/' + slug);
-    // console.log(slug);
-    if (currentRestaurant !== 'http://127.0.0.1:8000/restaurants/' + slug) {
-      localStorage.clear();
-    }
   }
 }
 </script>
