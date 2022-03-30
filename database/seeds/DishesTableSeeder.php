@@ -17,12 +17,12 @@ class DishesTableSeeder extends Seeder
         for($i = 0; $i < 10; $i++) {
             $dish = new Dish();
 
-            $dish->name = 'pasta col tonno';
+            $dish->name = 'Pasta con tonno';
             $dish->ingredients = 'pennette, pomodoro, cipolla, tonno';
             $dish->price = 8.50;
             $dish->type = $dishes_type[rand(0, 4)];
             $dish->user_id = rand(1,10);
-            $dish->img_path = 'immagine';
+            $dish->img_path = "https://i.scdn.co/image/ab67616d0000b2737172dd8b8efda356b64ad596";
             $dish->visible = true;
             $dish->save();
         }

@@ -18,6 +18,9 @@ Auth::routes();
 Route::get('/', 'HomeController@home')->name('home');
 // Rotta per la pagina del singolo ristorante
 Route::get('/restaurants/{slug}', 'RestaurantController@show')->name('restaurant');
+// Rotta per la pagina del carrello
+Route::get('/checkout/{id}', 'RestaurantController@checkout')->name('checkout');
+
 
 // Rotte protette da autenticazione
 Route::middleware('auth')  
@@ -38,6 +41,3 @@ Route::middleware('auth')
 
 });
 
-Route::get('{any?}', function() {
-    return view('guests.home');
-})->where('any', '.*')->name('guest');
