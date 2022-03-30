@@ -2185,13 +2185,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      cart: []
+      cart: [] // modal: false,
+
     };
   },
   methods: {
     // funzione per aggiungere un piatto al carrello
     getCart: function getCart(data) {
-      // se il cibo é giá presente nel carrello, aggiungo la nuova quantitá senza creare un nuovo oggetto
+      if (this.cart.length) {// if (this.cart[0].user_id !== data.user_id) {
+        // this.modal = true;
+        // }
+      } // se il cibo é giá presente nel carrello, aggiungo la nuova quantitá senza creare un nuovo oggetto
+
+
       var id = data.id;
 
       if (this.cart.find(function (x) {
@@ -2203,7 +2209,8 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         var item = {
           id: id,
-          quantity: data.quantity
+          quantity: data.quantity,
+          user_id: data.user_id
         };
         this.cart.push(item);
         this.saveCart(); // this.cart = JSON.parse(localStorage.getItem('cart'));
@@ -2212,7 +2219,8 @@ __webpack_require__.r(__webpack_exports__);
     saveCart: function saveCart() {
       var parsed = JSON.stringify(this.cart);
       localStorage.setItem('cart', parsed);
-      localStorage.setItem('restaurant_id', restaurantInfo.id);
+      localStorage.setItem('restaurant_id', this.restaurantInfo.id);
+      localStorage.setItem('slug', this.restaurantInfo.slug);
     },
     // funzione per rimuovere tutti i piatti dal carrello
     removeCart: function removeCart() {
@@ -2283,6 +2291,16 @@ __webpack_require__.r(__webpack_exports__);
       this.cart = JSON.parse(localStorage.getItem('cart'));
     } else {
       this.cart = [];
+    }
+  },
+  created: function created() {
+    var slug = localStorage.getItem('slug');
+    var currentRestaurant = window.location.href; // console.log(currentRestaurant);
+    // console.log('http://127.0.0.1:8000/restaurants/' + slug);
+    // console.log(slug);
+
+    if (currentRestaurant !== 'http://127.0.0.1:8000/restaurants/' + slug) {
+      localStorage.clear();
     }
   }
 });
@@ -38816,7 +38834,7 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("\n          Close\n        ")]
+              [_vm._v("\n          Chiudi\n        ")]
             ),
           ]),
         ]),

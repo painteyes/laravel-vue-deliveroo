@@ -15,7 +15,7 @@
             data-dismiss="modal"
             @click="$emit('close')"
           >
-            Close
+            Chiudi
           </button>
         </div>
       </div>
