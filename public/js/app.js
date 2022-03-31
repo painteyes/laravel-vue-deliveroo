@@ -2207,7 +2207,7 @@ __webpack_require__.r(__webpack_exports__);
         total += foodPrice * this.cart[i].quantity;
       }
 
-      return total;
+      return total.toFixed(2);
     },
     dashesCard: function dashesCard() {
       var x = document.getElementById("card");
@@ -2682,7 +2682,7 @@ __webpack_require__.r(__webpack_exports__);
         _loop(i);
       }
 
-      return total;
+      return total.toFixed(2);
     }
   },
   mounted: function mounted() {
@@ -39119,9 +39119,11 @@ var render = function () {
                         _vm._v(
                           "\n                        " +
                             _vm._s(
-                              _vm.dishes.find(function (x) {
-                                return x.id === item.id
-                              }).price * item.quantity
+                              (
+                                _vm.dishes.find(function (x) {
+                                  return x.id === item.id
+                                }).price * item.quantity
+                              ).toFixed(2)
                             ) +
                             "\n                        €\n                    "
                         ),
@@ -39276,11 +39278,75 @@ var render = function () {
                             },
                           }),
                         ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(6),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.address,
+                                expression: "address",
+                              },
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              required: "",
+                              maxlength: "100",
+                              type: "text",
+                              name: "address",
+                              placeholder: "Inserisci Indirizzo",
+                            },
+                            domProps: { value: _vm.address },
+                            on: {
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.address = $event.target.value
+                              },
+                            },
+                          }),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(7),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.phone_number,
+                                expression: "phone_number",
+                              },
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              required: "",
+                              maxlength: "30",
+                              type: "text",
+                              name: "phone_number",
+                              placeholder: "Inserisci numero di telefono",
+                            },
+                            domProps: { value: _vm.phone_number },
+                            on: {
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.phone_number = $event.target.value
+                              },
+                            },
+                          }),
+                        ]),
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-sm-12 col-md-6" }, [
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(6),
+                          _vm._m(8),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39315,7 +39381,7 @@ var render = function () {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(7),
+                          _vm._m(9),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39341,70 +39407,6 @@ var render = function () {
                                   return
                                 }
                                 _vm.cvc = $event.target.value
-                              },
-                            },
-                          }),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _vm._m(8),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.address,
-                                expression: "address",
-                              },
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              required: "",
-                              maxlength: "100",
-                              type: "text",
-                              name: "address",
-                              placeholder: "Inserisci Indirizzo",
-                            },
-                            domProps: { value: _vm.address },
-                            on: {
-                              input: function ($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.address = $event.target.value
-                              },
-                            },
-                          }),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _vm._m(9),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.phone_number,
-                                expression: "phone_number",
-                              },
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              required: "",
-                              maxlength: "30",
-                              type: "text",
-                              name: "phone_number",
-                              placeholder: "Inserisci numero di telefono",
-                            },
-                            domProps: { value: _vm.phone_number },
-                            on: {
-                              input: function ($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.phone_number = $event.target.value
                               },
                             },
                           }),
@@ -39485,18 +39487,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("strong", [_vm._v("Numero carta di credito")])])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [_c("strong", [_vm._v("Codice CVC")])])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "exampleInputEmail1" } }, [
       _c("strong", [_vm._v("Indirizzo di consegna")]),
     ])
@@ -39508,6 +39498,18 @@ var staticRenderFns = [
     return _c("label", { attrs: { for: "exampleInputEmail1" } }, [
       _c("strong", [_vm._v("Numero di telefono")]),
     ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("strong", [_vm._v("Numero carta di credito")])])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("strong", [_vm._v("Codice CVC")])])
   },
   function () {
     var _vm = this
@@ -39820,7 +39822,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-lg" }, [
-    _c("div", [
+    _c("div", { staticClass: "pt-4" }, [
       _c("div", { staticClass: "p-1 back-info row" }, [
         _c("div", { staticClass: "col-md-7 col-s-12" }, [
           _c("div", { staticClass: "info p-4" }, [
@@ -39872,7 +39874,7 @@ var render = function () {
         _c("div", { staticClass: "section" }, [
           _c(
             "div",
-            { staticClass: "d-flex flex-column px-sm-5 px-lg-0" },
+            { staticClass: "d-flex flex-column px-md-5 px-lg-0" },
             _vm._l(_vm.restaurantMenu, function (dish) {
               return _c(
                 "div",
@@ -39894,7 +39896,7 @@ var render = function () {
       _c("div", { staticClass: "col-lg-4 col-md-12" }, [
         _vm._m(1),
         _vm._v(" "),
-        _c("div", { staticClass: "section sticky-top px-sm-5 px-lg-0" }, [
+        _c("div", { staticClass: "section sticky-top px-md-5 px-lg-0" }, [
           _vm.cart.length
             ? _c("div", { staticClass: "card cart-headline p-2" }, [
                 _c(
@@ -39950,9 +39952,11 @@ var render = function () {
                           _vm._v(
                             "\n                        " +
                               _vm._s(
-                                _vm.restaurantMenu.find(function (x) {
-                                  return x.id === item.id
-                                }).price * item.quantity
+                                (
+                                  _vm.restaurantMenu.find(function (x) {
+                                    return x.id === item.id
+                                  }).price * item.quantity
+                                ).toFixed(2)
                               ) +
                               " €\n                    "
                           ),
@@ -39969,9 +39973,7 @@ var render = function () {
                       [
                         _vm._m(2),
                         _vm._v(" "),
-                        _c("span", [
-                          _vm._v(_vm._s(_vm.total().toFixed(2)) + " €"),
-                        ]),
+                        _c("span", [_vm._v(_vm._s(_vm.total()) + " €")]),
                       ]
                     ),
                   ],
@@ -40147,9 +40149,7 @@ var render = function () {
                   },
                 }),
                 _vm._v(" "),
-                _c("span", { staticClass: "category-name" }, [
-                  _vm._v(_vm._s(category.name)),
-                ]),
+                _c("span", [_vm._v(_vm._s(category.name))]),
               ])
             }),
             0
