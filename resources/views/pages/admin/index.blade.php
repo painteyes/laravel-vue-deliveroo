@@ -2,8 +2,7 @@
 
 @section('content')
 <div class="container-xl">
-
-    <h1 class="dishes-title my-4">Lista dei tuoi piatti</h1>
+    <h1 class="dishes-title py-4">Lista dei tuoi piatti</h1>
     <div class="d-flex flex-wrap justify-content-center">
         @foreach ($dishes as $dish)
             <div class="card food-card" style="width: 18rem;">

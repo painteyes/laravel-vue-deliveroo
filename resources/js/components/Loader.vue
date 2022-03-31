@@ -1,5 +1,5 @@
 <template>
-    <div class="loader">
+    <div class="loader text-align-center">
         <div class="looping-rhombuses-spinner">
             <div class="rhombus"></div>
             <div class="rhombus"></div>
