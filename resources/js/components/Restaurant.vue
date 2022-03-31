@@ -31,7 +31,7 @@
             <p>Seleziona i piatti per scegliere la quantità e aggiungerli al carrello</p>
         </div>
         <div class="section">
-          <div class="d-flex flex-column">
+          <div class="d-flex flex-column px-sm-5 px-lg-0">
             <div v-for="dish in restaurantMenu" :key='dish.id' class="dish card mb-4 p-1">
                 <DishCard :dish='dish' @currentCart='getCart'/>
             </div>
@@ -45,7 +45,7 @@
             <h2><i class="fas fa-cart-arrow-down mr-2"></i>Carrello</h2>
             <p>Conferma il carrello e vai al checkout</p>
           </div>
-          <div class="section sticky-top">
+          <div class="section sticky-top px-sm-5 px-lg-0">
                 <!-- Carrello pieno -->
                 <div class="card cart-headline p-2" v-if="cart.length">
                   <div class="card-body">

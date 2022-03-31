@@ -46,7 +46,7 @@
 
                 <!-- stampo i ristoranti appartenenti alla categoria selezionata dall'utente -->
                  <div 
-                    class="col-sm-12 col-md-11 col-lg-10 d-flex flex-wrap align-items-start mt-md-5"
+                    class="col-sm-12 col-md-11 col-lg-10 d-flex flex-wrap align-items-start justify-content-center mt-md-5"
                     v-else
                 >
 

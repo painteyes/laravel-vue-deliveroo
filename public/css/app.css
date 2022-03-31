@@ -11368,6 +11368,11 @@ footer .social-channels p {
   color: gray;
 }
 
+.card-shadow {
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px 2px #c7c7c7;
+}
+
 .name {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -11532,6 +11537,6 @@ body {
 
 main {
   padding-bottom: 2.5rem;
-  background-image: linear-gradient(to bottom, #ffffff, #f4fbff, #ddfcff, #c0fdff, #aafef7);
+  background-image: linear-gradient(to bottom, #ffffff, #f7fbff, #e6faff, #d2faff, #c3faf5);
 }
 

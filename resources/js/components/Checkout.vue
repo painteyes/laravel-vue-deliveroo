@@ -1,195 +1,199 @@
 <template>
     <div class="row">
         <!-- stampo se il carrello é vuoto -->
-        <div class="col-md-12 text-center" v-if="!cart.length">
-            <h5 class="alert">
-                <i class="fas fa-shopping-cart"></i>
-                Il tuo carrello è vuoto
-            </h5>
-        </div>
-
-        <!-- colonna con form -->
-        <div class="py-2 col-md-8" v-if="cart.length">
-            <form @submit.prevent="testApi" method="POST" class="checkout">
-                <input type="hidden" name="_token" :value="csrf" />
-                <div class="subtitle m-3">
-                    <h5>Inserisci i tuoi dati per completare l'ordine</h5>
-                </div>
-
-                <div class="row d-flex justify-content-center">
-                    <div class="col-sm-12 col-md-6">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1"
-                                ><strong>Nome</strong></label
-                            >
-                            <input
-                                required
-                                minlength="2"
-                                maxlength="60"
-                                type="text"
-                                class="form-control"
-                                name="name"
-                                placeholder="Inserisci Nome"
-                                v-model="name"
-                            />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleInputEmail1"
-                                ><strong>Cognome</strong></label
-                            >
-                            <input
-                                required
-                                minlength="2"
-                                maxlength="60"
-                                type="text"
-                                class="form-control"
-                                name="lastname"
-                                placeholder="Inserisci Cognome"
-                                v-model="lastname"
-                            />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleInputEmail1"
-                                ><strong>Indirizzo email</strong></label
-                            >
-                            <input
-                                required
-                                minlength="5"
-                                maxlength="100"
-                                type="email"
-                                class="form-control"
-                                name="email"
-                                placeholder="Inserisci Email"
-                                v-model="email"
-                            />
-                        </div>
-                    </div>
-
-                    <!-- <div class="form-group">
-            <label><strong>Codice CVC</strong></label>
-            <input type="text" class="form-control" placeholder="Inserisci codice" v-model="cvc">
-          </div> -->
-
-                    <!-- <button class="btn" @click="testApi"><strong>Conferma Ordine</strong></button> -->
-                    <div class="col-sm-12 col-md-6">
-                        <div class="form-group">
-                            <label
-                                ><strong>Numero carta di credito</strong></label
-                            >
-                            <input
-                                required
-                                minlength="19"
-                                maxlength="19"
-                                type="text"
-                                class="form-control"
-                                placeholder="XXXX-XXXX-XXXX-XXXX"
-                                name="card"
-                                v-model="card"
-                                id="card"
-                                @keyup="dashesCard"
-                            />
-                        </div>
-
-                        <!-- <button class="btn mail" @click="testMail">
-            <i class="fas fa-envelope"></i>
-            Ricevi Mail di conferma
-          </button> -->
-                        <div class="form-group">
-                            <label><strong>Codice CVC</strong></label>
-                            <input
-                                required
-                                maxlength="3"
-                                minlength="3"
-                                type="text"
-                                class="form-control"
-                                placeholder="Inserisci codice"
-                                v-model="cvc"
-                            />
-                        </div>
-
-                        <!-- <button class="btn btn-primary" @click="testApi">Conferma Ordine</button> -->
-                        <div class="form-group">
-                            <label for="exampleInputEmail1"
-                                ><strong>Indirizzo di consegna</strong></label
-                            >
-                            <input
-                                required
-                                maxlength="100"
-                                type="text"
-                                class="form-control"
-                                name="address"
-                                placeholder="Inserisci Indirizzo"
-                                v-model="address"
-                            />
-                        </div>
-
-                        <!-- <button class="btn btn-warning" @click="testMail"> -->
-                        <!-- </button> -->
-                        <div class="form-group">
-                            <label for="exampleInputEmail1"
-                                ><strong>Numero di telefono</strong></label
-                            >
-                            <input
-                                required
-                                maxlength="30"
-                                type="text"
-                                class="form-control"
-                                name="phone_number"
-                                placeholder="Inserisci numero di telefono"
-                                v-model="phone_number"
-                            />
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-8 col-md-6">
-                        <button type="submit" class="mt-4 submit">
-                            Conferma Ordine
-                        </button>
-                    </div>
-                </div>
-            </form>
+        <div class="col-md-12 col-lg-4 text-center" v-if="!cart.length">
+            <h2 class="alert">
+                <i class="fas fa-shopping-cart mr-2">Il tuo carrello è vuoto</i>
+            </h2>
         </div>
 
         <!-- colonna con carrello -->
-        <div class="col-md-4 mb-5" v-if="cart.length">
-            ​
-            <h4 class="mb-3">
-                <i class="fas fa-cart-arrow-down"></i>
-                RIEPILOGO CARRELLO
-            </h4>
-            <div class="cart-test d-flex flex-column">
-                <div class="item-test" v-for="(item, i) in cart" :key="i">
-                    <!-- stampo quantitá -->
-                    <div
-                        class="quantity d-flex flex-no-wrap align-items-baseline"
-                    >
-                        <span>
-                            
-                            {{ item.quantity }}
-                            
-                        </span>
-                        <!-- stampo il nome -->
-                        <span class="name">
-                            {{ dishes.find(x => x.id === item.id).name }}
+        <div class="col-md-12 col-lg-4" v-if="cart.length">
+            ​<div class="title my-4">
+                <h2><i class="fas fa-cart-arrow-down mr-2"></i>Riepilogo carrello</h2>
+            </div>
+            
+            <div class="card card-shadow">
+                <div class="card-body">
+
+                    <div class="item-test d-flex justify-content-between mb-2" v-for="(item, i) in cart" :key="i">
+                        <!-- stampo quantitá -->
+                        <div
+                            class="quantity d-flex flex-no-wrap align-items-baseline"
+                        >
+                            <span>                                
+                                {{ item.quantity }}
+                            </span>
+                            <!-- stampo il nome -->
+                            <span class="name">
+                                {{ dishes.find(x => x.id === item.id).name }}
+                            </span>
+                        </div>
+                        <!-- stampo il totale -->
+                        <span class="total">
+                            {{
+                                (dishes.find(x => x.id === item.id).price *
+                                    item.quantity) 
+                            }}
+                            &#8364;
                         </span>
                     </div>
-                    <!-- stampo il totale -->
-                    <span class="total">
-                        {{
-                            (dishes.find(x => x.id === item.id).price *
-                                item.quantity) 
-                        }}
-                        &#8364;
-                    </span>
-                </div>
-                <!-- totale del carrello -->
+                    <!-- totale del carrello -->
 
-                <div class="d-flex justify-content-between px-2">
-                    <span>TOTALE:</span>
-                    <span>{{ total()}} &#8364;</span>
+                    <div class="d-flex justify-content-between px-2 py-4 border-top">
+                        <span>TOTALE:</span>
+                        <span>{{ total()}} &#8364;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- colonna con form -->
+        <div class="col-md-12 col-lg-8 mt-4" v-if="cart.length">
+            <div class="title my-4">
+                <h2><i class="fa-solid fa-id-card mr-2"></i>Inserisci i tuoi dati per completare l'ordine</h2>
+            </div>
+            <div class="card card-shadow">
+                <div class="card-body">
+
+                    <form @submit.prevent="testApi" method="POST" class="checkout">
+                        <input type="hidden" name="_token" :value="csrf" />
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"
+                                        ><strong>Nome</strong></label
+                                    >
+                                    <input
+                                        required
+                                        minlength="2"
+                                        maxlength="60"
+                                        type="text"
+                                        class="form-control"
+                                        name="name"
+                                        placeholder="Inserisci Nome"
+                                        v-model="name"
+                                    />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"
+                                        ><strong>Cognome</strong></label
+                                    >
+                                    <input
+                                        required
+                                        minlength="2"
+                                        maxlength="60"
+                                        type="text"
+                                        class="form-control"
+                                        name="lastname"
+                                        placeholder="Inserisci Cognome"
+                                        v-model="lastname"
+                                    />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"
+                                        ><strong>Indirizzo email</strong></label
+                                    >
+                                    <input
+                                        required
+                                        minlength="5"
+                                        maxlength="100"
+                                        type="email"
+                                        class="form-control"
+                                        name="email"
+                                        placeholder="Inserisci Email"
+                                        v-model="email"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- <div class="form-group">
+                    <label><strong>Codice CVC</strong></label>
+                    <input type="text" class="form-control" placeholder="Inserisci codice" v-model="cvc">
+                </div> -->
+
+                            <!-- <button class="btn" @click="testApi"><strong>Conferma Ordine</strong></button> -->
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label
+                                        ><strong>Numero carta di credito</strong></label
+                                    >
+                                    <input
+                                        required
+                                        minlength="19"
+                                        maxlength="19"
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="XXXX-XXXX-XXXX-XXXX"
+                                        name="card"
+                                        v-model="card"
+                                        id="card"
+                                        @keyup="dashesCard"
+                                    />
+                                </div>
+
+                                <!-- <button class="btn mail" @click="testMail">
+                    <i class="fas fa-envelope"></i>
+                    Ricevi Mail di conferma
+                </button> -->
+                                <div class="form-group">
+                                    <label><strong>Codice CVC</strong></label>
+                                    <input
+                                        required
+                                        maxlength="3"
+                                        minlength="3"
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Inserisci codice"
+                                        v-model="cvc"
+                                    />
+                                </div>
+
+                                <!-- <button class="btn btn-primary" @click="testApi">Conferma Ordine</button> -->
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"
+                                        ><strong>Indirizzo di consegna</strong></label
+                                    >
+                                    <input
+                                        required
+                                        maxlength="100"
+                                        type="text"
+                                        class="form-control"
+                                        name="address"
+                                        placeholder="Inserisci Indirizzo"
+                                        v-model="address"
+                                    />
+                                </div>
+
+                                <!-- <button class="btn btn-warning" @click="testMail"> -->
+                                <!-- </button> -->
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"
+                                        ><strong>Numero di telefono</strong></label
+                                    >
+                                    <input
+                                        required
+                                        maxlength="30"
+                                        type="text"
+                                        class="form-control"
+                                        name="phone_number"
+                                        placeholder="Inserisci numero di telefono"
+                                        v-model="phone_number"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <!-- <div class="col-8 col-md-6"> -->
+                                <button type="submit" class="mt-4 submit btn btn-secondary">
+                                    Conferma Ordine
+                                </button>
+                            <!-- </div> -->
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
