@@ -6,14 +6,33 @@
     {{-- {{ dd($dishes) }} --}}
 
     
+
+    <?php
+       $data = []; 
+
+       foreach($dishes as $dish) {
+           $data[] = $dish->name;
+       }
+
+       $encoded = json_encode($data);
+    ?>
+
+    
+
+
     <canvas id="myChart" width="400" height="200"></canvas>
     <script>
     const ctx = document.getElementById('myChart').getContext('2d');
     
-    // un foreach per $dishes as $dish, aggiungere il nome del piatto dentro l'array myPlates
-    // un foreach per $orders as order, aggiungere il numero di ordini del piatto dentro l'array myOrders
+    var encoded = '<?=$encoded?>';
+    var data = JSON.parse(encoded);
 
-    let myPlates = ['Pasta alle vongole', 'Pizza', 'Pasta col tonno', 'Bistacca ai ferri', 'Pasta col sugo', 'Polpo e patate'];
+    let myPlates = [];
+    data.forEach(element => {
+        myPlates.push(element);
+    });
+
+
     let myOrders = [4, 12, 8, 5, 2, 3];
 
     const myChart = new Chart(ctx, {
