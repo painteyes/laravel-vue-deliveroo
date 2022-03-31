@@ -1,12 +1,12 @@
 <template>
     <div class="container-fluid">
         <div class="row justify-content-center mx-sm-5">
-            <div class="col-sm-12 d-md-flex page">
+            <div class="col-sm-12 d-md-flex page justify-content-center">
 
-                <div class="text-left d-sm-flex flex-sm-wrap flex-md-column align-items-start align-self-start mt-md-5 mx-auto">
+                <div class="text-left d-sm-flex flex-sm-wrap flex-md-column align-items-start align-self-start justify-content-sm-center mt-sm-5 mb-sm-4">
 
                     <!-- stampo le tipologie per permettere all'utente di fare le ricerche -->
-                    <label class="check" v-for="category, index in categories" :key='index'>
+                    <label class="check m-sm-3" v-for="category, index in categories" :key='index'>
                       <input  type="checkbox"
                             :value="category.name"
                             v-model="categoriesFilter"
@@ -18,7 +18,7 @@
 
                 <!-- stampo ristoranti random se nessuna caegoria è selezionata-->
                 <div 
-                    class="col-sm-12 col-md-10 d-flex flex-wrap align-items-start mt-md-5" 
+                    class="col-sm-12 col-md-11 col-lg-10 d-flex flex-wrap align-items-start justify-content-center mt-md-5" 
                     v-if="categoriesFilter.length == 0"
                 >
                 
@@ -46,7 +46,7 @@
 
                 <!-- stampo i ristoranti appartenenti alla categoria selezionata dall'utente -->
                  <div 
-                    class="col-sm-12 col-md-10 d-flex flex-wrap align-items-start mt-md-5"
+                    class="col-sm-12 col-md-11 col-lg-10 d-flex flex-wrap align-items-start mt-md-5"
                     v-else
                 >
 

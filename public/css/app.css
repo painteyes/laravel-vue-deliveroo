@@ -11154,6 +11154,7 @@ footer .social-channels p {
 
 .check span {
   padding: 5px 10px;
+  font-weight: 600;
   display: inline-block;
   color: #4e4e4e;
   font-size: 15px;
@@ -11242,8 +11243,9 @@ footer .social-channels p {
 
 .back-info {
   background-color: white;
-  box-shadow: 1px 1px 7px 1px #dadada;
-  border-radius: 10px;
+  box-shadow: 1px 1px 10px 2px #c7c7c7;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .info {
@@ -11273,7 +11275,7 @@ footer .social-channels p {
 .dish {
   background-color: white;
   border-radius: 10px;
-  box-shadow: -3px 3px 6px -3px #b1b1b1;
+  box-shadow: 1px 1px 10px 2px #c7c7c7;
   width: 100%;
 }
 
@@ -11311,7 +11313,7 @@ footer .social-channels p {
   text-align: center;
   border-radius: 10px;
   background-color: white;
-  box-shadow: -3px 3px 6px -3px #b1b1b1;
+  box-shadow: 1px 1px 10px 2px #c7c7c7;
   width: 100%;
 }
 
@@ -11530,6 +11532,6 @@ body {
 
 main {
   padding-bottom: 2.5rem;
-  background-image: linear-gradient(to bottom, #ffffff, #e6faff, #b9fbff, #a9f9d7, #d0eb99);
+  background-image: linear-gradient(to bottom, #ffffff, #f4fbff, #ddfcff, #c0fdff, #aafef7);
 }
 
