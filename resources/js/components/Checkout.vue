@@ -56,7 +56,9 @@
             <div class="card card-shadow">
                 <div class="card-body">
 
+                    <!-- FORM -->
                     <form @submit.prevent="testApi" method="POST" class="checkout">
+
                         <input type="hidden" name="_token" :value="csrf" />
 
                         <div class="row d-flex justify-content-center">
@@ -334,7 +336,7 @@ export default {
                 variables: {
                     input: {
                         paymentMethodId: method,
-                        transaction: { amount: this.total() / 100 }
+                        transaction: { amount: this.total() }
                     }
                 }
             };

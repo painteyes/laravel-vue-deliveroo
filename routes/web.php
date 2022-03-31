@@ -21,6 +21,11 @@ Route::get('/restaurants/{slug}', 'RestaurantController@show')->name('restaurant
 // Rotta per la pagina del carrello
 Route::get('/checkout/{id}', 'RestaurantController@checkout')->name('checkout');
 
+// Rotta per la pagina di avvenuto pagamento
+Route::get('/payed', function () {
+    return view('pages.guests.payed');
+});
+
 
 // Rotte protette da autenticazione
 Route::middleware('auth')  
