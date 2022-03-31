@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container">
-        <h2 class="dishes-title my-4">Crea il tuo piatto</h2>
-        <div class="card">
+        <h2 class="dishes-title py-4">Crea il tuo piatto</h2>
+        <div class="card card-shadow px-xl-4">
 
             @if ($errors->any())
                 <div class="alert alert-danger">

@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
 
-    <h2 class="dishes-title my-4">Modifica il piatto {{ $dish->name }}</h2>
+    <h2 class="dishes-title py-4">Modifica il piatto {{ $dish->name }}</h2>
 
-    <div class=" card px-xl-4">
+    <div class=" card card-shadow px-xl-4">
         {{-- Alert messages for errors in the form --}}
         @if ($errors->any())
             <div class="alert alert-danger">
