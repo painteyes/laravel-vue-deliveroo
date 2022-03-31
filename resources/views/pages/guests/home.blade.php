@@ -6,16 +6,16 @@
         {{-- Jumbotron --}}
         <div class="jumbotron-del">
                 <div class="container">
-                    <div class="d-flex row-cols-2">
-                        <div class="col">
+                    <div class="row justify-content-between">
+                        <div class="col-6">
                             <div class="d-flex flex-column">
                                 <span class="title-jumbo">
                                     I piatti che ami, a domicilio.
-                                    Cerchi qualcosa?
+                                    <br>Cerchi qualcosa?
                                 </span>
                             </div>
                         </div>
-                        <div class="col text-center pt-3">
+                        <div class="col-6 text-center pt-3">
                             <img src="/images/jumbotron.svg" alt="jumbo-img">
                         </div>
                     </div>

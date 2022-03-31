@@ -33,7 +33,7 @@
                         <span class="total">
                             {{
                                 (dishes.find(x => x.id === item.id).price *
-                                    item.quantity) 
+                                    item.quantity).toFixed(2) 
                             }}
                             &#8364;
                         </span>
@@ -108,6 +108,38 @@
                                         v-model="email"
                                     />
                                 </div>
+                                                                <!-- <button class="btn btn-primary" @click="testApi">Conferma Ordine</button> -->
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"
+                                        ><strong>Indirizzo di consegna</strong></label
+                                    >
+                                    <input
+                                        required
+                                        maxlength="100"
+                                        type="text"
+                                        class="form-control"
+                                        name="address"
+                                        placeholder="Inserisci Indirizzo"
+                                        v-model="address"
+                                    />
+                                </div>
+
+                                <!-- <button class="btn btn-warning" @click="testMail"> -->
+                                <!-- </button> -->
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"
+                                        ><strong>Numero di telefono</strong></label
+                                    >
+                                    <input
+                                        required
+                                        maxlength="30"
+                                        type="text"
+                                        class="form-control"
+                                        name="phone_number"
+                                        placeholder="Inserisci numero di telefono"
+                                        v-model="phone_number"
+                                    />
+                                </div>
                             </div>
 
                             <!-- <div class="form-group">
@@ -152,38 +184,6 @@
                                     />
                                 </div>
 
-                                <!-- <button class="btn btn-primary" @click="testApi">Conferma Ordine</button> -->
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1"
-                                        ><strong>Indirizzo di consegna</strong></label
-                                    >
-                                    <input
-                                        required
-                                        maxlength="100"
-                                        type="text"
-                                        class="form-control"
-                                        name="address"
-                                        placeholder="Inserisci Indirizzo"
-                                        v-model="address"
-                                    />
-                                </div>
-
-                                <!-- <button class="btn btn-warning" @click="testMail"> -->
-                                <!-- </button> -->
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1"
-                                        ><strong>Numero di telefono</strong></label
-                                    >
-                                    <input
-                                        required
-                                        maxlength="30"
-                                        type="text"
-                                        class="form-control"
-                                        name="phone_number"
-                                        placeholder="Inserisci numero di telefono"
-                                        v-model="phone_number"
-                                    />
-                                </div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center">
@@ -293,7 +293,7 @@ export default {
                     .price;
                 total += foodPrice * this.cart[i].quantity;
             }
-            return total;
+            return total.toFixed(2);
         },
         dashesCard: function() {
             var x = document.getElementById("card");
