@@ -1,7 +1,7 @@
 <template>
   <div class="container-lg">
-    <div class="card">
-      <div class="p-1 back-info row card-body">
+    <div>
+      <div class="p-1 back-info row">
           <div class="col-md-7 col-s-12">
             <!-- Info ristorante -->
             <div class="info p-4">

@@ -24,38 +24,26 @@
 
                             <h3>Dati utente</h3>
                             {{-- Name --}}
-                            <div class="form-group">
-                                
-                                
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Inserisci il tuo nome">
-                                
+                            <div class="form-group">                     
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Inserisci il tuo nome">
                             </div>
                             {{-- End Name --}}
 
                             {{-- E-mail --}}
                             <div class="form-group">
-                                
-                                
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Indirizzo email">
-                               
+                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Indirizzo email">
                             </div>
                             {{-- End E-mail --}}
 
                             {{-- Password --}}
-                            <div class="form-group">
-                                
-                               
+                            <div class="form-group">                               
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
-                                
                             </div>
                             {{-- End Password --}}
 
                             {{-- Confirm Password --}}
                             <div class="form-group">
-                                
-                                
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Conferma la password">
-                                
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Conferma la password">
                             </div>
                             {{-- End Confirm Password --}}
 
@@ -63,30 +51,19 @@
 
                             {{-- Restaurant Name --}}
                             <div class="form-group">
-                                
-                                
-                                    <input id="restaurant_name" type="text" class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name" value="{{ old('restaurant_name') }}" required autocomplete="restaurant_name" autofocus placeholder="Nome del tuo ristorante">
-                                
+                                <input id="restaurant_name" type="text" class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name" value="{{ old('restaurant_name') }}" required autocomplete="restaurant_name" autofocus placeholder="Nome del tuo ristorante">
                             </div>
                             {{-- End Restaurant Name --}}
 
                             {{-- Address --}}
                             <div class="form-group">
-                                
-
-                                
-                                    <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus placeholder="Indirizzo">
-                                
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus placeholder="Indirizzo">
                             </div>
                             {{-- End Address --}}
 
                             {{-- Vat Number --}}
                             <div class="form-group">
-                                
-
-                                
-                                    <input id="vat_number" type="text" class="form-control @error('vat_number') is-invalid @enderror" name="vat_number" value="{{old('vat_number')}}" placeholder="Partita IVA">
-                                
+                                <input id="vat_number" type="text" class="form-control @error('vat_number') is-invalid @enderror" name="vat_number" value="{{old('vat_number')}}" placeholder="Partita IVA">
                             </div>
                             {{-- End Vat Number --}}
 

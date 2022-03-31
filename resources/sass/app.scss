@@ -16,6 +16,7 @@
 @import "partials/restaurant";
 @import "partials/dashboard";
 @import "partials/index";
+@import "partials/login";
 
 body {
     min-height: 100vh;
@@ -23,4 +24,6 @@ body {
 
 main {
     padding-bottom: 2.5rem;
+    background-image: linear-gradient(to bottom, #ffffff, #e6faff, #b9fbff, #a9f9d7, #d0eb99);
 }
+
