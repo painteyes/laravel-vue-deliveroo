@@ -1,6 +1,6 @@
 header {
 
-    
+    background-color: #00ccbc;
 
     .logo {
         width: 60%;
@@ -9,7 +9,10 @@ header {
     .navbar-light 
     .navbar-nav 
     .nav-link {
-        color: black;;
+        color: #440063;
+        font-size: 18px;
+        font-weight: 600;
+
 
         &.left:hover {
             color: whitesmoke;
@@ -18,15 +21,21 @@ header {
         &.right:hover {
             color: whitesmoke;
         }
+
+    }
+
+    .dropdown-item {
+        font-size: 18px;
+        font-weight: 600;
     }
 
     .btn {
         width: 170px;
         &.left {
-            background-color: orange;
+            background-color: #d0eb99;
         }
         &.right {
-            background-color: #00ccbc;
+            background-color: #d0eb99;
         }
     }
 }

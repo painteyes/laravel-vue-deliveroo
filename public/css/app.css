@@ -10962,12 +10962,18 @@ a.text-dark:focus {
   }
 }
 
+header {
+  background-color: #00ccbc;
+}
+
 header .logo {
   width: 60%;
 }
 
 header .navbar-light .navbar-nav .nav-link {
-  color: black;
+  color: #440063;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 header .navbar-light .navbar-nav .nav-link.left:hover {
@@ -10978,21 +10984,61 @@ header .navbar-light .navbar-nav .nav-link.right:hover {
   color: whitesmoke;
 }
 
+header .dropdown-item {
+  font-size: 18px;
+  font-weight: 600;
+}
+
 header .btn {
   width: 170px;
 }
 
 header .btn.left {
-  background-color: orange;
+  background-color: #d0eb99;
 }
 
 header .btn.right {
-  background-color: #00ccbc;
+  background-color: #d0eb99;
 }
 
-.login-card {
-  margin-top: 50px;
-  margin-bottom: 150px;
+.login-card-tp {
+  padding-top: 150px;
+  padding-bottom: 200px;
+}
+
+.login-card-tp .login-name {
+  text-align: center;
+  font-weight: 600;
+  color: black;
+  font-size: 20px;
+}
+
+.login-card-tp .login-card-bt {
+  background-color: #00ccbc;
+  border-color: #00ccbc;
+  border-radius: 10px;
+  font-size: 18px;
+  box-shadow: 1px 1px 10px 2px #c7c7c7;
+}
+
+.login-card-tp .btn-login {
+  background-color: #d0eb99;
+  border-color: #d0eb99;
+  width: 170px;
+  color: #440063;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.login-card-tp .btn-login:hover {
+  background-color: #d0eb99;
+  border-color: #d0eb99;
+  color: white;
+}
+
+.login-card-tp .btn-forgot {
+  color: white;
+  font-size: 16px;
 }
 
 footer {
@@ -11132,7 +11178,7 @@ footer .social-channels p {
   width: 300px;
   min-height: 200px;
   margin: 10px;
-  border-radius: 3px;
+  border-radius: 10px;
   text-align: left;
   transition: 0.2s ease-in-out;
 }
@@ -11197,6 +11243,7 @@ footer .social-channels p {
 .back-info {
   background-color: white;
   box-shadow: 1px 1px 7px 1px #dadada;
+  border-radius: 10px;
 }
 
 .info {
@@ -11225,6 +11272,7 @@ footer .social-channels p {
 
 .dish {
   background-color: white;
+  border-radius: 10px;
   box-shadow: -3px 3px 6px -3px #b1b1b1;
   width: 100%;
 }
@@ -11261,6 +11309,7 @@ footer .social-channels p {
 
 .cart-headline {
   text-align: center;
+  border-radius: 10px;
   background-color: white;
   box-shadow: -3px 3px 6px -3px #b1b1b1;
   width: 100%;
@@ -11378,17 +11427,23 @@ footer .social-channels p {
 .btn-pr:hover {
   background-color: #02beb2;
   border-color: #02beb2;
+  color: #440063;
 }
 
 a:hover {
   text-decoration: none;
 }
 
-.user_info {
+.card-info-res {
+  box-shadow: 1px 1px 10px 2px #c7c7c7;
+  border-radius: 10px;
+}
+
+.card-info-res .user_info {
   padding: 30px;
 }
 
-.user_info .img_account {
+.card-info-res .user_info .img_account {
   border-radius: 10px;
   -o-object-fit: cover;
      object-fit: cover;
@@ -11397,15 +11452,20 @@ a:hover {
   width: 100%;
 }
 
-.user_info ul {
+.card-info-res .user_info ul {
   padding: 20px 0;
 }
 
-.user_info ul li {
+.card-info-res .user_info ul li {
   font-size: 18px;
   font-weight: 600;
   list-style: none;
   margin: 10px 0;
+}
+
+.card-menu-rt {
+  box-shadow: 1px 1px 10px 2px #c7c7c7;
+  border-radius: 10px;
 }
 
 .dishes-title {
@@ -11416,10 +11476,52 @@ a:hover {
 .food-card {
   padding: 20px;
   margin: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px 2px #c7c7c7;
 }
 
 .food-card .card-title {
   font-weight: 600;
+}
+
+.login-card-tp {
+  padding-top: 150px;
+  padding-bottom: 200px;
+}
+
+.login-card-tp .login-name {
+  text-align: center;
+  font-weight: 600;
+  color: black;
+  font-size: 20px;
+}
+
+.login-card-tp .login-card-bt {
+  background-color: #00ccbc;
+  border-color: #00ccbc;
+  border-radius: 10px;
+  font-size: 18px;
+  box-shadow: 1px 1px 10px 2px #c7c7c7;
+}
+
+.login-card-tp .btn-login {
+  background-color: #d0eb99;
+  border-color: #d0eb99;
+  width: 170px;
+  color: #440063;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.login-card-tp .btn-login:hover {
+  background-color: #d0eb99;
+  border-color: #d0eb99;
+  color: white;
+}
+
+.login-card-tp .btn-forgot {
+  color: white;
+  font-size: 16px;
 }
 
 body {
@@ -11428,5 +11530,6 @@ body {
 
 main {
   padding-bottom: 2.5rem;
+  background-image: linear-gradient(to bottom, #ffffff, #e6faff, #b9fbff, #a9f9d7, #d0eb99);
 }
 

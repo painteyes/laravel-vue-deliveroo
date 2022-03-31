@@ -1,7 +1,7 @@
 .back-info {
     background-color: white;
     box-shadow: 1px 1px 7px 1px #dadada;
-  
+    border-radius: 10px;
   }
   
   // Info
@@ -31,6 +31,7 @@
 
   .dish {
     background-color: white;
+    border-radius: 10px;
     box-shadow: -3px 3px 6px -3px #b1b1b1;
     width: 100%;
 
@@ -73,6 +74,7 @@
 
 .cart-headline {
     text-align: center;
+    border-radius: 10px;
     background-color: white;
     box-shadow: -3px 3px 6px -3px #b1b1b1;
     width: 100%;

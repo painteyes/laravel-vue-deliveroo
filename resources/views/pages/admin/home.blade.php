@@ -5,7 +5,7 @@
       <div class="row my-4">
 
         <div class="col-12 col-md-6 mb-4">
-          <div class="card text-center">
+          <div class="card text-center card-info-res">
             <div class="user_info">
               {{-- se il path dell'imagine conduce ad un file che esiste --}}
               @if (file_exists('storage/' . $user->img_path))
@@ -30,7 +30,7 @@
         </div>
 
           <div class="col-12 col-md-6">
-              <div class="card">
+              <div class="card card-menu-rt">
                   <div class="dashboard mb-4">
 
                     <div class="welcome text-center mb-3">

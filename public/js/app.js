@@ -38874,8 +38874,8 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-lg" }, [
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "p-1 back-info row card-body" }, [
+    _c("div", [
+      _c("div", { staticClass: "p-1 back-info row" }, [
         _c("div", { staticClass: "col-md-7 col-s-12" }, [
           _c("div", { staticClass: "info p-4" }, [
             _c("h1", [_vm._v(_vm._s(_vm.restaurantInfo.restaurant_name))]),
