@@ -21,5 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Rotta per la ricerca dei ristoranti nella homepage
 Route::post('/search', 'Api\SearchController@getRestaurants')->name('search');
 
-Route::post('/orders', 'Api\OrderController@store')->name('api.orders.store');
+Route::post('/orders', 'Api\OrderController@store')->name('orders.store');
 

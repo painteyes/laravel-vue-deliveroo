@@ -1,11 +1,6 @@
 <template>
     <div class="row">
         <!-- stampo se il carrello é vuoto -->
-        <div class="col-md-12 col-lg-4 text-center" v-if="!cart.length">
-            <h2 class="alert">
-                <i class="fas fa-shopping-cart mr-2">Il tuo carrello è vuoto</i>
-            </h2>
-        </div>
 
         <!-- colonna con carrello -->
         <div class="col-md-12 col-lg-4" v-if="cart.length">
@@ -261,6 +256,10 @@ export default {
         if (localStorage.cart && localStorage.user_id == this.user_id) {
             this.cart = JSON.parse(localStorage.getItem("cart"));
         }
+        if(this.cart.length == 0){
+            window.location.href = "http://localhost:8000/restaurants/" + localStorage.getItem('slug');
+        }
+        
     },
     methods: {
         updateLocalStorage: function() {
@@ -306,6 +305,7 @@ export default {
             }
         },
         testApi: function() {
+
             var method = "rejected";
             if (this.card === "1234-1234-1234-1234" && this.cvc === "123") {
                 method = "fake-valid-visa-nonce";
@@ -340,6 +340,7 @@ export default {
                     }
                 }
             };
+
             // chiamata axios a braintree
             axios
                 .post(
@@ -348,14 +349,17 @@ export default {
                     { headers }
                 )
                 .then(r => {
+                    console.log("pagamento effettuato");
+
                     console.log("data", r.data);
                     if (r.data.hasOwnProperty("errors")) {
                         $("#alert").modal("show");
                         console.log("carta non valida!");
                         $("#alert").modal("show");
                     } else {
-                        console.log("pagamento effettuato");
                         // 1) salviamo l'ordine nel db
+                        
+                        
                         const order = {
                             name: this.name,
                             lastname: this.lastname,
@@ -365,18 +369,27 @@ export default {
                             email: this.email,
                             total: this.total(),
                             user: this.user_id
-                        };
+                        }
+
                         // console.log("prova");
                         console.log(localStorage);
-                        axios
-                            .post("http://localhost:8000/api/orders", order)
+
+                        // axios.post('/api/search', {categories: this.categoriesFilter}).then((response)=>{
+                        //     if (response.data.success) {
+                        //         this.filteredRestaurants = response.data.result        
+                        //     } else {
+                        //         // this.$router.push({name: 'page-not-found'})
+                        //     }
+                        // })
+
+                        axios.post('/api/orders',  order)
                             .then(r => {
                                 // 2) mandiamo la mail di ricevuto ordine
                             })
                             .catch(e => console.log("error", e));
                         // 3) svuotiamo il carrello
                         localStorage.removeItem("cart");
-                        console.log(localStorage);
+                        // console.log(localStorage);
                         // 4) cambiamo pagina in una che dice "pagamento effettuato"
                         window.location.href = "http://localhost:8000/payed";
                     }

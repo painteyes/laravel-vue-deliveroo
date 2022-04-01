@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\OrderMail;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\Mail;
+// use App\Mail\OrderMail;
+// use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-use App\Food;
+use App\Dish;
 use App\User;
 use App\Order;
-use Illuminate\Support\Carbon as SupportCarbon;
-use Illuminate\Support\Facades\Date;
+// use Illuminate\Support\Carbon as SupportCarbon;
+// use Illuminate\Support\Facades\Date;
 
 class OrderController extends Controller
 {
@@ -59,38 +60,43 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        
+        $order = new Order();
+        $order->customer_name = $request->name;
+        $order->customer_lastname = $request->lastname;
 
-        $order = new Order;
         $order->date = date("Y-m-d");
-        $order->email = $request->email;
-        $order->total = $request->total;
-        $order->name = $request->name;
-        $order->lastname = $request->lastname;
-        $order->phone_number = $request->phone_number;
-        $order->address = $request->address;
+        $order->customer_email = $request->email;
+        $order->total_price = $request->total;
+        $order->customer_phone = $request->phone_number;
+        $order->customer_address = $request->address;
+        $order->order_status = 1;
 
         $order->save();
-        $cartItems = [];
-        $quantityItems = [];
-        foreach ($request->cart as $item) {
-            $cartItems[] = $item['id'];
-            $quantityItems[] = $item['quantity'];
-        }
-        $sync_data = [];
-        for ($i = 0; $i < count($cartItems); $i++) {
-            $sync_data[$cartItems[$i]] = ['quantity' => $quantityItems[$i]];
-        }
 
-        $order->food()->sync($sync_data);
+        // $cartItems = [];
+        // $quantityItems = [];
 
-        $mail = $request->email;
-        $cart = $request->cart;
-        $user = User::with('food')->findOrFail($request->user);
-        Mail::to($mail)
-            ->send(new OrderMail($cart, $user));
+        // foreach ($request->cart as $item) {
+        //     $cartItems[] = $item['id'];
+        //     $quantityItems[] = $item['quantity'];
+        // }
 
+        // $sync_data = [];
 
-        return response()->json('ok', 200);
+        // for ($i = 0; $i < count($cartItems); $i++) {
+        //     $sync_data[$cartItems[$i]] = ['quantity' => $quantityItems[$i]];
+        // }
+
+        // $order->dishes()->sync($sync_data);
+
+        // $mail = $request->email;
+        // $cart = $request->cart;
+        // $user = User::with('food')->findOrFail($request->user);
+        // Mail::to($mail)
+        //     ->send(new OrderMail($cart, $user));
+
+        // return response()->json('ok', 200);
     }
 
 
