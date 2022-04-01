@@ -54,7 +54,7 @@
                               <button class="btn-pr mb-3">Statistiche ordini</button>
                           </a>
                        
-                            {{-- <a href="{{ route('admin.orders.index') }}" class="d-flex justify-content-center"> --}}
+                            {{-- <a href="{{ route('admin.orders', ['id' => Auth::user()->id]) }}" class="d-flex justify-content-center"> --}}
                                 <button class="btn-pr">Visualizza gli Ordini dell'Attività</button>
                             {{-- </a> --}}
                         </div>

@@ -39139,9 +39139,11 @@ var render = function () {
                       "d-flex justify-content-between px-2 py-4 border-top",
                   },
                   [
-                    _c("span", [_vm._v("TOTALE:")]),
+                    _vm._m(1),
                     _vm._v(" "),
-                    _c("span", [_vm._v(_vm._s(_vm.total()) + " €")]),
+                    _c("span", [
+                      _c("strong", [_vm._v(_vm._s(_vm.total()) + " €")]),
+                    ]),
                   ]
                 ),
               ],
@@ -39153,7 +39155,7 @@ var render = function () {
     _vm._v(" "),
     _vm.cart.length
       ? _c("div", { staticClass: "col-md-12 col-lg-8 mt-4" }, [
-          _vm._m(1),
+          _vm._m(2),
           _vm._v(" "),
           _c("div", { staticClass: "card card-shadow" }, [
             _c("div", { staticClass: "card-body" }, [
@@ -39181,7 +39183,7 @@ var render = function () {
                     [
                       _c("div", { staticClass: "col-sm-12 col-md-6" }, [
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(2),
+                          _vm._m(3),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39214,7 +39216,7 @@ var render = function () {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(3),
+                          _vm._m(4),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39247,7 +39249,7 @@ var render = function () {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(4),
+                          _vm._m(5),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39280,7 +39282,7 @@ var render = function () {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(5),
+                          _vm._m(6),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39312,7 +39314,7 @@ var render = function () {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(6),
+                          _vm._m(7),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39346,7 +39348,7 @@ var render = function () {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-sm-12 col-md-6" }, [
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(7),
+                          _vm._m(8),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39381,7 +39383,7 @@ var render = function () {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(8),
+                          _vm._m(9),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39415,7 +39417,7 @@ var render = function () {
                     ]
                   ),
                   _vm._v(" "),
-                  _vm._m(9),
+                  _vm._m(10),
                 ]
               ),
             ]),
@@ -39423,7 +39425,7 @@ var render = function () {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm._m(10),
+    _vm._m(11),
   ])
 }
 var staticRenderFns = [
@@ -39437,6 +39439,12 @@ var staticRenderFns = [
         _vm._v("Riepilogo carrello"),
       ]),
     ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [_c("strong", [_vm._v("TOTALE")])])
   },
   function () {
     var _vm = this
@@ -39960,7 +39968,9 @@ var render = function () {
                       [
                         _vm._m(2),
                         _vm._v(" "),
-                        _c("span", [_vm._v(_vm._s(_vm.total()) + " €")]),
+                        _c("span", [
+                          _c("strong", [_vm._v(_vm._s(_vm.total()) + " €")]),
+                        ]),
                       ]
                     ),
                   ],
@@ -40036,7 +40046,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", [_c("strong", [_vm._v("TOTALE:")])])
+    return _c("span", [_c("strong", [_vm._v("TOTALE")])])
   },
   function () {
     var _vm = this
@@ -53037,8 +53047,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\mamp\htdocs\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\mamp\htdocs\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\1mill\Boolean\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\1mill\Boolean\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

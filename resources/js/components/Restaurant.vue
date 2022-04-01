@@ -67,8 +67,8 @@
                       </div>
                     </div>
                     <div class="d-flex justify-content-between px-2 py-4 border-top">
-                      <span><strong>TOTALE:</strong></span>
-                      <span>{{ total() }} &#8364;</span>
+                      <span><strong>TOTALE</strong></span>
+                      <span><strong>{{ total() }} &#8364;</strong></span>
                     </div>
 
                     

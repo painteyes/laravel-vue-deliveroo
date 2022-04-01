@@ -1,7 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <h3>Benvenuto nelle tue statistiche</h3>
+<div class="container">
+
+    <div class="pt-3">
+        <a href="{{route('admin.home', ['id' => Auth::user()->id])}}">
+            <button class="btn btn-back-2"><i class="fa-solid fa-backward mr-2"></i>Torna all'indice del tuo ristorante</button>
+        </a>
+    </div>
+
+    <h3 class="text-center dishes-title py-4">Benvenuto nelle tue statistiche</h3>
 
     {{-- {{ dd($dishes) }} --}}
 
@@ -17,7 +25,7 @@
 
 
 
-    <canvas id="myChart" width="400" height="200"></canvas>
+    <canvas id="myChart" class="card card-shadow p-4 mb-4" width="400" height="200"></canvas>
     <script>
     const ctx = document.getElementById('myChart').getContext('2d');
     
@@ -79,4 +87,5 @@
         }
     });
     </script>
+</div>
 @endsection

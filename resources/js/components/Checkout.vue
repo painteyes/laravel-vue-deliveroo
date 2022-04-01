@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <!-- stampo se il carrello é vuoto -->
-
+    
         <!-- colonna con carrello -->
         <div class="col-md-12 col-lg-4" v-if="cart.length">
             ​<div class="title my-4">
@@ -36,8 +36,8 @@
                     <!-- totale del carrello -->
 
                     <div class="d-flex justify-content-between px-2 py-4 border-top">
-                        <span>TOTALE:</span>
-                        <span>{{ total()}} &#8364;</span>
+                        <span><strong>TOTALE</strong></span>
+                        <span><strong>{{ total()}} &#8364;</strong></span>
                     </div>
                 </div>
             </div>
