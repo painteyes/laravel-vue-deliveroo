@@ -31,9 +31,16 @@ class SearchController extends Controller
 
         foreach ($categoriesWithRestaurants as $category) {
             foreach ($category->users as $user) {
+                $userCategories = [];
+                foreach ($user->categories as $userCategory) {
+                    $userCategories[] = $userCategory->name;
+                }
+                $categoriesArray = array_diff($categories, $userCategories);
                 if(!in_array($user->id, $users_id)) {
                     $users_id[] = $user->id;
-                    $filteredRestaurants[] = $user;
+                    if (count($categoriesArray) == 0) {
+                        $filteredRestaurants[] = $user;
+                    }
                 } 
             }
         }
