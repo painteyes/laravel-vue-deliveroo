@@ -11513,6 +11513,7 @@ a:hover {
   padding: 20px;
   margin: 20px;
   border-radius: 10px;
+  min-height: 500px;
   box-shadow: 1px 1px 10px 2px #c7c7c7;
 }
 
@@ -11594,6 +11595,29 @@ a:hover {
   width: 100%;
 }
 
+.food-card .img-plus {
+  width: 50%;
+}
+
+.food-card .green {
+  color: #b2e155;
+  font-size: 20px;
+}
+
+.food-card .red {
+  color: #d85757;
+  font-size: 20px;
+}
+
+.food-card-empty {
+  background-color: #eeeeee;
+  border: 2px dashed gray;
+}
+
+.btn-back-2 {
+  font-size: 18px;
+}
+
 .login-card-tp {
   padding-top: 150px;
   padding-bottom: 200px;
@@ -11642,7 +11666,7 @@ body {
 
 main {
   padding-bottom: 2.5rem;
-  height: 100%;
+  flex-grow: 1;
   background-image: linear-gradient(to bottom, #ffffff, #f7fbff, #e6faff, #d2faff, #c3faf5);
 }
 

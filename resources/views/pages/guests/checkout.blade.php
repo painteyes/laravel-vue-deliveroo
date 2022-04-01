@@ -3,20 +3,17 @@
 @section('content')
 <div class="container">
 
-    <!-- riga con le info del ristorante -->
-    <div class="pt-4 checkout-head row d-flex align-items-center">
+  <div class="pt-3">
+    <a href="{{route('restaurant', $user->slug)}}">
+      <button class="btn btn-back-2"><i class="fa-solid fa-backward mr-2"></i>Torna al {{$user->restaurant_name}}</button>
+    </a>
+  </div>
 
-      <a href="{{route('restaurant', $user->slug)}}" class="text-center">
-        <button class="btn">&#171; Torna al {{$user->restaurant_name}}</button>
-      </a>
-
-    </div>
-
-    <!-- riga con form per pagamento e carrello -->
-    <checkout
-      :dishes="{{$user->dishes}}"
-      :user_id="'{{$user->id}}'"
-    ></checkout>
+  <!-- riga con form per pagamento e carrello -->
+  <checkout
+    :dishes="{{$user->dishes}}"
+    :user_id="'{{$user->id}}'"
+  ></checkout>
 
 </div>
 @endsection

@@ -2,6 +2,13 @@
 
 @section('content')
     <div class="container">
+        
+        <div class="pt-3">
+            <a href="{{route('admin.home', ['id' => Auth::user()->id])}}">
+                <button class="btn btn-back-2"><i class="fa-solid fa-backward mr-2"></i>Torna all'indice del tuo ristorante</button>
+            </a>
+        </div>
+
         <h2 class="dishes-title py-4">Crea il tuo piatto</h2>
         <div class="card card-shadow px-xl-4">
 
