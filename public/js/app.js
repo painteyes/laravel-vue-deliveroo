@@ -39608,7 +39608,7 @@ var render = function () {
       _vm.dish.img_path
         ? _c("img", {
             staticClass: "img-fluid",
-            attrs: { src: _vm.dish.img_path, alt: _vm.dish.name },
+            attrs: { src: "/storage/" + _vm.dish.img_path, alt: _vm.dish.name },
           })
         : _vm._e(),
     ]),
@@ -53037,8 +53037,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\andre\Classe 48\progetto finale\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\andre\Classe 48\progetto finale\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\1mill\Boolean\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\1mill\Boolean\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
