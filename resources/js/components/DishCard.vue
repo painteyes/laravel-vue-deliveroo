@@ -20,7 +20,7 @@
             <button
                 type="button"
                 name="button"
-                class="btn btn-secondary"
+                class="btn btn-add"
                 data-dismiss="modal"
                 @click="addCart(dish.id)"
             >

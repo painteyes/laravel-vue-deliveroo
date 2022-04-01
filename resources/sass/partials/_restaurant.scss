@@ -72,7 +72,46 @@
                 cursor: pointer;
             }
         }
-    }   
+    }
+
+  .btn-add {
+  padding: 8px 15px;
+  border: unset;
+  border-radius: 8px;
+  color: #440063;
+  z-index: 1;
+  background: #00ccbc;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+  }
+
+  .btn-add::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 8px;
+  background-color: #bbe567;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+  }
+
+  .btn-add:hover {
+  color: #440063;
+  }
+
+  .btn-add:hover::before {
+  width: 100%;
+  }   
 }
 
 // Carrello
@@ -107,6 +146,44 @@
         padding: 10px;
     }
 
+  // .btn-check {
+  //   padding: 8px 15px;
+  //   border: unset;
+  //   border-radius: 8px;
+  //   color: #440063;
+  //   z-index: 1;
+  //   background: #00ccbc;
+  //   position: relative;
+  //   font-weight: 1000;
+  //   font-size: 17px;
+  //   -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  //   box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  //   transition: all 250ms;
+  //   overflow: hidden;
+  //   }
+    
+  //   .btn-check::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   height: 100%;
+  //   width: 0;
+  //   border-radius: 8px;
+  //   background-color: #bbe567;
+  //   z-index: -1;
+  //   -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  //   box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  //   transition: all 250ms
+  //   }
+    
+  //   .btn-check:hover {
+  //   color: #440063;
+  //   }
+    
+  //   .btn-check:hover::before {
+  //   width: 100%;
+  //   }
     .item-test {
       margin-bottom: 10px;
       height: 50px;

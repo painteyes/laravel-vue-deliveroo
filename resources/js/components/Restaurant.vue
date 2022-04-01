@@ -74,7 +74,7 @@
                     
                   </div>
                   <a :href="'/checkout/' + restaurantInfo.id" class="text-center py-2">
-                        <button class="checkout btn btn-secondary">Vai alla cassa</button>
+                        <button class="checkout btn btn-check">Vai alla cassa</button>
                     </a>
                   <div class="text-center">
                       <button class="btn btn-default" @click="removeCart()">Rimuovi piatti</button>
