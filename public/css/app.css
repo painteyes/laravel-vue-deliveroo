@@ -11185,7 +11185,8 @@ footer .social-channels p {
 }
 
 .user:hover {
-  box-shadow: 1px 1px 1px #dfdfdf;
+  box-shadow: 1px 1px 10px 2px #c7c7c7;
+  border-radius: 10px;
   transform: scale(0.95);
   transition: 0.2s ease-in-out;
 }
@@ -11201,7 +11202,7 @@ footer .social-channels p {
 }
 
 .user .image img {
-  border-radius: 3px 3px 0 0;
+  border-radius: 10px 10px 0 0;
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
@@ -11316,6 +11317,43 @@ footer .social-channels p {
   cursor: pointer;
 }
 
+.dish .btn-add {
+  padding: 8px 15px;
+  border: unset;
+  border-radius: 8px;
+  color: #440063;
+  z-index: 1;
+  background: #00ccbc;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+  overflow: hidden;
+}
+
+.dish .btn-add::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 8px;
+  background-color: #bbe567;
+  z-index: -1;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+
+.dish .btn-add:hover {
+  color: #440063;
+}
+
+.dish .btn-add:hover::before {
+  width: 100%;
+}
+
 .cart-headline {
   text-align: center;
   border-radius: 10px;
@@ -11428,22 +11466,6 @@ footer .social-channels p {
   font-weight: 600;
 }
 
-.btn-pr {
-  color: white;
-  font-size: 18px;
-  background-color: #00ccbc;
-  border-color: #00ccbc;
-  font-weight: 600;
-  width: 100%;
-  height: 50%;
-}
-
-.btn-pr:hover {
-  background-color: #02beb2;
-  border-color: #02beb2;
-  color: #440063;
-}
-
 a:hover {
   text-decoration: none;
 }
@@ -11496,6 +11518,80 @@ a:hover {
 
 .food-card .card-title {
   font-weight: 600;
+}
+
+.food-card .btn-ed {
+  padding: 8px 15px;
+  border: unset;
+  border-radius: 8px;
+  color: white;
+  z-index: 1;
+  background: #00ccbc;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+  overflow: hidden;
+}
+
+.food-card .btn-ed::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 8px;
+  background-color: #b2e155;
+  z-index: -1;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+
+.food-card .btn-ed:hover {
+  color: white;
+}
+
+.food-card .btn-ed:hover::before {
+  width: 100%;
+}
+
+.food-card .btn-ca {
+  padding: 8px 15px;
+  border: unset;
+  border-radius: 8px;
+  color: white;
+  z-index: 1;
+  background: #00ccbc;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+  overflow: hidden;
+}
+
+.food-card .btn-ca::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 8px;
+  background-color: #d85757;
+  z-index: -1;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+
+.food-card .btn-ca:hover {
+  color: white;
+}
+
+.food-card .btn-ca:hover::before {
+  width: 100%;
 }
 
 .login-card-tp {
@@ -11584,6 +11680,82 @@ main {
 }
 
 .btn-1:hover::before {
+  width: 100%;
+}
+
+.btn-pr {
+  padding: 8px 15px;
+  border: unset;
+  border-radius: 8px;
+  color: #440063;
+  z-index: 1;
+  background: #00ccbc;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+  overflow: hidden;
+  width: 100%;
+  height: 50%;
+}
+
+.btn-pr::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 8px;
+  background-color: #440063;
+  z-index: -1;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+
+.btn-pr:hover {
+  color: white;
+}
+
+.btn-pr:hover::before {
+  width: 100%;
+}
+
+.btn-check {
+  padding: 8px 15px;
+  border: unset;
+  border-radius: 8px;
+  color: #440063;
+  z-index: 1;
+  background: #00ccbc;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+  overflow: hidden;
+}
+
+.btn-check::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 8px;
+  background-color: #bbe567;
+  z-index: -1;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+
+.btn-check:hover {
+  color: #440063;
+}
+
+.btn-check:hover::before {
   width: 100%;
 }
 

@@ -31,13 +31,52 @@ main {
     background-image: linear-gradient(to bottom, #ffffff, #f7fbff, #e6faff, #d2faff, #c3faf5);
 }
 
-    .btn-1 {
+.btn-1 {
+padding: 8px 15px;
+border: unset;
+border-radius: 8px;
+color: #440063;
+z-index: 1;
+background: #d0eb99;
+position: relative;
+font-weight: 1000;
+font-size: 17px;
+-webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+transition: all 250ms;
+overflow: hidden;
+}
+
+.btn-1::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+height: 100%;
+width: 0;
+border-radius: 8px;
+background-color: #440063;
+z-index: -1;
+-webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+transition: all 250ms
+}
+
+.btn-1:hover {
+color: #d0eb99;
+}
+
+.btn-1:hover::before {
+width: 100%;
+}
+
+.btn-pr {
     padding: 8px 15px;
     border: unset;
     border-radius: 8px;
     color: #440063;
     z-index: 1;
-    background: #d0eb99;
+    background: #00ccbc;
     position: relative;
     font-weight: 1000;
     font-size: 17px;
@@ -45,9 +84,11 @@ main {
     box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
     transition: all 250ms;
     overflow: hidden;
+    width: 100%;
+    height: 50%;
     }
-   
-   .btn-1::before {
+    
+    .btn-pr::before {
     content: "";
     position: absolute;
     top: 0;
@@ -60,13 +101,52 @@ main {
     -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
     box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
     transition: all 250ms
-   }
-   
-   .btn-1:hover {
-    color: #d0eb99;
-   }
-   
-   .btn-1:hover::before {
+    }
+    
+    .btn-pr:hover {
+    color: white;
+    }
+    
+    .btn-pr:hover::before {
     width: 100%;
-   }
+    }
+
+    .btn-check {
+        padding: 8px 15px;
+        border: unset;
+        border-radius: 8px;
+        color: #440063;
+        z-index: 1;
+        background: #00ccbc;
+        position: relative;
+        font-weight: 1000;
+        font-size: 17px;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+        transition: all 250ms;
+        overflow: hidden;
+        }
+        
+        .btn-check::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        border-radius: 8px;
+        background-color: #bbe567;
+        z-index: -1;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+        transition: all 250ms
+        }
+        
+        .btn-check:hover {
+        color: #440063;
+        }
+        
+        .btn-check:hover::before {
+        width: 100%;
+        }
 

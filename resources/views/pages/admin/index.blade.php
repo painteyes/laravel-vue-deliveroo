@@ -24,7 +24,7 @@
                             <form action="{{ route('admin.edit', ['id' => $dish->id]) }}">
                                 @csrf
         
-                                <button type="submit" class="btn btn-primary mr-4">Modifica</button>
+                                <button type="submit" class="btn btn-ed mr-4">Modifica</button>
                             </form>
                         </span>                    
                     
@@ -33,7 +33,7 @@
                                 @csrf
                                 @method('DELETE')
                                 
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Vuoi eliminare questo piatto?')">Cancella</button>
+                                <button type="submit" class="btn btn-ca" onclick="return confirm('Vuoi eliminare questo piatto?')">Cancella</button>
                             </form>
                         </span>
                     </div>
