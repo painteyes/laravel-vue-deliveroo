@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-xl">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h2 class="text-center my-4">Diventa subito partner di Deliveboo</h2>
-            <div class="card p-4">
+            <h2 class="text-center my-4 title-register">Diventa subito partner di Deliveboo</h2>
+            <div class="card card-shadow p-4">
                 
 
                     @if ($errors->any())

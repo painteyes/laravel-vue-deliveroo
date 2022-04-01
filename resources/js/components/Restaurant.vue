@@ -1,6 +1,6 @@
 <template>
   <div class="container-lg">
-    <div>
+    <div class="pt-4">
       <div class="p-1 back-info row">
           <div class="col-md-7 col-s-12">
             <!-- Info ristorante -->
@@ -31,7 +31,7 @@
             <p>Seleziona i piatti per scegliere la quantità e aggiungerli al carrello</p>
         </div>
         <div class="section">
-          <div class="d-flex flex-column px-sm-5 px-lg-0">
+          <div class="d-flex flex-column px-md-5 px-lg-0">
             <div v-for="dish in restaurantMenu" :key='dish.id' class="dish card mb-4 p-1">
                 <DishCard :dish='dish' @currentCart='getCart'/>
             </div>
@@ -45,7 +45,7 @@
             <h2><i class="fas fa-cart-arrow-down mr-2"></i>Carrello</h2>
             <p>Conferma il carrello e vai al checkout</p>
           </div>
-          <div class="section sticky-top px-sm-5 px-lg-0">
+          <div class="section sticky-top px-md-5 px-lg-0">
                 <!-- Carrello pieno -->
                 <div class="card cart-headline p-2" v-if="cart.length">
                   <div class="card-body">
@@ -63,12 +63,12 @@
                       </div>
                       <!-- stampo il totale -->
                       <div class="total">
-                          {{ (restaurantMenu.find(x => x.id === item.id).price * item.quantity) }} &#8364;
+                          {{ (restaurantMenu.find(x => x.id === item.id).price * item.quantity).toFixed(2) }} &#8364;
                       </div>
                     </div>
                     <div class="d-flex justify-content-between px-2 py-4 border-top">
                       <span><strong>TOTALE:</strong></span>
-                      <span>{{ total().toFixed(2) }} &#8364;</span>
+                      <span>{{ total() }} &#8364;</span>
                     </div>
 
                     
@@ -210,7 +210,7 @@ export default {
           let foodPrice = this.restaurantMenu.find(x => x.id === this.cart[i].id).price;
           total += foodPrice * this.cart[i].quantity;
         }
-        return total;
+        return total.toFixed(2);
     },
 
     

@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{-- {{ config('app.name', 'Laravel') }} --}}
@@ -20,11 +20,11 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link btn left mr-3" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link btn btn-1 left mr-3" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link btn right ml-3" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                                <a class="nav-link btn btn-1 right ml-3" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                             </li>
                         @endif
                     @else
