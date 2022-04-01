@@ -2140,11 +2140,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     dishes: Array,
@@ -2167,6 +2162,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     if (localStorage.cart && localStorage.user_id == this.user_id) {
       this.cart = JSON.parse(localStorage.getItem("cart"));
+    }
+
+    if (this.cart.length == 0) {
+      window.location.href = "http://localhost:8000/restaurants/" + localStorage.getItem('slug');
     }
   },
   methods: {
@@ -2252,6 +2251,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("https://payments.sandbox.braintree-api.com/graphql", data, {
         headers: headers
       }).then(function (r) {
+        console.log("pagamento effettuato");
         console.log("data", r.data);
 
         if (r.data.hasOwnProperty("errors")) {
@@ -2259,8 +2259,7 @@ __webpack_require__.r(__webpack_exports__);
           console.log("carta non valida!");
           $("#alert").modal("show");
         } else {
-          console.log("pagamento effettuato"); // 1) salviamo l'ordine nel db
-
+          // 1) salviamo l'ordine nel db
           var order = {
             name: _this2.name,
             lastname: _this2.lastname,
@@ -2272,14 +2271,21 @@ __webpack_require__.r(__webpack_exports__);
             user: _this2.user_id
           }; // console.log("prova");
 
-          console.log(localStorage);
-          axios.post("http://localhost:8000/api/orders", order).then(function (r) {// 2) mandiamo la mail di ricevuto ordine
+          console.log(localStorage); // axios.post('/api/search', {categories: this.categoriesFilter}).then((response)=>{
+          //     if (response.data.success) {
+          //         this.filteredRestaurants = response.data.result        
+          //     } else {
+          //         // this.$router.push({name: 'page-not-found'})
+          //     }
+          // })
+
+          axios.post('/api/orders', order).then(function (r) {// 2) mandiamo la mail di ricevuto ordine
           })["catch"](function (e) {
             return console.log("error", e);
           }); // 3) svuotiamo il carrello
 
-          localStorage.removeItem("cart");
-          console.log(localStorage); // 4) cambiamo pagina in una che dice "pagamento effettuato"
+          localStorage.removeItem("cart"); // console.log(localStorage);
+          // 4) cambiamo pagina in una che dice "pagamento effettuato"
 
           window.location.href = "http://localhost:8000/payed";
         }
@@ -39061,16 +39067,10 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    !_vm.cart.length
-      ? _c("div", { staticClass: "col-md-12 col-lg-4 text-center" }, [
-          _vm._m(0),
-        ])
-      : _vm._e(),
-    _vm._v(" "),
     _vm.cart.length
       ? _c("div", { staticClass: "col-md-12 col-lg-4" }, [
           _vm._v("\n        ​"),
-          _vm._m(1),
+          _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "card card-shadow" }, [
             _c(
@@ -39153,7 +39153,7 @@ var render = function () {
     _vm._v(" "),
     _vm.cart.length
       ? _c("div", { staticClass: "col-md-12 col-lg-8 mt-4" }, [
-          _vm._m(2),
+          _vm._m(1),
           _vm._v(" "),
           _c("div", { staticClass: "card card-shadow" }, [
             _c("div", { staticClass: "card-body" }, [
@@ -39181,7 +39181,7 @@ var render = function () {
                     [
                       _c("div", { staticClass: "col-sm-12 col-md-6" }, [
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(3),
+                          _vm._m(2),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39214,7 +39214,7 @@ var render = function () {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(4),
+                          _vm._m(3),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39247,7 +39247,7 @@ var render = function () {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(5),
+                          _vm._m(4),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39280,7 +39280,7 @@ var render = function () {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(6),
+                          _vm._m(5),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39312,7 +39312,7 @@ var render = function () {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(7),
+                          _vm._m(6),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39346,7 +39346,7 @@ var render = function () {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-sm-12 col-md-6" }, [
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(8),
+                          _vm._m(7),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39381,7 +39381,7 @@ var render = function () {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(9),
+                          _vm._m(8),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -39415,7 +39415,7 @@ var render = function () {
                     ]
                   ),
                   _vm._v(" "),
-                  _vm._m(10),
+                  _vm._m(9),
                 ]
               ),
             ]),
@@ -39423,20 +39423,10 @@ var render = function () {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm._m(11),
+    _vm._m(10),
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "alert" }, [
-      _c("i", { staticClass: "fas fa-shopping-cart mr-2" }, [
-        _vm._v("Il tuo carrello è vuoto"),
-      ]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
