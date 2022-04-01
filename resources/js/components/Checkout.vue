@@ -185,7 +185,7 @@
                         </div>
                         <div class="d-flex justify-content-center">
                             <!-- <div class="col-8 col-md-6"> -->
-                                <button type="submit" class="mt-4 submit btn btn-secondary">
+                                <button type="submit" class="mt-4 submit btn btn-check">
                                     Conferma Ordine
                                 </button>
                             <!-- </div> -->

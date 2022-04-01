@@ -41,21 +41,21 @@
                     <div class="row">
                         <div class="col">
                           <a href="{{ route('admin.dishes', ['id' => Auth::user()->id]) }} class="d-flex justify-content-center">
-                              <button class="btn-pr btn mb-3">Visualizza il Menu</button>
+                              <button class="btn-pr mb-3">Visualizza il Menu</button>
                           </a>
                     
                           <a href="{{ route('admin.create', ['id' => Auth::user()->id]) }} class="d-flex justify-content-center">
-                              <button class="btn-pr btn">Aggiungi un piatto</button>
+                              <button class="btn-pr">Aggiungi un piatto</button>
                           </a>
                         </div>
   
                         <div class="col">
                           <a href="{{ route('admin.graph', ['id' => Auth::user()->id]) }} class="d-flex justify-content-center">
-                              <button class="btn-pr btn mb-3">Statistiche ordini</button>
+                              <button class="btn-pr mb-3">Statistiche ordini</button>
                           </a>
                        
                             {{-- <a href="{{ route('admin.orders.index') }}" class="d-flex justify-content-center"> --}}
-                                <button class="btn-pr btn">Visualizza gli Ordini dell'Attività</button>
+                                <button class="btn-pr">Visualizza gli Ordini dell'Attività</button>
                             {{-- </a> --}}
                         </div>
                     </div>

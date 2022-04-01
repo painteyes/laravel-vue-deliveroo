@@ -39508,10 +39508,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "d-flex justify-content-center" }, [
       _c(
         "button",
-        {
-          staticClass: "mt-4 submit btn btn-secondary",
-          attrs: { type: "submit" },
-        },
+        { staticClass: "mt-4 submit btn btn-check", attrs: { type: "submit" } },
         [
           _vm._v(
             "\n                                Conferma Ordine\n                            "
@@ -39657,7 +39654,7 @@ var render = function () {
         _c(
           "button",
           {
-            staticClass: "btn btn-secondary",
+            staticClass: "btn btn-add",
             attrs: { type: "button", name: "button", "data-dismiss": "modal" },
             on: {
               click: function ($event) {
@@ -39977,11 +39974,9 @@ var render = function () {
                     attrs: { href: "/checkout/" + _vm.restaurantInfo.id },
                   },
                   [
-                    _c(
-                      "button",
-                      { staticClass: "checkout btn btn-secondary" },
-                      [_vm._v("Vai alla cassa")]
-                    ),
+                    _c("button", { staticClass: "checkout btn btn-check" }, [
+                      _vm._v("Vai alla cassa"),
+                    ]),
                   ]
                 ),
                 _vm._v(" "),
@@ -40222,7 +40217,7 @@ var render = function () {
                   }),
                   _vm._v(" "),
                   _vm._l(_vm.filteredRestaurants, function (restaurant, i) {
-                    return _c("div", { key: i, staticClass: "user" }, [
+                    return _c("div", { key: i, staticClass: "user card" }, [
                       _c(
                         "a",
                         { attrs: { href: "/restaurants/" + restaurant.slug } },
