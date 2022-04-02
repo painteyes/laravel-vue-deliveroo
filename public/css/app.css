@@ -10984,21 +10984,13 @@ header .navbar-light .navbar-nav .nav-link.right:hover {
   color: whitesmoke;
 }
 
-header .dropdown-item {
+header .dropdown-menu .dropdown-item {
   font-size: 18px;
   font-weight: 600;
 }
 
 header .btn {
   width: 170px;
-}
-
-header .btn.left {
-  background-color: #d0eb99;
-}
-
-header .btn.right {
-  background-color: #d0eb99;
 }
 
 .login-card-tp {
@@ -11232,17 +11224,9 @@ footer .social-channels p {
     margin-top: 70px;
     margin-left: -20px;
   }
-}
 
-@media screen and (max-width: 576px) {
-  .jumbotron-del img {
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  .jumbotron-del span.title-jumbo {
-    margin-top: 20px;
-    font-size: 32px;
+  .user {
+    width: 500px;
   }
 }
 
@@ -11499,6 +11483,10 @@ a:hover {
   margin: 10px 0;
 }
 
+.card-info-res .user_info ul .ad-name {
+  font-size: 23px;
+}
+
 .card-menu-rt {
   box-shadow: 1px 1px 10px 2px #c7c7c7;
   border-radius: 10px;
@@ -11510,6 +11498,7 @@ a:hover {
 }
 
 .food-card {
+  width: 300px;
   padding: 20px;
   margin: 20px;
   border-radius: 10px;
@@ -11618,6 +11607,16 @@ a:hover {
   font-size: 18px;
 }
 
+@media screen and (max-width: 768px) {
+  .food-card {
+    width: 500px;
+  }
+
+  .food-card .img-plus {
+    width: 30%;
+  }
+}
+
 .login-card-tp {
   padding-top: 150px;
   padding-bottom: 200px;
@@ -11700,7 +11699,7 @@ main {
 }
 
 .btn-1:hover {
-  color: #d0eb99;
+  color: white;
 }
 
 .btn-1:hover::before {
