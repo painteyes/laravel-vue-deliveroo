@@ -40227,7 +40227,7 @@ var render = function () {
                   }),
                   _vm._v(" "),
                   _vm._l(_vm.filteredRestaurants, function (restaurant, i) {
-                    return _c("div", { key: i, staticClass: "user card" }, [
+                    return _c("div", { key: i, staticClass: "user" }, [
                       _c(
                         "a",
                         { attrs: { href: "/restaurants/" + restaurant.slug } },

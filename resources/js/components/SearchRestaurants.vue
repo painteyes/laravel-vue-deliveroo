@@ -55,7 +55,7 @@
                     <div
                         v-for="(restaurant, i) in filteredRestaurants"
                         :key="i"
-                        class="user card"
+                        class="user"
                     >
 
                         <a :href="'/restaurants/' + restaurant.slug">

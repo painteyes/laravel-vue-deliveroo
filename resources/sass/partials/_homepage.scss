@@ -117,19 +117,8 @@
             margin-left: -20px;
         }
     }
-}
 
-@media screen and (max-width: 576px){
-    .jumbotron-del {
-    
-        img {
-            width: 100%;
-            margin-top: 20px;
-        }
-    
-        span.title-jumbo {
-            margin-top: 20px;
-            font-size: 32px;
-        }
+    .user {
+        width: 500px;
     }
 }
