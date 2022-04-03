@@ -21,7 +21,8 @@ class DishesTableSeeder extends Seeder
             $dish->ingredients = 'pennette, pomodoro, cipolla, tonno';
             $dish->price = 8.50;
             $dish->type = $dishes_type[rand(0, 4)];
-            $dish->user_id = rand(1,10);
+            // $dish->user_id = rand(1,10);
+            $dish->user_id = 1;
             $dish->img_path = "https://i.scdn.co/image/ab67616d0000b2737172dd8b8efda356b64ad596";
             $dish->visible = true;
             $dish->save();

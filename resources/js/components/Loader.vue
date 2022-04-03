@@ -1,18 +1,31 @@
 <template>
-    <div class="loader text-align-center">
+  <div>
+
+    <div v-if="restaurantsFound">
+      <div class="loader text-align-center">
         <div class="looping-rhombuses-spinner">
             <div class="rhombus"></div>
             <div class="rhombus"></div>
             <div class="rhombus"></div>
-        </div>
-        <h2 class="mt-4">Caricamento Ristoranti...</h2>
+          </div>
+          <h2 class="mt-4">Caricamento Ristoranti...</h2>
+      </div>
     </div>
+
+    <div v-else> 
+      <div class="loader text-align-center">
+        <h2 class="mt-4">Non ci sono ristoranti</h2>
+      </div>
+    </div>
+
+  </div>
 </template>
 
 <script>
 
 export default {
-    name: "Loader"
+    name: "Loader",
+    props: ["restaurantsFound"]
 }
 </script>
 

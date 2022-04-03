@@ -19,6 +19,7 @@
               <ul class="mt-3">
                 <li><span class="ad-name">{{ $user->restaurant_name }}</span></li>
                 <li><span>Email: {{ $user->email }}</span></li>
+                <li><span>Telefono: {{ $user->phone_number }}</span></li>
                 <li><span>Indirizzo: {{ $user->address }}</span></li>
                 <li><span>P.IVA: {{ $user->vat_number }}</span></li>
                 {{-- @if ($user->description)
@@ -54,9 +55,9 @@
                               <button class="btn-pr mb-3">Statistiche ordini</button>
                           </a>
                        
-                            {{-- <a href="{{ route('admin.orders', ['id' => Auth::user()->id]) }}" class="d-flex justify-content-center"> --}}
+                            <a href="{{ route('admin.statics', ['id' => Auth::user()->id]) }}" class="d-flex justify-content-center">
                                 <button class="btn-pr">Visualizza gli Ordini dell'Attività</button>
-                            {{-- </a> --}}
+                            </a>
                         </div>
                     </div>
                   </div>

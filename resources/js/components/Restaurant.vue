@@ -5,19 +5,65 @@
           <div class="col-md-7 col-s-12">
             <!-- Info ristorante -->
             <div class="info p-4">
-              <h1>{{ restaurantInfo.restaurant_name }}</h1>
+              <h1 class="mb-3">{{ restaurantInfo.restaurant_name }}</h1>
               <div>
-                <div><i class="pr-2 fas fa-map-marker-alt"></i> Indirizzo: {{ restaurantInfo.address }}</div>
-                <div><i class="pr-2 fas fa-at"></i>Email: {{ restaurantInfo.email }}</div>
-                <div><i class="pr-2 fa-solid fa-circle-info"></i>{{ restaurantInfo.description }}</div>
+                <div class="mb-1">
+                  <i class="pr-2 fas fa-map-marker-alt"></i>
+                  <span class="font-weight-bold">Indirizzo: </span>{{ restaurantInfo.address }}
+                </div>
+                <div class="mb-1">
+                  <i class="pr-2 fas fa-at"></i>
+                  <span class="font-weight-bold">
+                    Email: 
+                  </span>
+                    {{ restaurantInfo.email }}
+                  </div>
+                <div class="mb-1">
+                  <i class="pr-2 fa-solid fa-phone"></i>
+                  <span class="font-weight-bold">Telefono: </span> {{restaurantInfo.phone_number}}
+                </div>
+                
+                <div class="restaurant_info mt-2">
+                  <i class="pr-2 fa-solid fa-circle-info"></i>
+                  <span class="description">{{ restaurantInfo.description }}</span>
+                </div>
+
+                <div class="mt-2">
+                  <span v-for="category,index in restaurantCategories" :key='index'>
+                    <span class="categories-circle">● </span>
+                    <span class="font-weight-bold mr-2">{{category.name}}</span>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
           <!-- Img profilo -->
           <div class="col-md-5 col-s-12">
             <div class="img-user p-4">
-              <img :src="'/storage/' + restaurantInfo.img_path" :alt="restaurantInfo.restaurant_name" v-if="restaurantInfo.img_path">
-              <img :src="'/images/noimg.jpg'" :alt="restaurantInfo.restaurant_name" v-else>
+              
+              <img class="img-fluid" :src="'/images/noimg.jpg'" :alt="restaurantInfo.restaurant_name" v-if="restaurantInfo.img_path == null">
+
+              <img class="img-fluid" :src="'/images/restaurant-1.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-1.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-2.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-2.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-3.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-3.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-4.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-4.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-5.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-5.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-6.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-6.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-7.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-7.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-8.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-8.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-9.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-9.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-10.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-10.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-11.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-11.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-12.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-12.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-13.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-13.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-14.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-14.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-15.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-15.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-16.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-16.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-17.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-17.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-18.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-18.jpg'">
+
+              <img class="img-fluid" :src="'/storage/' + randRestaurant.img_path" :alt="randRestaurant.restaurant_name" v-else>
+                          
             </div>
           </div>
       </div>
@@ -25,7 +71,7 @@
 
     <!-- Sezione Menu -->
     <div class="row py-4">
-      <div class="col-lg-8 col-md-12">
+      <div class="col-lg-7 col-md-12">
         <div class="title mt-3">
             <h2><i class="fas fa-utensils mr-2"></i>Menu</h2>
             <p>Seleziona i piatti per scegliere la quantità e aggiungerli al carrello</p>
@@ -40,7 +86,7 @@
       </div>
 
       <!-- Carrello -->
-      <div class="col-lg-4 col-md-12">
+      <div class="col-lg-5 col-md-12">
           <div class="title mt-3">
             <h2><i class="fas fa-cart-arrow-down mr-2"></i>Carrello</h2>
             <p>Conferma il carrello e vai al checkout</p>
@@ -60,6 +106,10 @@
                         <div class="name">
                             {{ restaurantMenu.find(x => x.id === item.id).name }}
                         </div>
+                        <!-- trash -->
+                        <div @click="deleteSingleDish(i)">
+                          <i class="fa-solid fa-trash-can"></i>
+                        </div>
                       </div>
                       <!-- stampo il totale -->
                       <div class="total">
@@ -77,7 +127,7 @@
                         <button class="checkout btn btn-check">Vai alla cassa</button>
                     </a>
                   <div class="text-center">
-                      <button class="btn btn-default" @click="removeCart()">Rimuovi piatti</button>
+                      <button class="btn btn-default" @click="modalEmptyCart()">Rimuovi piatti</button>
                   </div>
                 
                 </div>
@@ -94,6 +144,148 @@
           </div>
       </div>
     </div>
+
+    <!-- Modal Svuota Carrello-->
+    <div class="modal fade" 
+          id="removeItems"
+          tabindex="-1"
+          role="dialog" 
+          aria-labelledby="exampleModalLabel" 
+          aria-hidden="true">
+        
+        <div class="modal-dialog" 
+              role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h5 class="modal-title" 
+                        id="exampleModalLabel">
+                      Attenzione!
+                    </h5>
+                    <button type="button" 
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        
+                        <span aria-hidden="true">
+                          ×
+                      </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Sei sicuro di voler svuotare il carrello?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" 
+                            id="closeid"
+                            class="btn btn-secondary" 
+                            data-dismiss="modal">
+                      Annulla
+                  </button>
+                    <button type="button" 
+                            id="saveid" 
+                            class="btn btn-primary"
+                            @click="removeCart()">
+                      Svuota
+                  </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Svuota Carrello altro ristorante-->
+    <div class="modal fade" 
+          id="removeOtherCart"
+          tabindex="-1"
+          role="dialog" 
+          aria-labelledby="exampleModalLabel" 
+          aria-hidden="true">
+        
+        <div class="modal-dialog" 
+              role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h5 class="modal-title" 
+                        id="exampleModalLabel">
+                      Attenzione!
+                    </h5>
+                    <button type="button" 
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        
+                        <span aria-hidden="true">
+                          ×
+                      </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Non è possibile aggiungere al carrello piatti di ristoranti diversi. Vuoi svuotate il carrello precedente? -->
+                    Non è possibile aggiungere al carrello piatti di ristoranti diversi. Il carrello precedente verrà svuotato.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" 
+                            id="closeid-2"
+                            class="btn btn-warning" 
+                            data-dismiss="modal">
+                      OK
+                  </button>
+                    <!-- <button type="button" 
+                            id="saveid-2" 
+                            class="btn btn-primary">
+                      Svuota
+                  </button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Svuota Carrello-->
+    <!-- <div class="modal fade" 
+          id="removeSingleItem"
+          tabindex="-1"
+          role="dialog" 
+          aria-labelledby="exampleModalLabel" 
+          aria-hidden="true">
+        
+        <div class="modal-dialog" 
+              role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h5 class="modal-title" 
+                        id="exampleModalLabel">
+                      Attenzione!
+                    </h5>
+                    <button type="button" 
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        
+                        <span aria-hidden="true">
+                          ×
+                      </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Sei sicuro di voler svuotare il carrello?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" 
+                            id="closeid"
+                            class="btn btn-secondary" 
+                            data-dismiss="modal">
+                      Annulla
+                  </button>
+                    <button type="button" 
+                            id="saveid" 
+                            class="btn btn-primary"
+                            @click="deleteSingleDish(i)">
+                      Svuota
+                  </button>
+                </div>
+            </div>
+        </div>
+    </div> -->
     <!-- <Modal
       :class="modal ? 'd-block' : ''"
       :warning="'Non è possibile aggiungere prodotti da altri ristoranti. Per favore, svuota prima il carrello'"
@@ -114,6 +306,7 @@ export default {
   props: {
     restaurantInfo: Object,
     restaurantMenu: Array,
+    restaurantCategories: Array,
   },
   data() {
     return {
@@ -133,13 +326,14 @@ export default {
       if (this.cart.length) {
         if (currentRestaurant !== 'http://127.0.0.1:8000/restaurants/' + slug) {
           if (this.cart[0].user_id !== data.user_id) {
-            if (confirm('Non è possibile aggiungere al carrello piatti di ristoranti diversi. Vuoi cancellare il carrello precedente ?')) {
+            $("#removeOtherCart").modal("show");
+            // if (confirm('Non è possibile aggiungere al carrello piatti di ristoranti diversi. Vuoi cancellare il carrello precedente ?')) {
               localStorage.clear();
               this.cart = [];
               this.oldCartFound = false;
-            } else {
-              this.oldCartFound = true;
-            }
+            // } else {
+              // this.oldCartFound = true;
+            // }
           }
         }
       }
@@ -170,13 +364,11 @@ export default {
     },
     // funzione per rimuovere tutti i piatti dal carrello
     removeCart: function() {
-      if (confirm('Attenzione, sei sicuro di voler svuotare il carrello?')) {
         this.cart = [];
         localStorage.removeItem('cart');
         this.saveCart();
-      }
+        $("#removeItems").modal("hide");
     },
-    
     // funzione per aumentare la quantitá nel carrello
     plusOneCart: function(i) {
         this.cart[i].quantity += 1;
@@ -188,20 +380,32 @@ export default {
         this.cart[i].quantity -= 1; 
         this.saveCart();
       }
-      else {
-        if (confirm('Attenzione, sei sicuro di eliminare questo piatto dal carrello?')) {
+      // else {
+        // if (confirm('Attenzione, sei sicuro di eliminare questo piatto dal carrello?')) {
           
-          for (let x = 0; x < this.cart.length; x++) {
+          // for (let x = 0; x < this.cart.length; x++) {
+          //   const cart = this.cart[x];
+          //   if (cart.id == this.cart[i].id) {
+            
+          //     this.cart.splice(x, 1);
+          //     this.saveCart();
+          //   }
+          // } 
+          // return -1;
+        // }
+      // }
+    },
+    deleteSingleDish: function(i) {
+        for (let x = 0; x < this.cart.length; x++) {
             const cart = this.cart[x];
             if (cart.id == this.cart[i].id) {
             
               this.cart.splice(x, 1);
               this.saveCart();
             }
-          } 
+        } 
           return -1;
-        }
-      }
+          
     },
     // funzione per calcolare il totale del carrello
     total: function() {
@@ -212,9 +416,13 @@ export default {
         }
         return total.toFixed(2);
     },
-
-    
-
+    // funzione mostta modal svuota carrello
+    modalEmptyCart: function() {
+      $("#removeItems").modal("show");
+    },
+    modalDeleteSingleDish: function() {
+      $("#removeSingleItem").modal("show");
+    }
   },
   mounted: function() {
     // console.log(localStorage.getItem('cart'));

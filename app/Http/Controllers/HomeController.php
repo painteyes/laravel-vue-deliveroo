@@ -16,7 +16,9 @@ class HomeController extends Controller
 
     public function home()
     {
-        $randomRestaurants = User::inRandomOrder()->limit(10)->get();
+        $randomRestaurants = User::with('categories')->get();
+       
+
         $categories = Category::all();
         return view('pages.guests.home' , compact('randomRestaurants', 'categories'));
     }

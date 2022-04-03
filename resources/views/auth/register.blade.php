@@ -22,7 +22,7 @@
                         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
-                            <h3>Dati utente</h3>
+                            <h4 class="mb-3">Dati utente</h4>
                             {{-- Name --}}
                             <div class="form-group">                     
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Inserisci il tuo nome">
@@ -34,6 +34,12 @@
                                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Indirizzo email">
                             </div>
                             {{-- End E-mail --}}
+
+                            {{-- Phone number --}}
+                            <div class="form-group">
+                                <input id="phone_number" type="text" class="form-control @error('email') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" placeholder="Numero di telefono">
+                           </div>
+                           {{-- End phone_number --}}
 
                             {{-- Password --}}
                             <div class="form-group">                               
@@ -47,7 +53,7 @@
                             </div>
                             {{-- End Confirm Password --}}
 
-                            <h3 class="mt-4">Dati del ristorante</h3>
+                            <h4 class="mt-4 mb-3">Dati del ristorante</h4>
 
                             {{-- Restaurant Name --}}
                             <div class="form-group">
@@ -68,10 +74,9 @@
                             {{-- End Vat Number --}}
 
                             {{-- Categories --}} 
-                            <div class="form-group row mt-4">
-                                <h6 class="col-md-4 "
-                                >Spunta la tipologia del tuo ristorante</h6>
-                                <div class="col-md-4">
+                            <div class="form-group">
+                                <h5 class="mt-4 mb-3">Spunta la tipologia del tuo ristorante</h5>
+                                <div class="">
                                     @foreach ($categories as $category)
                                         <div class="form-check">
                                             <input 

@@ -45,9 +45,18 @@ class SearchController extends Controller
             }
         }
 
-        return response()->json([
-            'success'=> true, 
-            'result' => $filteredRestaurants
-        ]);
+        if (count($filteredRestaurants) > 0) {
+            return response()->json([
+                'success'=> true, 
+                'result' => $filteredRestaurants
+            ]);
+        } else {
+            return response()->json([
+                'success'=> false, 
+                'result' => []
+            ]);
+        }
+
+        
     }
 }

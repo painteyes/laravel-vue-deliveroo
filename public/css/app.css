@@ -10990,7 +10990,7 @@ header .dropdown-menu .dropdown-item {
 }
 
 header .btn {
-  width: 170px;
+  min-width: 170px;
 }
 
 .login-card-tp {
@@ -11144,7 +11144,7 @@ footer .social-channels p {
 }
 
 .check span {
-  padding: 5px 10px;
+  padding: 7px 12px;
   width: 100%;
   font-weight: 600;
   color: #4e4e4e;
@@ -11154,13 +11154,20 @@ footer .social-channels p {
 }
 
 .check span:hover {
-  border-left: 2px solid #00ccbc;
+  border: 2px solid #00ccbc;
+  border-radius: 5px;
+  width: 100%;
   color: #00ccbc;
+  margin-left: -2px;
 }
 
 .check input:checked + span {
-  color: #00ccbc;
-  border: 2px solid #00ccbc;
+  color: white;
+  border: unset;
+  padding: 9px 14px;
+  margin-left: -2px;
+  background-color: #00ccbc;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   border-radius: 5px;
   width: 100%;
 }
@@ -11236,6 +11243,10 @@ footer .social-channels p {
   border-radius: 10px;
 }
 
+.categories-circle {
+  color: #00ccbc;
+}
+
 .info {
   font-size: 16px;
 }
@@ -11297,7 +11308,7 @@ footer .social-channels p {
 .dish .buttons .quantity i {
   color: #00ccbc;
   font-size: 1.3rem;
-  padding: 20px 40px;
+  padding: 15px 30px;
   cursor: pointer;
 }
 

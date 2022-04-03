@@ -3,6 +3,12 @@
     box-shadow: 1px 1px 10px 2px #c7c7c7;
     border-radius: 10px;
   }
+
+  .categories-circle {
+    color: #00ccbc;
+  }
+
+  
   
   // Info
   .info {
@@ -68,7 +74,7 @@
             i {
                 color: #00ccbc;
                 font-size: 1.3rem;
-                padding: 20px 40px;
+                padding: 15px 30px;
                 cursor: pointer;
             }
         }
@@ -113,6 +119,7 @@
   width: 100%;
   }   
 }
+
 
 // Carrello
 
