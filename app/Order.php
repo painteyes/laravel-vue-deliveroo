@@ -9,6 +9,6 @@ class Order extends Model
     // Aggiungere i fillables
 
     public function dishes() {
-        return $this->belongsToMany('App\Dish');
+        return $this->belongsToMany('App\Dish')->withPivot('quantity');
     }
 }
