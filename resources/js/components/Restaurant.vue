@@ -5,19 +5,65 @@
           <div class="col-md-7 col-s-12">
             <!-- Info ristorante -->
             <div class="info p-4">
-              <h1>{{ restaurantInfo.restaurant_name }}</h1>
+              <h1 class="mb-3">{{ restaurantInfo.restaurant_name }}</h1>
               <div>
-                <div><i class="pr-2 fas fa-map-marker-alt"></i> Indirizzo: {{ restaurantInfo.address }}</div>
-                <div><i class="pr-2 fas fa-at"></i>Email: {{ restaurantInfo.email }}</div>
-                <div><i class="pr-2 fa-solid fa-circle-info"></i>{{ restaurantInfo.description }}</div>
+                <div class="mb-1">
+                  <i class="pr-2 fas fa-map-marker-alt"></i>
+                  <span class="font-weight-bold">Indirizzo: </span>{{ restaurantInfo.address }}
+                </div>
+                <div class="mb-1">
+                  <i class="pr-2 fas fa-at"></i>
+                  <span class="font-weight-bold">
+                    Email: 
+                  </span>
+                    {{ restaurantInfo.email }}
+                  </div>
+                <div class="mb-1">
+                  <i class="pr-2 fa-solid fa-phone"></i>
+                  <span class="font-weight-bold">Telefono: </span> {{restaurantInfo.phone_number}}
+                </div>
+                
+                <div class="restaurant_info mt-2">
+                  <i class="pr-2 fa-solid fa-circle-info"></i>
+                  <span class="description">{{ restaurantInfo.description }}</span>
+                </div>
+
+                <div class="mt-2">
+                  <span v-for="category,index in restaurantCategories" :key='index'>
+                    <span class="categories-circle">● </span>
+                    <span class="font-weight-bold mr-2">{{category.name}}</span>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
           <!-- Img profilo -->
           <div class="col-md-5 col-s-12">
             <div class="img-user p-4">
-              <img :src="'/storage/' + restaurantInfo.img_path" :alt="restaurantInfo.restaurant_name" v-if="restaurantInfo.img_path">
-              <img :src="'/images/noimg.jpg'" :alt="restaurantInfo.restaurant_name" v-else>
+              
+              <img class="img-fluid" :src="'/images/noimg.jpg'" :alt="restaurantInfo.restaurant_name" v-if="restaurantInfo.img_path == null">
+
+              <img class="img-fluid" :src="'/images/restaurant-1.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-1.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-2.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-2.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-3.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-3.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-4.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-4.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-5.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-5.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-6.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-6.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-7.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-7.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-8.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-8.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-9.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-9.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-10.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-10.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-11.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-11.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-12.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-12.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-13.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-13.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-14.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-14.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-15.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-15.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-16.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-16.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-17.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-17.jpg'">
+              <img class="img-fluid" :src="'/images/restaurant-18.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-18.jpg'">
+
+              <img class="img-fluid" :src="'/storage/' + randRestaurant.img_path" :alt="randRestaurant.restaurant_name" v-else>
+                          
             </div>
           </div>
       </div>
@@ -114,6 +160,7 @@ export default {
   props: {
     restaurantInfo: Object,
     restaurantMenu: Array,
+    restaurantCategories: Array,
   },
   data() {
     return {
