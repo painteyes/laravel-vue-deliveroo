@@ -43,6 +43,7 @@ Route::middleware('auth')
 	Route::get('/dishes/edit/{id}', 'DishController@edit')->name('edit');
 	Route::put('/dishes/update/{id}', 'DishController@update')->name('update');
 	Route::get('/graph/{id}', 'HomeController@graph')->name('graph');
+	Route::get('/statics/{id}', 'StaticController@statics')->name('statics');
 
 });
 

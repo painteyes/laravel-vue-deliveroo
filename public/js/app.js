@@ -2631,9 +2631,106 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     DishCard: _DishCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     Modal: _Modal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -2659,13 +2756,13 @@ __webpack_require__.r(__webpack_exports__);
       if (this.cart.length) {
         if (currentRestaurant !== 'http://127.0.0.1:8000/restaurants/' + slug) {
           if (this.cart[0].user_id !== data.user_id) {
-            if (confirm('Non è possibile aggiungere al carrello piatti di ristoranti diversi. Vuoi cancellare il carrello precedente ?')) {
-              localStorage.clear();
-              this.cart = [];
-              this.oldCartFound = false;
-            } else {
-              this.oldCartFound = true;
-            }
+            $("#removeOtherCart").modal("show"); // if (confirm('Non è possibile aggiungere al carrello piatti di ristoranti diversi. Vuoi cancellare il carrello precedente ?')) {
+
+            localStorage.clear();
+            this.cart = [];
+            this.oldCartFound = false; // } else {
+            // this.oldCartFound = true;
+            // }
           }
         }
       } // se il cibo é giá presente nel carrello, aggiungo la nuova quantitá senza creare un nuovo oggetto
@@ -2699,11 +2796,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     // funzione per rimuovere tutti i piatti dal carrello
     removeCart: function removeCart() {
-      if (confirm('Attenzione, sei sicuro di voler svuotare il carrello?')) {
-        this.cart = [];
-        localStorage.removeItem('cart');
-        this.saveCart();
-      }
+      this.cart = [];
+      localStorage.removeItem('cart');
+      this.saveCart();
+      $("#removeItems").modal("hide");
     },
     // funzione per aumentare la quantitá nel carrello
     plusOneCart: function plusOneCart(i) {
@@ -2715,20 +2811,31 @@ __webpack_require__.r(__webpack_exports__);
       if (this.cart[i].quantity > 1) {
         this.cart[i].quantity -= 1;
         this.saveCart();
-      } else {
-        if (confirm('Attenzione, sei sicuro di eliminare questo piatto dal carrello?')) {
-          for (var x = 0; x < this.cart.length; x++) {
-            var cart = this.cart[x];
+      } // else {
+      // if (confirm('Attenzione, sei sicuro di eliminare questo piatto dal carrello?')) {
+      // for (let x = 0; x < this.cart.length; x++) {
+      //   const cart = this.cart[x];
+      //   if (cart.id == this.cart[i].id) {
+      //     this.cart.splice(x, 1);
+      //     this.saveCart();
+      //   }
+      // } 
+      // return -1;
+      // }
+      // }
 
-            if (cart.id == this.cart[i].id) {
-              this.cart.splice(x, 1);
-              this.saveCart();
-            }
-          }
+    },
+    deleteSingleDish: function deleteSingleDish(i) {
+      for (var x = 0; x < this.cart.length; x++) {
+        var cart = this.cart[x];
 
-          return -1;
+        if (cart.id == this.cart[i].id) {
+          this.cart.splice(x, 1);
+          this.saveCart();
         }
       }
+
+      return -1;
     },
     // funzione per calcolare il totale del carrello
     total: function total() {
@@ -2749,6 +2856,13 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return total.toFixed(2);
+    },
+    // funzione mostta modal svuota carrello
+    modalEmptyCart: function modalEmptyCart() {
+      $("#removeItems").modal("show");
+    },
+    modalDeleteSingleDish: function modalDeleteSingleDish() {
+      $("#removeSingleItem").modal("show");
     }
   },
   mounted: function mounted() {
@@ -40159,7 +40273,7 @@ var render = function () {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row py-4" }, [
-      _c("div", { staticClass: "col-lg-8 col-md-12" }, [
+      _c("div", { staticClass: "col-lg-7 col-md-12" }, [
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "section" }, [
@@ -40184,7 +40298,7 @@ var render = function () {
         ]),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4 col-md-12" }, [
+      _c("div", { staticClass: "col-lg-5 col-md-12" }, [
         _vm._m(1),
         _vm._v(" "),
         _c("div", { staticClass: "section sticky-top px-md-5 px-lg-0" }, [
@@ -40236,6 +40350,22 @@ var render = function () {
                                   "\n                      "
                               ),
                             ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.deleteSingleDish(i)
+                                  },
+                                },
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "fa-solid fa-trash-can",
+                                }),
+                              ]
+                            ),
                           ]
                         ),
                         _vm._v(" "),
@@ -40293,7 +40423,7 @@ var render = function () {
                       staticClass: "btn btn-default",
                       on: {
                         click: function ($event) {
-                          return _vm.removeCart()
+                          return _vm.modalEmptyCart()
                         },
                       },
                     },
@@ -40305,6 +40435,68 @@ var render = function () {
         ]),
       ]),
     ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "removeItems",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true",
+        },
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm._v(
+                  "\n                  Sei sicuro di voler svuotare il carrello?\n              "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: {
+                      type: "button",
+                      id: "closeid",
+                      "data-dismiss": "modal",
+                    },
+                  },
+                  [_vm._v("\n                    Annulla\n                ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button", id: "saveid" },
+                    on: {
+                      click: function ($event) {
+                        return _vm.removeCart()
+                      },
+                    },
+                  },
+                  [_vm._v("\n                    Svuota\n                ")]
+                ),
+              ]),
+            ]),
+          ]
+        ),
+      ]
+    ),
+    _vm._v(" "),
+    _vm._m(5),
   ])
 }
 var staticRenderFns = [
@@ -40358,6 +40550,117 @@ var staticRenderFns = [
         ),
       ]),
     ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("\n                    Attenzione!\n                  ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close",
+          },
+        },
+        [
+          _c("span", { attrs: { "aria-hidden": "true" } }, [
+            _vm._v("\n                        ×\n                    "),
+          ]),
+        ]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "removeOtherCart",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true",
+        },
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    staticClass: "modal-title",
+                    attrs: { id: "exampleModalLabel" },
+                  },
+                  [
+                    _vm._v(
+                      "\n                    Attenzione!\n                  "
+                    ),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "modal",
+                      "aria-label": "Close",
+                    },
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v(
+                        "\n                        ×\n                    "
+                      ),
+                    ]),
+                  ]
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm._v(
+                  "\n                  Non è possibile aggiungere al carrello piatti di ristoranti diversi. Il carrello precedente verrà svuotato.\n              "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-warning",
+                    attrs: {
+                      type: "button",
+                      id: "closeid-2",
+                      "data-dismiss": "modal",
+                    },
+                  },
+                  [_vm._v("\n                    OK\n                ")]
+                ),
+              ]),
+            ]),
+          ]
+        ),
+      ]
+    )
   },
 ]
 render._withStripped = true
