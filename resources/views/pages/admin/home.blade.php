@@ -17,7 +17,7 @@
             
 
               <ul class="mt-3">
-                <li><span>{{ $user->restaurant_name }}</span></li>
+                <li><span class="ad-name">{{ $user->restaurant_name }}</span></li>
                 <li><span>Email: {{ $user->email }}</span></li>
                 <li><span>Indirizzo: {{ $user->address }}</span></li>
                 <li><span>P.IVA: {{ $user->vat_number }}</span></li>

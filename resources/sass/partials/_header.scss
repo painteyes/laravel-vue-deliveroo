@@ -23,19 +23,16 @@ header {
         }
 
     }
-
-    .dropdown-item {
-        font-size: 18px;
-        font-weight: 600;
+    .dropdown-menu {
+        
+        .dropdown-item {
+            font-size: 18px;
+            font-weight: 600;
+            
+        }
     }
 
     .btn {
-        width: 170px;
-        &.left {
-            background-color: #d0eb99;
-        }
-        &.right {
-            background-color: #d0eb99;
-        }
+        min-width: 170px;
     }
 }

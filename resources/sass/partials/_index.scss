@@ -4,6 +4,7 @@
 }
 
 .food-card {
+    width: 300px;
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
@@ -115,4 +116,14 @@
 
 .btn-back-2 {
     font-size: 18px;
+}
+
+@media screen and (max-width: 768px){
+    .food-card {
+        width: 500px;
+
+        .img-plus {
+            width: 30%;
+        }
+    }
 }
