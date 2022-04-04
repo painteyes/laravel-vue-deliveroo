@@ -63,9 +63,8 @@ class OrderController extends Controller
         
         $order = new Order();
         $order->customer_name = $request->name;
+        $order->date = date('Y-m-d');
         $order->customer_lastname = $request->lastname;
-
-        $order->date = date("Y-m-d");
         $order->customer_email = $request->email;
         $order->total_price = $request->total;
         $order->customer_phone = $request->phone_number;
@@ -73,6 +72,9 @@ class OrderController extends Controller
         $order->order_status = 1;
 
         $order->save();
+
+
+
 
         $cartItems = [];
         $quantityItems = [];

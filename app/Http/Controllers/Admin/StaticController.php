@@ -15,7 +15,7 @@ class StaticController extends Controller
     public function statics($id){
 
     
-        $orders = Order::with('dishes')->orderBy('date', 'desc')->get();
+        $orders = Order::with('dishes')->orderBy('created_at', 'desc')->get();
 
         $restaurant_orders = [];
 

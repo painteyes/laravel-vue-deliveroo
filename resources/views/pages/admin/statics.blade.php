@@ -36,7 +36,7 @@
                         <td>{{$order->customer_name}}</td>
                         <td>{{$dish->name}}</td>
                         <td>{{$dish->quantity}}</td>
-                        <td>{{$order->date}}</td>
+                        <td>{{$order->created_at}}</td>
                         <td>Da consegnare</td>
                     </tr>
 
