@@ -81,7 +81,7 @@
                         <button class="checkout btn btn-check">Vai alla cassa</button>
                     </a>
                   <div class="text-center">
-                      <button class="btn btn-default" @click="modalEmptyCart()">Rimuovi piatti</button>
+                      <button class="btn btn-default" @click="modalEmptyCart()">Svuota il carrello</button>
                   </div>
                 
                 </div>
@@ -193,7 +193,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal Svuota Carrello-->
+    <!-- Modal rimuovi singolo-->
     <!-- <div class="modal fade" 
           id="removeSingleItem"
           tabindex="-1"
@@ -369,13 +369,14 @@ export default {
         }
         return total.toFixed(2);
     },
-    // funzione mostta modal svuota carrello
+    // funzione mostra modal svuota carrello
     modalEmptyCart: function() {
       $("#removeItems").modal("show");
     },
+    // funzione mostra modal rimuovi singolo piatto
     modalDeleteSingleDish: function() {
       $("#removeSingleItem").modal("show");
-    }
+    },
   },
   mounted: function() {
     // console.log(localStorage.getItem('cart'));
