@@ -11,7 +11,15 @@
     <div class="d-flex flex-wrap justify-content-center">
         @foreach ($dishes as $dish)
             <div class="card food-card">
-                <img class="card-img-top" src="{{ asset('storage/' . $dish->img_path) }}" alt="{{ $dish->name }}">
+
+                @if ($dish->img_path)
+                    <img class="card-img-top" src="{{ asset('storage/' . $dish->img_path) }}" alt="{{ $dish->name }}">
+                @else
+                    <img class="card-img-top" src="{{ asset('images/noimg.jpg') }}" alt="{{ $dish->name }}">
+                @endif
+                
+
+
                 <div class="card-body flex-grow-1">
                     <h5 class="card-title">{{$dish->name}}</h5>
                     <p class="card-text">Ingredienti: {{$dish->ingredients}}</p>
