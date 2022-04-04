@@ -113,7 +113,7 @@ class UsersTableSeeder extends Seeder
             1,
             3,
             8,
-        ]);
+        ]); 
 
 
 
