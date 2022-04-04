@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
+use App\User;
+
 
 class SearchController extends Controller
 {
@@ -59,4 +61,24 @@ class SearchController extends Controller
 
         
     }
+
+    
+    public function findRestaurant($name) {
+
+        $foundRestaurant = User::where('restaurant_name','LIKE',"%{$name}%")->get();
+
+        if ($foundRestaurant) {
+            return response()->json([
+                'success'=> true, 
+                'result' => $foundRestaurant
+            ]);
+        } else {
+            return response()->json([
+                'success'=> false, 
+                'result' => []
+            ]);
+        }
+        
+    }
+  
 }

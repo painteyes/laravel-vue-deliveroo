@@ -27,6 +27,9 @@ Route::get('/payed', function () {
 });
 
 
+
+
+
 // Rotte protette da autenticazione
 Route::middleware('auth')  
 	->namespace('Admin')
