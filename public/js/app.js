@@ -2846,10 +2846,11 @@ __webpack_require__.r(__webpack_exports__);
 
       return total.toFixed(2);
     },
-    // funzione mostta modal svuota carrello
+    // funzione mostra modal svuota carrello
     modalEmptyCart: function modalEmptyCart() {
       $("#removeItems").modal("show");
     },
+    // funzione mostra modal rimuovi singolo piatto
     modalDeleteSingleDish: function modalDeleteSingleDish() {
       $("#removeSingleItem").modal("show");
     }
@@ -40180,7 +40181,7 @@ var render = function () {
                         },
                       },
                     },
-                    [_vm._v("Rimuovi piatti")]
+                    [_vm._v("Svuota il carrello")]
                   ),
                 ]),
               ])

@@ -10991,6 +10991,7 @@ header .dropdown-menu .dropdown-item {
 
 header .btn {
   min-width: 170px;
+  max-width: 300px;
 }
 
 .login-card-tp {
@@ -11497,6 +11498,15 @@ a:hover {
 .card-menu-rt {
   box-shadow: 1px 1px 10px 2px #c7c7c7;
   border-radius: 10px;
+}
+
+.ok-page {
+  padding-top: 200px;
+  padding-bottom: 300px;
+}
+
+.ok-page .green-2 {
+  color: #bbe567;
 }
 
 .dishes-title {
