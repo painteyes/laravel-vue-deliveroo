@@ -1,5 +1,5 @@
 <template>
-        <div class="row align-items-center card-body">
+    <div class="row align-items-center card-body">
 
         <div class="image col-3">
             <img class="img-fluid" :src="'/storage/' + dish.img_path" :alt="dish.name" v-if="dish.img_path">

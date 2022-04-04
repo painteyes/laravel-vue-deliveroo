@@ -10991,6 +10991,7 @@ header .dropdown-menu .dropdown-item {
 
 header .btn {
   min-width: 170px;
+  max-width: 300px;
 }
 
 .login-card-tp {
@@ -11518,6 +11519,15 @@ a:hover {
   border-radius: 10px;
 }
 
+.ok-page {
+  padding-top: 200px;
+  padding-bottom: 300px;
+}
+
+.ok-page .green-2 {
+  color: #bbe567;
+}
+
 .dishes-title {
   font-weight: 600;
   text-align: center;
@@ -11681,6 +11691,18 @@ a:hover {
 .login-card-tp .btn-forgot {
   color: white;
   font-size: 16px;
+}
+
+.modal h4 {
+  font-weight: 600;
+}
+
+.modal .modal-text {
+  font-size: 18px;
+}
+
+.modal button {
+  font-size: 18px;
 }
 
 body {
