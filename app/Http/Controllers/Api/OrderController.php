@@ -65,7 +65,7 @@ class OrderController extends Controller
         $order->customer_name = $request->name;
         $order->customer_lastname = $request->lastname;
 
-        // $order->date =  ;
+        $order->date = date("Y-m-d");
         $order->customer_email = $request->email;
         $order->total_price = $request->total;
         $order->customer_phone = $request->phone_number;
