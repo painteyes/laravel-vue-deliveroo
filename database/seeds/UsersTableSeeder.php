@@ -13,21 +13,51 @@ class UsersTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for($i = 0; $i < 10; $i++) {
-            $user = new User();
+        
+        $user = new User();
 
-            $user->name = $faker->name();
-            $user->email = $faker->email();
-            $user->password = $faker->password();
-            $user->restaurant_name = $faker->company();
-            $user->address = $faker->streetAddress();
-            $user->vat_number = $faker->randomNumber(9, true);
-            // $user->img_path 
-            $user->slug = User::getUniqueSlugFromTitle($user->restaurant_name);
-            $user->description = $faker->text(50);
-            $user->save();
+        $user->name = 'Grazia';
+        $user->email = 'graziaegraziella@gmail.com';
+        $user->password = $faker->password();
+        $user->phone_number = '3272483027';
+        $user->restaurant_name = 'Grazia e Graziella';
+        $user->address = 'Viale Battista Bardanzellu, 27';
+        $user->vat_number = $faker->randomNumber(9, true);
+        $user->img_path = 'restaurant-1.jpg';
+        $user->slug = User::getUniqueSlugFromTitle($user->restaurant_name);
+        $user->description = 'Il ristorante Grazia e Graziella in pochi anni è riuscito ad affermarsi come attività di riferimento per la zona e non solo.';
+        $user->save();
 
-            $user->categories()->sync([1, 2, 3]);
-        }
+        $user->categories()->sync([ 
+            rand(1, 10),
+            rand(1, 10),
+            rand(1, 10),
+        ]);
+
+
+        // $user = new User();
+
+        // $user->name = 'Kaori';
+        // $user->email = 'kaori@gmail.com';
+        // $user->password = $faker->password();
+        // $user->phone_number = '3909847811';
+        // $user->restaurant_name = 'Grazia e Graziella';
+        // $user->address = 'Viale Battista Bardanzellu, 27';
+        // $user->vat_number = $faker->randomNumber(9, true);
+        // $user->img_path = 'restaurant-1.jpg';
+        // $user->slug = User::getUniqueSlugFromTitle($user->restaurant_name);
+        // $user->description = 'Il ristorante Grazia e Graziella in pochi anni è riuscito ad affermarsi come attività di riferimento per la zona e non solo.';
+        // $user->save();
+
+        // $user->categories()->sync([ 
+        //     rand(1, 10),
+        //     rand(1, 10),
+        //     rand(1, 10),
+        // ]);
+
+
+
+
+        
     }
 }

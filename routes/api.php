@@ -23,3 +23,6 @@ Route::post('/search', 'Api\SearchController@getRestaurants')->name('search');
 
 Route::post('/orders', 'Api\OrderController@store')->name('orders.store');
 
+// Rotta per cercare un ristorante
+Route::get('/find/restaurants/{name}', 'Api\SearchController@findRestaurant')->name('find.restaurant');
+
