@@ -11443,6 +11443,10 @@ footer .social-channels p {
   white-space: nowrap;
 }
 
+.trash {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 992px) {
   .title {
     text-align: center;

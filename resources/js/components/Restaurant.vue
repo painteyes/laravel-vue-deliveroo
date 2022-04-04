@@ -105,16 +105,16 @@
                         <!-- stampo il nome -->
                         <div class="name">
                             {{ restaurantMenu.find(x => x.id === item.id).name }}
-                        </div>
-                        <!-- trash -->
-                        <div @click="deleteSingleDish(i)">
-                          <i class="fa-solid fa-trash-can"></i>
-                        </div>
+                        </div>                 
                       </div>
                       <!-- stampo il totale -->
                       <div class="total">
                           {{ (restaurantMenu.find(x => x.id === item.id).price * item.quantity).toFixed(2) }} &#8364;
                       </div>
+                      <!-- trash -->
+                        <div @click="deleteSingleDish(i)" class="trash">
+                          <i class="fa-solid fa-trash-can"></i>
+                        </div>
                     </div>
                     <div class="d-flex justify-content-between px-2 py-4 border-top">
                       <span><strong>TOTALE</strong></span>

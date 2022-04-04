@@ -23,7 +23,7 @@
                                 class="form-control mr-sm-2 "  aria-label="Search"
                             >
                             <label for=""></label>
-                            <button @click="search" class="btn btn-1 my-2 my-sm-0 mt-sm-2 mt-lg-0">Cerca</button>
+                            <button @click="search" class="btn btn-1 my-2 my-sm-0 mt-sm-2 mt-xl-0">Cerca</button>
                             
                         </div>
 

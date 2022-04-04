@@ -41095,22 +41095,6 @@ var render = function () {
                                   "\n                      "
                               ),
                             ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                on: {
-                                  click: function ($event) {
-                                    return _vm.deleteSingleDish(i)
-                                  },
-                                },
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fa-solid fa-trash-can",
-                                }),
-                              ]
-                            ),
                           ]
                         ),
                         _vm._v(" "),
@@ -41127,6 +41111,19 @@ var render = function () {
                               " €\n                    "
                           ),
                         ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "trash",
+                            on: {
+                              click: function ($event) {
+                                return _vm.deleteSingleDish(i)
+                              },
+                            },
+                          },
+                          [_c("i", { staticClass: "fa-solid fa-trash-can" })]
+                        ),
                       ])
                     }),
                     _vm._v(" "),
@@ -41490,7 +41487,7 @@ var render = function () {
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-1 my-2 my-sm-0 mt-sm-2 mt-lg-0",
+                      staticClass: "btn btn-1 my-2 my-sm-0 mt-sm-2 mt-xl-0",
                       on: { click: _vm.search },
                     },
                     [_vm._v("Cerca")]
