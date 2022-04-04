@@ -10995,8 +10995,8 @@ header .btn {
 }
 
 .login-card-tp {
-  padding-top: 150px;
-  padding-bottom: 200px;
+  padding-top: 200px;
+  padding-bottom: 400px;
 }
 
 .login-card-tp .login-name {
@@ -11658,8 +11658,8 @@ a:hover {
 }
 
 .login-card-tp {
-  padding-top: 150px;
-  padding-bottom: 200px;
+  padding-top: 200px;
+  padding-bottom: 400px;
 }
 
 .login-card-tp .login-name {
@@ -11717,6 +11717,7 @@ body {
 
 main {
   padding-bottom: 2.5rem;
+  min-height: 700px;
   flex-grow: 1;
   background-image: linear-gradient(to bottom, #ffffff, #f7fbff, #e6faff, #d2faff, #c3faf5);
 }
@@ -11772,7 +11773,7 @@ main {
   transition: all 250ms;
   overflow: hidden;
   width: 100%;
-  height: 50%;
+  height: 55%;
 }
 
 .btn-pr::before {

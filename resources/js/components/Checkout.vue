@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row pb-5">
         <!-- stampo se il carrello é vuoto -->
     
         <!-- colonna con carrello -->

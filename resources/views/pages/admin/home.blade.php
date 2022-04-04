@@ -42,22 +42,22 @@
   
                     <div class="row">
                         <div class="col">
-                          <a href="{{ route('admin.dishes', ['id' => Auth::user()->id]) }} class="d-flex justify-content-center">
+                          <a href="{{ route('admin.dishes', ['id' => Auth::user()->id]) }}">
                               <button class="btn-pr mb-3">Visualizza il Menu</button>
                           </a>
                     
-                          <a href="{{ route('admin.create', ['id' => Auth::user()->id]) }} class="d-flex justify-content-center">
+                          <a href="{{ route('admin.create', ['id' => Auth::user()->id]) }}">
                               <button class="btn-pr">Aggiungi un piatto</button>
                           </a>
                         </div>
   
                         <div class="col">
-                          <a href="{{ route('admin.graph', ['id' => Auth::user()->id]) }} class="d-flex justify-content-center">
+                          <a href="{{ route('admin.graph', ['id' => Auth::user()->id]) }}">
                               <button class="btn-pr mb-3">Statistiche ordini</button>
                           </a>
                        
-                            <a href="{{ route('admin.statics', ['id' => Auth::user()->id]) }}" class="d-flex justify-content-center">
-                                <button class="btn-pr">Visualizza gli Ordini dell'Attività</button>
+                            <a href="{{ route('admin.statics', ['id' => Auth::user()->id]) }}">
+                                <button class="btn-pr">Visualizza gli ordini dell'attività</button>
                             </a>
                         </div>
                     </div>
