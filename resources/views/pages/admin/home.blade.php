@@ -7,12 +7,13 @@
         <div class="col-12 col-md-6 mb-4">
           <div class="card text-center card-info-res">
             <div class="user_info">
+
               {{-- se il path dell'imagine conduce ad un file che esiste --}}
-              @if (file_exists('storage/' . $user->img_path))
-                  <span><img class="img_account" src="{{ asset('storage/' . $user->img_path) }}" alt="{{ $user->restaurant_name }}"></span>
+              @if ($user->img_path))
+                  <img class="img_account" src="{{ asset('storage/upload' . $user->img_path) }}" alt="{{ $user->restaurant_name }}">
                   
               @else
-                  <span><img class="img_account" src="{{ asset('images/noimg.jpg') }}" alt="{{ $user->restaurant_name }}"></span></li>
+                  <img class="img_account" src="{{ asset('images/noimg.jpg') }}" alt="{{ $user->restaurant_name }}">
               @endif
             
 
@@ -35,8 +36,8 @@
                   <div class="dashboard mb-4">
 
                     <div class="welcome text-center mb-3">
-                        Ciao {{ $user->name }}! <br>
-                        Benvenuto nella pagina del tuo ristorante!
+                        Ciao {{ $user->name }},<br>
+                        Benvenuto nella pagina del tuo ristorante !
                     </div>
   
                     <div class="row">

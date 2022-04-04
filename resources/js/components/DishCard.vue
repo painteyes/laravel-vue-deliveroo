@@ -2,12 +2,40 @@
     <div class="row align-items-center card-body">
 
         <div class="image col-3">
-            <img class="img-fluid" :src="'/storage/' + dish.img_path" :alt="dish.name" v-if="dish.img_path">
-            <!-- <img class="img-fluid" :src="'/images/noimg2.jpg'" :alt="dish.name" v-else> -->
+            <!-- <img class="img-fluid" :src="'/storage/' + dish.img_path" :alt="dish.name" v-if="dish.img_path">
+            <img class="img-fluid" :src="'/images/noimg2.jpg'" :alt="dish.name" v-else> -->
+
+
+            <img class="img-fluid" :src="'/images/noimg.jpg'" :alt="dish.restaurant_name" v-if="dish.img_path == null">
+
+            <img class="img-fluid" :src="'/images/dish-1.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-1.jpg'">
+            <img class="img-fluid" :src="'/images/dish-2.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-2.jpg'">
+            <img class="img-fluid" :src="'/images/dish-3.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-3.jpg'">
+            <img class="img-fluid" :src="'/images/dish-4.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-4.jpg'">
+            <img class="img-fluid" :src="'/images/dish-5.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-5.jpg'">
+            <img class="img-fluid" :src="'/images/dish-6.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-6.jpg'">
+            <img class="img-fluid" :src="'/images/dish-7.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-7.jpg'">
+            <img class="img-fluid" :src="'/images/dish-8.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-8.jpg'">
+            <img class="img-fluid" :src="'/images/dish-9.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-9.jpg'">
+            <img class="img-fluid" :src="'/images/dish-10.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-10.jpg'">
+            <img class="img-fluid" :src="'/images/dish-11.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-11.jpg'">
+            <img class="img-fluid" :src="'/images/dish-12.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-12.jpg'">
+            <img class="img-fluid" :src="'/images/dish-13.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-13.jpg'">
+            <img class="img-fluid" :src="'/images/dish-14.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-14.jpg'">
+            <img class="img-fluid" :src="'/images/dish-15.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-15.jpg'">
+            <img class="img-fluid" :src="'/images/dish-16.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-16.jpg'">
+            <img class="img-fluid" :src="'/images/dish-17.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-17.jpg'">
+            <img class="img-fluid" :src="'/images/dish-18.jpg'" :alt="dish.restaurant_name" v-else-if="dish.img_path == 'dish-18.jpg'">
+
+            <img class="img-fluid" :src="'/storage/' + dish.img_path" :alt="dish.name" v-else>
+
+
+
+
         </div>
         <div class="p-3 col-6">
             <h4>{{ dish.name }}</h4>
-            <span>{{dish.ingredients}}</span><br>
+            <span><span class="font-weight-bold">Ingredienti: </span>{{dish.ingredients}}</span><br>
             <span class="price">{{dish.price}} &#8364;</span>
         </div>
         <!-- Bottoni -->
