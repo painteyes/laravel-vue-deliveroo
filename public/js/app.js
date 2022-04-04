@@ -41095,22 +41095,6 @@ var render = function () {
                                   "\n                      "
                               ),
                             ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                on: {
-                                  click: function ($event) {
-                                    return _vm.deleteSingleDish(i)
-                                  },
-                                },
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fa-solid fa-trash-can",
-                                }),
-                              ]
-                            ),
                           ]
                         ),
                         _vm._v(" "),
@@ -41127,6 +41111,19 @@ var render = function () {
                               " €\n                    "
                           ),
                         ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "trash",
+                            on: {
+                              click: function ($event) {
+                                return _vm.deleteSingleDish(i)
+                              },
+                            },
+                          },
+                          [_c("i", { staticClass: "fa-solid fa-trash-can" })]
+                        ),
                       ])
                     }),
                     _vm._v(" "),
@@ -41444,17 +41441,20 @@ var render = function () {
         _c("div", { staticClass: "row justify-content-between" }, [
           _c(
             "div",
-            { staticClass: "d-flex flex-column justify-content-center" },
+            { staticClass: "col-6 d-flex flex-column justify-content-center" },
             [
-              _c("span", { staticClass: "title-jumbo " }, [
+              _c("span", { staticClass: "title-jumbo ml-sm-2" }, [
                 _vm._v(
-                  "\n                            I piatti che ami, a domicilio.\n                        "
+                  "\n                        I piatti che ami, a domicilio.\n                    "
                 ),
               ]),
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "searchbar navbar navbar-light bg-light" },
+                {
+                  staticClass:
+                    "searchbar navbar navbar-light bg-light card-shadow d-flex justify-content-center",
+                },
                 [
                   _c("input", {
                     directives: [
@@ -41487,7 +41487,7 @@ var render = function () {
                   _c(
                     "button",
                     {
-                      staticClass: "btn my-2 my-sm-0",
+                      staticClass: "btn btn-1 my-2 my-sm-0 mt-sm-2 mt-xl-0",
                       on: { click: _vm.search },
                     },
                     [_vm._v("Cerca")]
@@ -41510,7 +41510,10 @@ var render = function () {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: " d-flex justify-content-center mt-sm-4 mb-sm-4" },
+          {
+            staticClass:
+              " d-flex justify-content-center flex-wrap mt-sm-4 mb-sm-4",
+          },
           _vm._l(_vm.categories, function (category, index) {
             return _c("label", { key: index, staticClass: "check m-sm-3" }, [
               _c("input", {
@@ -41566,7 +41569,9 @@ var render = function () {
         _vm.categoriesFilter.length == 0
           ? _c(
               "div",
-              { staticClass: "d-flex justify-content-center mt-md-5" },
+              {
+                staticClass: "d-flex justify-content-center mt-md-5 flex-wrap",
+              },
               _vm._l(_vm.randRestaurants, function (randRestaurant, i) {
                 return _c("div", { key: i, staticClass: "user" }, [
                   _c(
@@ -41794,8 +41799,7 @@ var render = function () {
           : _c(
               "div",
               {
-                staticClass:
-                  "col-sm-12 col-md-11 col-lg-10 d-flex flex-wrap align-items-start justify-content-center mt-md-5",
+                staticClass: "d-flex justify-content-center mt-md-5 flex-wrap",
               },
               [
                 _c("Loader", {
