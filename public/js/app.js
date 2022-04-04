@@ -2359,6 +2359,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'DishCard',
   props: ['dish'],
@@ -40628,18 +40656,143 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row align-items-center card-body" }, [
     _c("div", { staticClass: "image col-3" }, [
-      _vm.dish.img_path
+      _vm.dish.img_path == null
         ? _c("img", {
             staticClass: "img-fluid",
-            attrs: { src: "/storage/" + _vm.dish.img_path, alt: _vm.dish.name },
+            attrs: { src: "/images/noimg.jpg", alt: _vm.dish.restaurant_name },
           })
-        : _vm._e(),
+        : _vm.dish.img_path == "dish-1.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: { src: "/images/dish-1.jpg", alt: _vm.dish.restaurant_name },
+          })
+        : _vm.dish.img_path == "dish-2.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: { src: "/images/dish-2.jpg", alt: _vm.dish.restaurant_name },
+          })
+        : _vm.dish.img_path == "dish-3.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: { src: "/images/dish-3.jpg", alt: _vm.dish.restaurant_name },
+          })
+        : _vm.dish.img_path == "dish-4.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: { src: "/images/dish-4.jpg", alt: _vm.dish.restaurant_name },
+          })
+        : _vm.dish.img_path == "dish-5.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: { src: "/images/dish-5.jpg", alt: _vm.dish.restaurant_name },
+          })
+        : _vm.dish.img_path == "dish-6.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: { src: "/images/dish-6.jpg", alt: _vm.dish.restaurant_name },
+          })
+        : _vm.dish.img_path == "dish-7.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: { src: "/images/dish-7.jpg", alt: _vm.dish.restaurant_name },
+          })
+        : _vm.dish.img_path == "dish-8.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: { src: "/images/dish-8.jpg", alt: _vm.dish.restaurant_name },
+          })
+        : _vm.dish.img_path == "dish-9.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: { src: "/images/dish-9.jpg", alt: _vm.dish.restaurant_name },
+          })
+        : _vm.dish.img_path == "dish-10.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: {
+              src: "/images/dish-10.jpg",
+              alt: _vm.dish.restaurant_name,
+            },
+          })
+        : _vm.dish.img_path == "dish-11.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: {
+              src: "/images/dish-11.jpg",
+              alt: _vm.dish.restaurant_name,
+            },
+          })
+        : _vm.dish.img_path == "dish-12.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: {
+              src: "/images/dish-12.jpg",
+              alt: _vm.dish.restaurant_name,
+            },
+          })
+        : _vm.dish.img_path == "dish-13.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: {
+              src: "/images/dish-13.jpg",
+              alt: _vm.dish.restaurant_name,
+            },
+          })
+        : _vm.dish.img_path == "dish-14.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: {
+              src: "/images/dish-14.jpg",
+              alt: _vm.dish.restaurant_name,
+            },
+          })
+        : _vm.dish.img_path == "dish-15.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: {
+              src: "/images/dish-15.jpg",
+              alt: _vm.dish.restaurant_name,
+            },
+          })
+        : _vm.dish.img_path == "dish-16.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: {
+              src: "/images/dish-16.jpg",
+              alt: _vm.dish.restaurant_name,
+            },
+          })
+        : _vm.dish.img_path == "dish-17.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: {
+              src: "/images/dish-17.jpg",
+              alt: _vm.dish.restaurant_name,
+            },
+          })
+        : _vm.dish.img_path == "dish-18.jpg"
+        ? _c("img", {
+            staticClass: "img-fluid",
+            attrs: {
+              src: "/images/dish-18.jpg",
+              alt: _vm.dish.restaurant_name,
+            },
+          })
+        : _c("img", {
+            staticClass: "img-fluid",
+            attrs: { src: "/storage/" + _vm.dish.img_path, alt: _vm.dish.name },
+          }),
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "p-3 col-6" }, [
       _c("h4", [_vm._v(_vm._s(_vm.dish.name))]),
       _vm._v(" "),
-      _c("span", [_vm._v(_vm._s(_vm.dish.ingredients))]),
+      _c("span", [
+        _c("span", { staticClass: "font-weight-bold" }, [
+          _vm._v("Ingredienti: "),
+        ]),
+        _vm._v(_vm._s(_vm.dish.ingredients)),
+      ]),
       _c("br"),
       _vm._v(" "),
       _c("span", { staticClass: "price" }, [
@@ -54719,8 +54872,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\1mill\Boolean\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\1mill\Boolean\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\andre\Classe 48\progetto finale\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\andre\Classe 48\progetto finale\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
