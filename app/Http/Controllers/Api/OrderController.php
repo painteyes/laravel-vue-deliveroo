@@ -74,21 +74,21 @@ class OrderController extends Controller
 
         $order->save();
 
-        // $cartItems = [];
-        // $quantityItems = [];
+        $cartItems = [];
+        $quantityItems = [];
 
-        // foreach ($request->cart as $item) {
-        //     $cartItems[] = $item['id'];
-        //     $quantityItems[] = $item['quantity'];
-        // }
+        foreach ($request->cart as $item) {
+            $cartItems[] = $item['id'];
+            $quantityItems[] = $item['quantity'];
+        }
 
-        // $sync_data = [];
+        $sync_data = [];
 
-        // for ($i = 0; $i < count($cartItems); $i++) {
-        //     $sync_data[$cartItems[$i]] = ['quantity' => $quantityItems[$i]];
-        // }
+        for ($i = 0; $i < count($cartItems); $i++) {
+            $sync_data[$cartItems[$i]] = ['quantity' => $quantityItems[$i]];
+        }
 
-        // $order->dishes()->sync($sync_data);
+        $order->dishes()->sync($sync_data);
 
         // $mail = $request->email;
         // $cart = $request->cart;
@@ -96,7 +96,7 @@ class OrderController extends Controller
         // Mail::to($mail)
         //     ->send(new OrderMail($cart, $user));
 
-        // return response()->json('ok', 200);
+        return response()->json('ok', 200);
     }
 
 
