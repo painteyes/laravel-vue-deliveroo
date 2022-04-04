@@ -41248,22 +41248,6 @@ var render = function () {
                                   "\n                      "
                               ),
                             ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                on: {
-                                  click: function ($event) {
-                                    return _vm.deleteSingleDish(i)
-                                  },
-                                },
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fa-solid fa-trash-can",
-                                }),
-                              ]
-                            ),
                           ]
                         ),
                         _vm._v(" "),
@@ -41280,6 +41264,19 @@ var render = function () {
                               " €\n                    "
                           ),
                         ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "trash",
+                            on: {
+                              click: function ($event) {
+                                return _vm.deleteSingleDish(i)
+                              },
+                            },
+                          },
+                          [_c("i", { staticClass: "fa-solid fa-trash-can" })]
+                        ),
                       ])
                     }),
                     _vm._v(" "),
@@ -41643,7 +41640,7 @@ var render = function () {
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-1 my-2 my-sm-0 mt-sm-2 mt-lg-0",
+                      staticClass: "btn btn-1 my-2 my-sm-0 mt-sm-2 mt-xl-0",
                       on: { click: _vm.search },
                     },
                     [_vm._v("Cerca")]
@@ -54875,8 +54872,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\andre\Classe 48\progetto finale\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\andre\Classe 48\progetto finale\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\1mill\Boolean\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\1mill\Boolean\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
