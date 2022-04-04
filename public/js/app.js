@@ -2416,47 +2416,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Modal.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Modal",
-  props: ["warning"]
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Restaurant.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Restaurant.vue?vue&type=script&lang=js& ***!
@@ -2467,7 +2426,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DishCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DishCard.vue */ "./resources/js/components/DishCard.vue");
-/* harmony import */ var _Modal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Modal.vue */ "./resources/js/components/Modal.vue");
 //
 //
 //
@@ -2670,60 +2628,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    DishCard: _DishCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Modal: _Modal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    DishCard: _DishCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
     restaurantInfo: Object,
@@ -2732,50 +2640,37 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       cart: [],
-      oldCartFound: false // modal: false,
-
+      oldCartFound: false
     };
   },
   methods: {
+    checkCart: function checkCart(data) {
+      if (!this.cart.length || this.cart[0].user_id == data.user_id) {
+        this.getCart(data);
+      } else {
+        $("#removeOtherCart").modal("show");
+      }
+    },
     // funzione per aggiungere un piatto al carrello
     getCart: function getCart(data) {
-      var slug = localStorage.getItem('slug');
-      var currentRestaurant = window.location.href;
+      var id = data.id;
 
-      if (this.cart.length) {
-        if (currentRestaurant !== 'http://127.0.0.1:8000/restaurants/' + slug) {
-          if (this.cart[0].user_id !== data.user_id) {
-            $("#removeOtherCart").modal("show"); // if (confirm('Non è possibile aggiungere al carrello piatti di ristoranti diversi. Vuoi cancellare il carrello precedente ?')) {
-
-            localStorage.clear();
-            this.cart = [];
-            this.oldCartFound = false; // } else {
-            // this.oldCartFound = true;
-            // }
-          }
-        }
-      } // se il cibo é giá presente nel carrello, aggiungo la nuova quantitá senza creare un nuovo oggetto
-
-
-      if (this.oldCartFound == false) {
-        var id = data.id;
-
-        if (this.cart.find(function (x) {
+      if (this.cart.find(function (x) {
+        return x.id === id;
+      })) {
+        this.cart.find(function (x) {
           return x.id === id;
-        })) {
-          this.cart.find(function (x) {
-            return x.id === id;
-          }).quantity += data.quantity;
-        } else {
-          var item = {
-            id: id,
-            quantity: data.quantity,
-            user_id: data.user_id
-          };
-          this.cart.push(item);
-          this.saveCart(); // this.cart = JSON.parse(localStorage.getItem('cart'));
-        }
+        }).quantity += data.quantity;
+      } else {
+        var item = {
+          id: id,
+          quantity: data.quantity,
+          user_id: data.user_id
+        };
+        this.cart.push(item);
       }
+
+      this.saveCart();
     },
     saveCart: function saveCart() {
       var parsed = JSON.stringify(this.cart);
@@ -2790,6 +2685,13 @@ __webpack_require__.r(__webpack_exports__);
       this.saveCart();
       $("#removeItems").modal("hide");
     },
+    // funzione per svuotare il carrello di un altro ristorante
+    removeOtherCart: function removeOtherCart() {
+      localStorage.clear();
+      this.cart = [];
+      this.oldCartFound = false;
+      $("#removeOtherCart").modal("hide");
+    },
     // funzione per aumentare la quantitá nel carrello
     plusOneCart: function plusOneCart(i) {
       this.cart[i].quantity += 1;
@@ -2800,20 +2702,9 @@ __webpack_require__.r(__webpack_exports__);
       if (this.cart[i].quantity > 1) {
         this.cart[i].quantity -= 1;
         this.saveCart();
-      } // else {
-      // if (confirm('Attenzione, sei sicuro di eliminare questo piatto dal carrello?')) {
-      // for (let x = 0; x < this.cart.length; x++) {
-      //   const cart = this.cart[x];
-      //   if (cart.id == this.cart[i].id) {
-      //     this.cart.splice(x, 1);
-      //     this.saveCart();
-      //   }
-      // } 
-      // return -1;
-      // }
-      // }
-
+      }
     },
+    // funzione elimina singolo piatto dal carrello
     deleteSingleDish: function deleteSingleDish(i) {
       for (var x = 0; x < this.cart.length; x++) {
         var cart = this.cart[x];
@@ -2849,10 +2740,6 @@ __webpack_require__.r(__webpack_exports__);
     // funzione mostra modal svuota carrello
     modalEmptyCart: function modalEmptyCart() {
       $("#removeItems").modal("show");
-    },
-    // funzione mostra modal rimuovi singolo piatto
-    modalDeleteSingleDish: function modalDeleteSingleDish() {
-      $("#removeSingleItem").modal("show");
     }
   },
   mounted: function mounted() {
@@ -39707,49 +39594,45 @@ var staticRenderFns = [
         },
       },
       [
-        _c(
-          "div",
-          { staticClass: "modal-dialog modal-dialog modal-dialog-centered" },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title",
-                    attrs: { id: "staticBackdropLabel" },
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Errore durante il pagamento\n                    "
-                    ),
-                  ]
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _vm._v(
-                  "\n                    I dati della carta di credito non sono corretti.\n                "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { type: "button", "data-dismiss": "modal" },
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Chiudi\n                    "
-                    ),
-                  ]
-                ),
-              ]),
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c(
+                "h4",
+                {
+                  staticClass: "modal-title",
+                  attrs: { id: "staticBackdropLabel" },
+                },
+                [
+                  _vm._v(
+                    "\n                        Errore durante il pagamento\n                    "
+                  ),
+                ]
+              ),
             ]),
-          ]
-        ),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body modal-text" }, [
+              _vm._v(
+                "\n                    I dati della carta di credito non sono corretti.\n                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  attrs: { type: "button", "data-dismiss": "modal" },
+                },
+                [
+                  _vm._v(
+                    "\n                        Chiudi\n                    "
+                  ),
+                ]
+              ),
+            ]),
+          ]),
+        ]),
       ]
     )
   },
@@ -39902,69 +39785,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal.vue?vue&type=template&id=53ab54d2&":
-/*!********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Modal.vue?vue&type=template&id=53ab54d2& ***!
-  \********************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "modal", attrs: { tabindex: "-1", role: "dialog" } },
-    [
-      _c("div", { staticClass: "modal-dialog", attrs: { role: "document" } }, [
-        _c("div", { staticClass: "modal-content" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-body" }, [
-            _c("p", [_vm._v(_vm._s(_vm.warning))]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-footer" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-warning",
-                attrs: { type: "button", "data-dismiss": "modal" },
-                on: {
-                  click: function ($event) {
-                    return _vm.$emit("close")
-                  },
-                },
-              },
-              [_vm._v("\n          Chiudi\n        ")]
-            ),
-          ]),
-        ]),
-      ]),
-    ]
-  )
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c("h5", { staticClass: "modal-title" }, [_vm._v("Warning")]),
-    ])
-  },
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Restaurant.vue?vue&type=template&id=ed3bdd30&":
 /*!*************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Restaurant.vue?vue&type=template&id=ed3bdd30& ***!
@@ -40041,7 +39861,7 @@ var render = function () {
                 [
                   _c("DishCard", {
                     attrs: { dish: dish },
-                    on: { currentCart: _vm.getCart },
+                    on: { currentCart: _vm.checkCart },
                   }),
                 ],
                 1
@@ -40196,9 +40016,11 @@ var render = function () {
         staticClass: "modal fade",
         attrs: {
           id: "removeItems",
+          "data-backdrop": "static",
+          "data-keyboard": "false",
           tabindex: "-1",
           role: "dialog",
-          "aria-labelledby": "exampleModalLabel",
+          "aria-labelledby": "staticBackdropLabel",
           "aria-hidden": "true",
         },
       },
@@ -40210,7 +40032,7 @@ var render = function () {
             _c("div", { staticClass: "modal-content" }, [
               _vm._m(4),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "modal-body modal-text" }, [
                 _vm._v(
                   "\n                  Sei sicuro di voler svuotare il carrello?\n              "
                 ),
@@ -40233,7 +40055,7 @@ var render = function () {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-primary",
+                    staticClass: "btn btn-success",
                     attrs: { type: "button", id: "saveid" },
                     on: {
                       click: function ($event) {
@@ -40250,7 +40072,67 @@ var render = function () {
       ]
     ),
     _vm._v(" "),
-    _vm._m(5),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "removeOtherCart",
+          "data-backdrop": "static",
+          "data-keyboard": "false",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "staticBackdropLabel",
+          "aria-hidden": "true",
+        },
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(5),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body modal-text" }, [
+                _vm._v(
+                  "\n                  Non è possibile aggiungere al carrello piatti di ristoranti diversi. Vuoi svuotate il carrello precedente?\n              "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: {
+                      type: "button",
+                      id: "closeid-2",
+                      "data-dismiss": "modal",
+                    },
+                  },
+                  [_vm._v("\n                    Annulla\n                ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "button", id: "saveid-2" },
+                    on: {
+                      click: function ($event) {
+                        return _vm.removeOtherCart()
+                      },
+                    },
+                  },
+                  [_vm._v("\n                    Svuota\n                ")]
+                ),
+              ]),
+            ]),
+          ]
+        ),
+      ]
+    ),
   ])
 }
 var staticRenderFns = [
@@ -40311,7 +40193,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c(
-        "h5",
+        "h4",
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
         [_vm._v("\n                    Attenzione!\n                  ")]
       ),
@@ -40338,83 +40220,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "removeOtherCart",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalLabel",
-          "aria-hidden": "true",
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("\n                    Attenzione!\n                  ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close",
+          },
         },
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title",
-                    attrs: { id: "exampleModalLabel" },
-                  },
-                  [
-                    _vm._v(
-                      "\n                    Attenzione!\n                  "
-                    ),
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-label": "Close",
-                    },
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v(
-                        "\n                        ×\n                    "
-                      ),
-                    ]),
-                  ]
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _vm._v(
-                  "\n                  Non è possibile aggiungere al carrello piatti di ristoranti diversi. Il carrello precedente verrà svuotato.\n              "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-warning",
-                    attrs: {
-                      type: "button",
-                      id: "closeid-2",
-                      "data-dismiss": "modal",
-                    },
-                  },
-                  [_vm._v("\n                    OK\n                ")]
-                ),
-              ]),
-            ]),
-          ]
-        ),
-      ]
-    )
+        [
+          _c("span", { attrs: { "aria-hidden": "true" } }, [
+            _vm._v("\n                        ×\n                    "),
+          ]),
+        ]
+      ),
+    ])
   },
 ]
 render._withStripped = true
@@ -53170,75 +52999,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_template_id_e79ec684_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_template_id_e79ec684_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/Modal.vue":
-/*!*******************************************!*\
-  !*** ./resources/js/components/Modal.vue ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Modal_vue_vue_type_template_id_53ab54d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Modal.vue?vue&type=template&id=53ab54d2& */ "./resources/js/components/Modal.vue?vue&type=template&id=53ab54d2&");
-/* harmony import */ var _Modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Modal.vue?vue&type=script&lang=js& */ "./resources/js/components/Modal.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Modal_vue_vue_type_template_id_53ab54d2___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Modal_vue_vue_type_template_id_53ab54d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/Modal.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/Modal.vue?vue&type=script&lang=js&":
-/*!********************************************************************!*\
-  !*** ./resources/js/components/Modal.vue?vue&type=script&lang=js& ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Modal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/Modal.vue?vue&type=template&id=53ab54d2&":
-/*!**************************************************************************!*\
-  !*** ./resources/js/components/Modal.vue?vue&type=template&id=53ab54d2& ***!
-  \**************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_vue_vue_type_template_id_53ab54d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Modal.vue?vue&type=template&id=53ab54d2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal.vue?vue&type=template&id=53ab54d2&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_vue_vue_type_template_id_53ab54d2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_vue_vue_type_template_id_53ab54d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

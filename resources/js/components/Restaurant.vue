@@ -33,7 +33,7 @@
         <div class="section">
           <div class="d-flex flex-column px-md-5 px-lg-0">
             <div v-for="dish in restaurantMenu" :key='dish.id' class="dish card mb-4 p-1">
-                <DishCard :dish='dish' @currentCart='getCart'/>
+                <DishCard :dish='dish' @currentCart='checkCart'/>
             </div>
           </div>
         </div>
@@ -102,9 +102,11 @@
     <!-- Modal Svuota Carrello-->
     <div class="modal fade" 
           id="removeItems"
+          data-backdrop="static"
+          data-keyboard="false"
           tabindex="-1"
           role="dialog" 
-          aria-labelledby="exampleModalLabel" 
+          aria-labelledby="staticBackdropLabel" 
           aria-hidden="true">
         
         <div class="modal-dialog" 
@@ -112,10 +114,10 @@
             <div class="modal-content">
                 <div class="modal-header">
 
-                    <h5 class="modal-title" 
+                    <h4 class="modal-title" 
                         id="exampleModalLabel">
                       Attenzione!
-                    </h5>
+                    </h4>
                     <button type="button" 
                             class="close"
                             data-dismiss="modal"
@@ -126,7 +128,7 @@
                       </span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body modal-text">
                     Sei sicuro di voler svuotare il carrello?
                 </div>
                 <div class="modal-footer">
@@ -138,7 +140,7 @@
                   </button>
                     <button type="button" 
                             id="saveid" 
-                            class="btn btn-primary"
+                            class="btn btn-success"
                             @click="removeCart()">
                       Svuota
                   </button>
@@ -149,9 +151,11 @@
     <!-- Modal Svuota Carrello altro ristorante-->
     <div class="modal fade" 
           id="removeOtherCart"
+          data-backdrop="static"
+          data-keyboard="false"
           tabindex="-1"
           role="dialog" 
-          aria-labelledby="exampleModalLabel" 
+          aria-labelledby="staticBackdropLabel" 
           aria-hidden="true">
         
         <div class="modal-dialog" 
@@ -159,10 +163,10 @@
             <div class="modal-content">
                 <div class="modal-header">
 
-                    <h5 class="modal-title" 
+                    <h4 class="modal-title" 
                         id="exampleModalLabel">
                       Attenzione!
-                    </h5>
+                    </h4>
                     <button type="button" 
                             class="close"
                             data-dismiss="modal"
@@ -173,89 +177,35 @@
                       </span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <!-- Non è possibile aggiungere al carrello piatti di ristoranti diversi. Vuoi svuotate il carrello precedente? -->
-                    Non è possibile aggiungere al carrello piatti di ristoranti diversi. Il carrello precedente verrà svuotato.
+                <div class="modal-body modal-text">
+                    Non è possibile aggiungere al carrello piatti di ristoranti diversi. Vuoi svuotate il carrello precedente?
                 </div>
                 <div class="modal-footer">
                     <button type="button" 
                             id="closeid-2"
-                            class="btn btn-warning" 
-                            data-dismiss="modal">
-                      OK
-                  </button>
-                    <!-- <button type="button" 
-                            id="saveid-2" 
-                            class="btn btn-primary">
-                      Svuota
-                  </button> -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal rimuovi singolo-->
-    <!-- <div class="modal fade" 
-          id="removeSingleItem"
-          tabindex="-1"
-          role="dialog" 
-          aria-labelledby="exampleModalLabel" 
-          aria-hidden="true">
-        
-        <div class="modal-dialog" 
-              role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <h5 class="modal-title" 
-                        id="exampleModalLabel">
-                      Attenzione!
-                    </h5>
-                    <button type="button" 
-                            class="close"
-                            data-dismiss="modal"
-                            aria-label="Close">
-                        
-                        <span aria-hidden="true">
-                          ×
-                      </span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Sei sicuro di voler svuotare il carrello?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" 
-                            id="closeid"
                             class="btn btn-secondary" 
                             data-dismiss="modal">
                       Annulla
                   </button>
                     <button type="button" 
-                            id="saveid" 
-                            class="btn btn-primary"
-                            @click="deleteSingleDish(i)">
+                            id="saveid-2" 
+                            class="btn btn-success"
+                            @click="removeOtherCart()">
                       Svuota
                   </button>
                 </div>
             </div>
         </div>
-    </div> -->
-    <!-- <Modal
-      :class="modal ? 'd-block' : ''"
-      :warning="'Non è possibile aggiungere prodotti da altri ristoranti. Per favore, svuota prima il carrello'"
-      @close="modal = false"
-    /> -->
+    </div>
   </div>
 </template>
 
 <script>
 import DishCard from './DishCard.vue'
-import Modal from './Modal.vue'
 
 export default {
   components: {
     DishCard,
-    Modal
   },
   props: {
     restaurantInfo: Object,
@@ -265,55 +215,37 @@ export default {
     return {
         cart: [],
         oldCartFound: false,
-        // modal: false,
     };
   },
   methods: {
+    checkCart: function(data) {
+          if (!(this.cart.length) || (this.cart[0].user_id == data.user_id)) {
+            this.getCart(data);
+          } else {
+              $("#removeOtherCart").modal("show");
+          }
+        },
     // funzione per aggiungere un piatto al carrello
     getCart: function(data) {
 
-      let slug = localStorage.getItem('slug');
-      let currentRestaurant = window.location.href;
-
-    
-      if (this.cart.length) {
-        if (currentRestaurant !== 'http://127.0.0.1:8000/restaurants/' + slug) {
-          if (this.cart[0].user_id !== data.user_id) {
-            $("#removeOtherCart").modal("show");
-            // if (confirm('Non è possibile aggiungere al carrello piatti di ristoranti diversi. Vuoi cancellare il carrello precedente ?')) {
-              localStorage.clear();
-              this.cart = [];
-              this.oldCartFound = false;
-            // } else {
-              // this.oldCartFound = true;
-            // }
-          }
-        }
-      }
-  
-      // se il cibo é giá presente nel carrello, aggiungo la nuova quantitá senza creare un nuovo oggetto
-      if (this.oldCartFound == false) {
-        let id = data.id;
-        if (this.cart.find(x => x.id === id)) {
-            this.cart.find(x => x.id === id).quantity += data.quantity;
-        } else {
-          let item = {
-            id: id,
-            quantity: data.quantity,
-            user_id: data.user_id
-          };
-          this.cart.push(item);
-          this.saveCart();
-          // this.cart = JSON.parse(localStorage.getItem('cart'));
-        }   
-      }       
+      let id = data.id;
+      if (this.cart.find(x => x.id === id)) {
+          this.cart.find(x => x.id === id).quantity += data.quantity;
+      } else {
+        let item = {
+          id: id,
+          quantity: data.quantity,
+          user_id: data.user_id
+        };
+        this.cart.push(item);
+      }    
+      this.saveCart();   
     },
     saveCart: function() {
       const parsed = JSON.stringify(this.cart);
       localStorage.setItem('cart', parsed);
       localStorage.setItem('user_id', this.restaurantInfo.id);
       localStorage.setItem('slug', this.restaurantInfo.slug);
-    
     },
     // funzione per rimuovere tutti i piatti dal carrello
     removeCart: function() {
@@ -321,6 +253,13 @@ export default {
         localStorage.removeItem('cart');
         this.saveCart();
         $("#removeItems").modal("hide");
+    },
+    // funzione per svuotare il carrello di un altro ristorante
+    removeOtherCart: function() {
+      localStorage.clear();
+      this.cart = [];
+      this.oldCartFound = false;
+      $("#removeOtherCart").modal("hide");
     },
     // funzione per aumentare la quantitá nel carrello
     plusOneCart: function(i) {
@@ -333,32 +272,18 @@ export default {
         this.cart[i].quantity -= 1; 
         this.saveCart();
       }
-      // else {
-        // if (confirm('Attenzione, sei sicuro di eliminare questo piatto dal carrello?')) {
-          
-          // for (let x = 0; x < this.cart.length; x++) {
-          //   const cart = this.cart[x];
-          //   if (cart.id == this.cart[i].id) {
-            
-          //     this.cart.splice(x, 1);
-          //     this.saveCart();
-          //   }
-          // } 
-          // return -1;
-        // }
-      // }
     },
+    // funzione elimina singolo piatto dal carrello
     deleteSingleDish: function(i) {
         for (let x = 0; x < this.cart.length; x++) {
-            const cart = this.cart[x];
-            if (cart.id == this.cart[i].id) {
-            
-              this.cart.splice(x, 1);
-              this.saveCart();
-            }
-        } 
-          return -1;
+          const cart = this.cart[x];
+          if (cart.id == this.cart[i].id) {
           
+            this.cart.splice(x, 1);
+            this.saveCart();
+          }
+        } 
+        return -1; 
     },
     // funzione per calcolare il totale del carrello
     total: function() {
@@ -373,10 +298,6 @@ export default {
     modalEmptyCart: function() {
       $("#removeItems").modal("show");
     },
-    // funzione mostra modal rimuovi singolo piatto
-    modalDeleteSingleDish: function() {
-      $("#removeSingleItem").modal("show");
-    },
   },
   mounted: function() {
     // console.log(localStorage.getItem('cart'));
@@ -388,7 +309,6 @@ export default {
   },
   created() {
     // localStorage.clear()
-    
   }
 }
 </script>
