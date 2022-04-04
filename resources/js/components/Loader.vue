@@ -25,7 +25,7 @@
 
 export default {
     name: "Loader",
-    props: ["restaurantsFound"]
+    props: ["restaurantsFound", 'searchRestaurant']
 }
 </script>
 
