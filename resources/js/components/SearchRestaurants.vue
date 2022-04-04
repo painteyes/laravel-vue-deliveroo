@@ -7,28 +7,28 @@
         <div class="jumbotron-del">
             <div class="container">
                 <div class="row justify-content-between">
-                    <!-- <div class="col-6"> -->
-                        <div class="d-flex flex-column justify-content-center">
+                    
+                    <div class="col-6 d-flex flex-column justify-content-center">
 
-                            <span class="title-jumbo ">
-                                I piatti che ami, a domicilio.
-                            </span>
+                        <span class="title-jumbo ml-sm-2">
+                            I piatti che ami, a domicilio.
+                        </span>
 
-                            <div class="searchbar navbar navbar-light bg-light">
-                                
-                                <input 
-                                    type="search"
-                                    v-model="searchRestaurant"
-                                    placeholder="Ricerca ristorante"
-                                    class="form-control mr-sm-2 "  aria-label="Search"
-                                >
-                                <label for=""></label>
-                                <button @click="search" class="btn my-2 my-sm-0">Cerca</button>
-                                
-                            </div>
-
+                        <div class="searchbar navbar navbar-light bg-light card-shadow d-flex justify-content-center">
+                            
+                            <input 
+                                type="search"
+                                v-model="searchRestaurant"
+                                placeholder="Ricerca ristorante"
+                                class="form-control mr-sm-2 "  aria-label="Search"
+                            >
+                            <label for=""></label>
+                            <button @click="search" class="btn btn-1 my-2 my-sm-0 mt-sm-2 mt-lg-0">Cerca</button>
+                            
                         </div>
-                    <!-- </div> -->
+
+                    </div>
+                    
                     <div class="col-6 text-center pt-3">
                         <img src="/images/jumbotron.svg" alt="jumbo-img">
                     </div>
@@ -40,7 +40,7 @@
         <div class=" mx-sm-5">
             <div class=" page ">
                 <h2 class="mt-5 text-center font-weight-bold">Scegli la categoria</h2>
-                <div class=" d-flex justify-content-center mt-sm-4 mb-sm-4">
+                <div class=" d-flex justify-content-center flex-wrap mt-sm-4 mb-sm-4">
 
                     <!-- stampo le tipologie per permettere all'utente di fare le ricerche -->
                     
@@ -56,7 +56,7 @@
 
                 <!-- stampo ristoranti random se nessuna caegoria è selezionata-->
                 <div 
-                    class="d-flex justify-content-center mt-md-5" 
+                    class="d-flex justify-content-center mt-md-5 flex-wrap" 
                     v-if="categoriesFilter.length == 0 "
                 >
                 
@@ -110,7 +110,7 @@
 
                 <!-- stampo i ristoranti appartenenti alla categoria selezionata dall'utente -->
                  <div 
-                    class="col-sm-12 col-md-11 col-lg-10 d-flex flex-wrap align-items-start justify-content-center mt-md-5"
+                    class="d-flex justify-content-center mt-md-5 flex-wrap"
                     v-else
                 >
 
