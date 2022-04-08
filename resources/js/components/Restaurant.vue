@@ -22,18 +22,22 @@
                   <i class="pr-2 fa-solid fa-phone"></i>
                   <span class="font-weight-bold">Telefono: </span> {{restaurantInfo.phone_number}}
                 </div>
+
+                <div class="mt-2">
+                  <i class="fa-solid fa-utensils pr-2"></i>
+                  <span class="font-weight-bold">Categorie: </span>
+                  <span v-for="category,index in restaurantCategories" :key='index'>
+                    <span v-if="index == restaurantCategories.length - 1">{{category.name}}</span>
+                    <span v-else>{{category.name}}, </span>
+                  </span>
+                </div>
                 
                 <div class="restaurant_info mt-2">
                   <i class="pr-2 fa-solid fa-circle-info"></i>
                   <span class="description">{{ restaurantInfo.description }}</span>
                 </div>
 
-                <div class="mt-2">
-                  <span v-for="category,index in restaurantCategories" :key='index'>
-                    <span class="categories-circle">● </span>
-                    <span class="font-weight-bold mr-2">{{category.name}}</span>
-                  </span>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -73,13 +77,15 @@
     <div class="row py-4">
       <div class="col-lg-7 col-md-12">
         <div class="title mt-3">
-            <h2><i class="fas fa-utensils mr-2"></i>Menu</h2>
+            <h3 class="font-weight-bold">Menu</h3>
             <p>Seleziona i piatti per scegliere la quantità e aggiungerli al carrello</p>
         </div>
         <div class="section">
           <div class="d-flex flex-column px-md-5 px-lg-0">
-            <div v-for="dish in restaurantMenu" :key='dish.id' class="dish card mb-4 p-1">
-                <DishCard :dish='dish' @currentCart='checkCart'/>
+            <div v-for="dish in restaurantMenu" :key='dish.id' >
+                <div class="dish card mb-4 p-1" v-if="dish.visible">
+                  <DishCard :dish='dish' @currentCart='checkCart' />
+                </div>
             </div>
           </div>
         </div>
@@ -88,7 +94,7 @@
       <!-- Carrello -->
       <div class="col-lg-5 col-md-12">
           <div class="title mt-3">
-            <h2><i class="fas fa-cart-arrow-down mr-2"></i>Carrello</h2>
+            <h4 class="font-weight-bold">Carrello<i class="fas fa-cart-arrow-down ml-2 restaurant-icon"></i></h4>
             <p>Conferma il carrello e vai al checkout</p>
           </div>
           <div class="section sticky-top px-md-5 px-lg-0">

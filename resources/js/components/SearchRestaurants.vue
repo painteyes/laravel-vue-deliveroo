@@ -151,9 +151,15 @@
                             </div>
                             <div class="p-3 rest-info">
                                 <h4>{{ restaurant.restaurant_name }}</h4>
-                                <span>
-                                    {{restaurant.address}} <br>
-                                    {{restaurant.email}}
+                                <div class="mb-1">
+                                    <span class="font-weight-bold">Indirizzo: </span>{{restaurant.address}} 
+                                </div>
+                                <div class="mb-2">
+                                    <span class="font-weight-bold">Telefono: </span> {{restaurant.phone_number}}
+                                </div>
+                                <span v-for="category,index in restaurant.categories" :key='index'>
+                                    <span class="font-weight-bold">● </span>
+                                    <span class="font-weight-bold mr-2">{{category.name}}</span>
                                 </span>
                             </div>
                         </a>

@@ -12,18 +12,23 @@
                 <div class="card-body">
 
                     <div class="item-test d-flex justify-content-between mb-2" v-for="(item, i) in cart" :key="i">
+                        
                         <!-- stampo quantitá -->
                         <div
-                            class="quantity d-flex flex-no-wrap align-items-baseline"
+                            class="quantity "
                         >
                             <span>                                
-                                {{ item.quantity }}
-                            </span>
-                            <!-- stampo il nome -->
-                            <span class="name">
-                                {{ dishes.find(x => x.id === item.id).name }}
-                            </span>
+                                (x{{ item.quantity }})
+                            </span>    
                         </div>
+
+                        <!-- stampo il nome -->
+                        <span class="name">
+                            {{ dishes.find(x => x.id === item.id).name }}
+                        </span>
+
+                        
+
                         <!-- stampo il totale -->
                         <span class="total">
                             {{
@@ -32,6 +37,7 @@
                             }}
                             &#8364;
                         </span>
+
                     </div>
                     <!-- totale del carrello -->
 

@@ -11,40 +11,89 @@
 
     <h3 class="text-center dishes-title py-4">Il tuo riepilogo degli ordini</h3>
 
-    
     @if(count($restaurant_orders) == 0)
         <h4 class="text-center">Al momento non hai ordini</h4>
     @elseif(count($restaurant_orders) > 0)
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">ID ordine</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Piatto</th>
-                <th scope="col">Quantità</th>
-                <th scope="col">Data ordine</th>
-                <th scope="col">Stato ordine</th>
-            </tr>
-            </thead>
-            <tbody>
+        
+        @foreach ($restaurant_orders as $restaurant_order)
 
-                @foreach ($restaurant_orders as $order)
-                    @foreach ($order->dishes as $dish)
+            <div class="card card-shadow mb-5">
+                <div class="card-body">
 
-                    <tr>
-                        <th scope="row">{{$order->id}}</th>
-                        <td>{{$order->customer_name}}</td>
-                        <td>{{$dish->name}}</td>
-                        <td>{{$dish->quantity}}</td>
-                        <td>{{$order->created_at}}</td>
-                        <td>Da consegnare</td>
-                    </tr>
+                    <h4 class="font-weight-bold">Ordine n. </span>{{$restaurant_order->id}}</h4>
 
-                    @endforeach        
-                @endforeach
+                    <div><span class="font-weight-bold">Data: </span> {{$restaurant_order->created_at}}</div>
+                    <div><span class="font-weight-bold">Stato: </span> da consegnare</div>
 
-            </tbody>
-        </table>
+                    <h5 class="mt-3">Cliente</h5>
+                    <div ><span class="font-weight-bold">Nome: </span>{{$restaurant_order->customer_name}}</div>
+                    <div ><span class="font-weight-bold">Cellulare cliente: </span>{{$restaurant_order->customer_phone}}</div>
+                    <div ><span class="font-weight-bold">Email cliente: </span>{{$restaurant_order->customer_email}}</div>
+                    {{-- {{$dish->name}}
+                    {{$dish->quantity}} --}}
+                    
+                    <div class="mt-3">
+                        <h6 class="font-weight-bold">Piatti</h6>
+                        
+                        @foreach ($restaurant_order->dishes as $dish)
+                            
+                            <div class="item-test mb-2 row  ">
+                                
+                                <!-- stampo quantitá -->
+                                <div
+                                    class="col"
+                                >
+                                    <span>                                
+                                        {{ $dish->name }}
+                                    </span>    
+                                </div>
+
+                                <!-- stampo il nome -->
+                                <span class="col-6">
+                                    Quantità: {{ $dish->quantity }}
+                                </span>
+
+                                <span class="total col-1">
+                                    {{round($dish->price * $dish->quantity, 2)}}
+                                    &#8364;
+                                </span>
+
+                            </div>
+
+                            <!-- totale del carrello -->
+
+                            <!-- stampo il totale -->
+                            
+
+                        
+                        @endforeach
+                    </div>
+                    
+
+                    <div class="d-flex justify-content-between px-2 py-4 border-top">
+                        <span><strong>TOTALE</strong></span>
+                        <span><strong>{{ $restaurant_order->total_price }} &#8364;</strong></span>
+                    </div>
+                    
+                </div>
+            </div>
+
+            
+
+        @endforeach
+
+                        
+
+                    
+               
+
+                    
+
+                      
+                          
+   
+
+        
     @endif
     
 </div>

@@ -9,8 +9,8 @@
             <div class="user_info">
 
               {{-- se il path dell'imagine conduce ad un file che esiste --}}
-              @if ($user->img_path))
-                  <img class="img_account" src="{{ asset('storage/upload' . $user->img_path) }}" alt="{{ $user->restaurant_name }}">
+              @if ($user->img_path)
+                  <img class="img_account" src="{{ asset('storage/' . $user->img_path) }}" alt="{{ $user->restaurant_name }}">
                   
               @else
                   <img class="img_account" src="{{ asset('images/noimg.jpg') }}" alt="{{ $user->restaurant_name }}">
