@@ -11317,13 +11317,13 @@ footer .social-channels p {
 
 .dish .buttons .quantity {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 21px;
   font-weight: bold;
 }
 
 .dish .buttons .quantity i {
   color: #00ccbc;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   padding: 15px 30px;
   cursor: pointer;
 }
@@ -11332,12 +11332,12 @@ footer .social-channels p {
   padding: 8px 15px;
   border: unset;
   border-radius: 8px;
-  color: #440063;
+  color: #45364d;
   z-index: 1;
   background: #00ccbc;
   position: relative;
   font-weight: 1000;
-  font-size: 17px;
+  font-size: 15px;
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   transition: all 250ms;
   overflow: hidden;
@@ -11363,6 +11363,10 @@ footer .social-channels p {
 
 .dish .btn-add:hover::before {
   width: 100%;
+}
+
+.restaurant-icon {
+  font-size: 18px;
 }
 
 .cart-headline {

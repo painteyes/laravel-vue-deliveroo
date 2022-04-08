@@ -2152,6 +2152,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     dishes: Array,
@@ -2727,6 +2733,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2874,6 +2886,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -40133,34 +40151,27 @@ var render = function () {
                         "item-test d-flex justify-content-between mb-2",
                     },
                     [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "quantity d-flex flex-no-wrap align-items-baseline",
-                        },
-                        [
-                          _c("span", [
-                            _vm._v(
-                              "                                \n                            " +
-                                _vm._s(item.quantity) +
-                                "\n                        "
-                            ),
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "name" }, [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(
-                                  _vm.dishes.find(function (x) {
-                                    return x.id === item.id
-                                  }).name
-                                ) +
-                                "\n                        "
-                            ),
-                          ]),
-                        ]
-                      ),
+                      _c("div", { staticClass: "quantity " }, [
+                        _c("span", [
+                          _vm._v(
+                            "                                \n                            (x" +
+                              _vm._s(item.quantity) +
+                              ")\n                        "
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "name" }, [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(
+                              _vm.dishes.find(function (x) {
+                                return x.id === item.id
+                              }).name
+                            ) +
+                            "\n                    "
+                        ),
+                      ]),
                       _vm._v(" "),
                       _c("span", { staticClass: "total" }, [
                         _vm._v(
@@ -40842,7 +40853,7 @@ var render = function () {
         ),
         _vm._v(" "),
         _c(
-          "button",
+          "span",
           {
             staticClass: "btn btn-default",
             attrs: { type: "button", "data-dismiss": "modal" },
@@ -40976,6 +40987,27 @@ var render = function () {
                 ),
               ]),
               _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "mt-2" },
+                [
+                  _c("i", { staticClass: "fa-solid fa-utensils pr-2" }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "font-weight-bold" }, [
+                    _vm._v("Categorie: "),
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.restaurantCategories, function (category, index) {
+                    return _c("span", { key: index }, [
+                      index == _vm.restaurantCategories.length - 1
+                        ? _c("span", [_vm._v(_vm._s(category.name))])
+                        : _c("span", [_vm._v(_vm._s(category.name) + ", ")]),
+                    ])
+                  }),
+                ],
+                2
+              ),
+              _vm._v(" "),
               _c("div", { staticClass: "restaurant_info mt-2" }, [
                 _c("i", { staticClass: "pr-2 fa-solid fa-circle-info" }),
                 _vm._v(" "),
@@ -40983,23 +41015,6 @@ var render = function () {
                   _vm._v(_vm._s(_vm.restaurantInfo.description)),
                 ]),
               ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "mt-2" },
-                _vm._l(_vm.restaurantCategories, function (category, index) {
-                  return _c("span", { key: index }, [
-                    _c("span", { staticClass: "categories-circle" }, [
-                      _vm._v("● "),
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "font-weight-bold mr-2" }, [
-                      _vm._v(_vm._s(category.name)),
-                    ]),
-                  ])
-                }),
-                0
-              ),
             ]),
           ]),
         ]),
@@ -41179,17 +41194,21 @@ var render = function () {
             "div",
             { staticClass: "d-flex flex-column px-md-5 px-lg-0" },
             _vm._l(_vm.restaurantMenu, function (dish) {
-              return _c(
-                "div",
-                { key: dish.id, staticClass: "dish card mb-4 p-1" },
-                [
-                  _c("DishCard", {
-                    attrs: { dish: dish },
-                    on: { currentCart: _vm.checkCart },
-                  }),
-                ],
-                1
-              )
+              return _c("div", { key: dish.id }, [
+                dish.visible
+                  ? _c(
+                      "div",
+                      { staticClass: "dish card mb-4 p-1" },
+                      [
+                        _c("DishCard", {
+                          attrs: { dish: dish },
+                          on: { currentCart: _vm.checkCart },
+                        }),
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+              ])
             }),
             0
           ),
@@ -41462,10 +41481,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "title mt-3" }, [
-      _c("h2", [
-        _c("i", { staticClass: "fas fa-utensils mr-2" }),
-        _vm._v("Menu"),
-      ]),
+      _c("h3", { staticClass: "font-weight-bold" }, [_vm._v("Menu")]),
       _vm._v(" "),
       _c("p", [
         _vm._v(
@@ -41479,9 +41495,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "title mt-3" }, [
-      _c("h2", [
-        _c("i", { staticClass: "fas fa-cart-arrow-down mr-2" }),
+      _c("h4", { staticClass: "font-weight-bold" }, [
         _vm._v("Carrello"),
+        _c("i", { staticClass: "fas fa-cart-arrow-down ml-2 restaurant-icon" }),
       ]),
       _vm._v(" "),
       _c("p", [_vm._v("Conferma il carrello e vai al checkout")]),
@@ -42136,25 +42152,56 @@ var render = function () {
                               }),
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "p-3 rest-info" }, [
-                          _c("h4", [
-                            _vm._v(_vm._s(restaurant.restaurant_name)),
-                          ]),
-                          _vm._v(" "),
-                          _c("span", [
-                            _vm._v(
-                              "\n                                " +
+                        _c(
+                          "div",
+                          { staticClass: "p-3 rest-info" },
+                          [
+                            _c("h4", [
+                              _vm._v(_vm._s(restaurant.restaurant_name)),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "mb-1" }, [
+                              _c("span", { staticClass: "font-weight-bold" }, [
+                                _vm._v("Indirizzo: "),
+                              ]),
+                              _vm._v(
                                 _vm._s(restaurant.address) +
-                                " "
+                                  " \n                            "
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "mb-2" }, [
+                              _c("span", { staticClass: "font-weight-bold" }, [
+                                _vm._v("Telefono: "),
+                              ]),
+                              _vm._v(
+                                " " +
+                                  _vm._s(restaurant.phone_number) +
+                                  "\n                            "
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _vm._l(
+                              restaurant.categories,
+                              function (category, index) {
+                                return _c("span", { key: index }, [
+                                  _c(
+                                    "span",
+                                    { staticClass: "font-weight-bold" },
+                                    [_vm._v("● ")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    { staticClass: "font-weight-bold mr-2" },
+                                    [_vm._v(_vm._s(category.name))]
+                                  ),
+                                ])
+                              }
                             ),
-                            _c("br"),
-                            _vm._v(
-                              "\n                                " +
-                                _vm._s(restaurant.email) +
-                                "\n                            "
-                            ),
-                          ]),
-                        ]),
+                          ],
+                          2
+                        ),
                       ]
                     ),
                   ])
@@ -54872,8 +54919,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\1mill\Boolean\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\1mill\Boolean\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\andre\Classe 48\progetto finale\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\andre\Classe 48\progetto finale\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

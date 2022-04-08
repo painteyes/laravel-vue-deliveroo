@@ -54,14 +54,14 @@
             >
                 Aggiungi al carrello
             </button>
-            <button
+            <span
                 type="button"
                 class="btn btn-default"
-                data-dismiss="modal"
+                 data-dismiss="modal"
                 @click="resetQuantity(dish.id)"
             >
                 Annulla
-            </button>
+            </span>
         </div>
     </div>
 </template>
