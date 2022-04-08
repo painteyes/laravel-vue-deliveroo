@@ -66,7 +66,7 @@
               <img class="img-fluid" :src="'/images/restaurant-17.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-17.jpg'">
               <img class="img-fluid" :src="'/images/restaurant-18.jpg'" :alt="restaurantInfo.restaurant_name" v-else-if="restaurantInfo.img_path == 'restaurant-18.jpg'">
 
-              <img class="img-fluid" :src="'/storage/' + randRestaurant.img_path" :alt="randRestaurant.restaurant_name" v-else>
+              <img class="img-fluid" :src="'/storage/' + restaurantInfo.img_path" :alt="restaurantInfo.restaurant_name" v-else>
                           
             </div>
           </div>
