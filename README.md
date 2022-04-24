@@ -3,7 +3,7 @@ Spotify-inspired web design with responsive layout.
 
 ## Technologies 
 - HTML
-- CSS (SCSS)
+- CSS 
 - Bootstrap (SCSS)
 - JavaScript (Vue.js)
 - PHP (Laravel)
