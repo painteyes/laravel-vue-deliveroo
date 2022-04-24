@@ -1,5 +1,5 @@
 ## About the project
-(forked from [Darius104/DeliveBoo](https://github.com/Darius104/DeliveBoo))
+### Forked from [Darius104/DeliveBoo](https://github.com/Darius104/DeliveBoo)
 
 Deliveroo-inspired website with responsive layout.
 
