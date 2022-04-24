@@ -1,5 +1,5 @@
 ## About the project
-Spotify-inspired web design with responsive layout.
+Deliveroo-inspired website forked from [Darius104/DeliveBoo](https://github.com/Darius104/DeliveBoo) with responsive layout.
 
 ## Technologies 
 - HTML
