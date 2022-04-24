@@ -4,10 +4,12 @@ Spotify-inspired web design with responsive layout.
 ## Technologies 
 - HTML
 - CSS 
-- Bootstrap (SCSS)
-- JavaScript (Vue.js)
-- PHP (Laravel)
-- MySQL (Laravel)
+- Bootstrap
+- JavaScript 
+- Vue.js
+- PHP 
+- MySQL 
+- Laravel
 
 ## Live demo
 You can **[check it out here](https://painteyes.github.io/laravel-vue-deliveroo)** !
