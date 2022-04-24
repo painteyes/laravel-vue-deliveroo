@@ -25,5 +25,5 @@ You can **[check it out here](https://painteyes.github.io/laravel-vue-deliveroo)
 (Original)
 - [Darius Coman](https://github.com/painteyes) 
 - [Giuseppe Siciliano](https://github.com/painteyes) 
-- [Salvatore Meli] (https://github.com/painteyes)
+- [Salvatore Meli](https://github.com/painteyes)
 - Andrea Occhipinti 
