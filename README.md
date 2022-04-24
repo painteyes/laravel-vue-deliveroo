@@ -21,7 +21,7 @@ You can **[check it out here](https://painteyes.github.io/laravel-vue-deliveroo)
 
 (Fork) 
 
-Andrea Occhipinti ( [GitHub](https://github.com/painteyes) | [LinkedIn](https://www.linkedin.com/in/occhipinti) )
+- Andrea Occhipinti ( [GitHub](https://github.com/painteyes) | [LinkedIn](https://www.linkedin.com/in/occhipinti) )
 
 (Original) 
 - Giuseppe Siciliano ( [GitHub](https://github.com/painteyes) | [LinkedIn](https://www.linkedin.com/in/occhipinti) )
