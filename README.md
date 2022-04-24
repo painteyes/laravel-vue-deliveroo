@@ -18,7 +18,7 @@ You can see it soon !
 <!-- You can **[check it out here](https://painteyes.github.io/laravel-vue-deliveroo)** ! -->
 
 ### Screenshot
-<img src="https://i.postimg.cc/tJK52C40/immagine-2022-04-24-231153451.png"/>
+<img src="https://i.postimg.cc/d32BNckL/Senza-titolo.png"/>
 
 ## Contributor
 
