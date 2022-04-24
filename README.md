@@ -1,6 +1,8 @@
 ## About the project
 Deliveroo-inspired website with responsive layout.
 
+forked from [Darius104/DeliveBoo](https://github.com/Darius104/DeliveBoo)
+
 ## Technologies 
 - HTML
 - CSS 
@@ -19,7 +21,7 @@ You can **[check it out here](https://painteyes.github.io/laravel-vue-deliveroo)
 
 ## Contributor
 
-(forked from [Darius104/DeliveBoo](https://github.com/Darius104/DeliveBoo))
+(Fork)
 
 - Andrea Occhipinti ( [GitHub](https://github.com/painteyes) | [LinkedIn](https://www.linkedin.com/in/occhipinti) )
 
