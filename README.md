@@ -1,8 +1,7 @@
 ## About the project
 #### Forked from: [Darius104/DeliveBoo](https://github.com/Darius104/DeliveBoo)
 
-Deliveroo-inspired website with responsive layout.
-
+Deliveroo-inspired webapp that allows restaurants to register on the platform, add a dish, view a summary of orders received and view order statistics, and visitors to search by restaurant type, view a restaurant menu, and pay for an order.
 
 ## Technologies 
 - HTML
@@ -15,10 +14,11 @@ Deliveroo-inspired website with responsive layout.
 - Laravel
 
 ## Live demo
-You can **[check it out here](https://painteyes.github.io/laravel-vue-deliveroo)** !
+You can see it soon !
+<!-- You can **[check it out here](https://painteyes.github.io/laravel-vue-deliveroo)** ! -->
 
 ### Screenshot
-<img src=""/>
+<img src="https://i.postimg.cc/tJK52C40/immagine-2022-04-24-231153451.png"/>
 
 ## Contributor
 
@@ -28,6 +28,6 @@ You can **[check it out here](https://painteyes.github.io/laravel-vue-deliveroo)
 
 (Original)
 - Andrea Occhipinti 
-- [Darius Coman](https://github.com/painteyes) 
-- [Giuseppe Siciliano](https://github.com/painteyes) 
-- [Salvatore Meli](https://github.com/painteyes)
+- [Darius Coman](https://github.com/Darius104) 
+- [Giuseppe Siciliano](https://github.com/giuseppesiciliano) 
+- [Salvatore Meli](https://github.com/salvomel)
