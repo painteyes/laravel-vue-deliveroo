@@ -19,7 +19,7 @@ You can **[check it out here](https://painteyes.github.io/laravel-vue-deliveroo)
 
 ## Contributor
 
-(Current fork) Andrea Occhipinti ( [GitHub](https://github.com/painteyes) | [LinkedIn](https://www.linkedin.com/in/occhipinti) )
+(Current Fork) Andrea Occhipinti ( [GitHub](https://github.com/painteyes) | [LinkedIn](https://www.linkedin.com/in/occhipinti) )
 
 (Original) 
 - Giuseppe Siciliano ( [GitHub](https://github.com/painteyes) | [LinkedIn](https://www.linkedin.com/in/occhipinti) )
