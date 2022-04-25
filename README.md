@@ -33,7 +33,7 @@ You can see it soon !
 <!-- You can **[check it out here](https://painteyes.github.io/laravel-vue-deliveroo)** ! -->
 
 ### Screenshot
-<img src="https://i.postimg.cc/d32BNckL/Senza-titolo.png"/>
+<img src="https://i.postimg.cc/9XDj2kmR/deliveroo.png"/>
 
 ## Contributor
 
