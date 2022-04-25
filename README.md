@@ -34,8 +34,8 @@ You can see it soon !
 
 ### Screenshot
 <div>
-   <img style="width: 430px" src="https://i.postimg.cc/sgbwHLtp/deliveroo-home-page.png"/>   
-   <img style="width: 400px" src="https://i.postimg.cc/Hsh2jKWf/deliveroo-restaurant-page.png"/>
+   <img style="width: 330px" src="https://i.postimg.cc/sgbwHLtp/deliveroo-home-page.png"/>   
+   <img style="width: 300px" src="https://i.postimg.cc/Hsh2jKWf/deliveroo-restaurant-page.png"/>
 <div/>
 
 ## Contributor
