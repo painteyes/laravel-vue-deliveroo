@@ -33,9 +33,8 @@ You can see it soon !
 <!-- You can **[check it out here](https://painteyes.github.io/laravel-vue-deliveroo)** ! -->
 
 ### Screenshot
-<!-- <img src="https://i.postimg.cc/9XDj2kmR/deliveroo.png"/>
- -->
- [url=https://postimg.cc/xqVZytbn][img]https://i.postimg.cc/xqVZytbn/deliveroo.png[/img][/url]
+<img style='width:500px'src="https://i.postimg.cc/fTMjXGVk/deliveroo-home-page.png"/>
+
 
 ## Contributor
 
