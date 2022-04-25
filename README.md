@@ -3,7 +3,7 @@
 
 Deliveroo-inspired website with responsive layout.
 
-Features:
+**Features:**
 
 (Restaurants)
 - Register on the platform
