@@ -34,11 +34,13 @@ You can see it soon !
 
 ### Screenshot
 <!-- <div> -->
-    <img style="width: 500px" src="https://i.postimg.cc/fTMjXGVk/deliveroo-home-page.png"/>
-    <img style="width: 500px" src="https://i.postimg.cc/9XDj2kmR/deliveroo.png"/>
-<!-- <div/>
-    -->
 
+    
+    
+<!-- <div/> -->
+
+<img style="width: 500px" src="https://i.postimg.cc/fTMjXGVk/deliveroo-home-page.png"/>
+<img style="width: 500px" src="https://i.postimg.cc/9XDj2kmR/deliveroo.png"/>
 
 
 ## Contributor
