@@ -35,7 +35,7 @@ You can see it soon !
 ### Screenshot
 <div style="display: flex">
     <img style="width: 500px" src="https://i.postimg.cc/fTMjXGVk/deliveroo-home-page.png"/>
-    <img style="width: 500px" src="https://i.postimg.cc/9XDj2kmR/deliveroo.png"/>  
+    <img style="width: 300px" src="https://i.postimg.cc/9XDj2kmR/deliveroo.png"/>  
 <div/>
 
 
