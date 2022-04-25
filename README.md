@@ -1,7 +1,22 @@
 ## About the project
 #### Forked from: [Darius104/DeliveBoo](https://github.com/Darius104/DeliveBoo)
 
-Deliveroo-inspired webapp that allows restaurants to register on the platform, add a dish, view a summary of orders received and view order statistics, and visitors to search by restaurant type, view a restaurant menu, and pay for an order.
+Deliveroo-inspired website with responsive layout.
+
+Features:
+
+(Restaurants)
+- Register on the platform
+- Add a dish
+- View a summary of orders received
+- View order statistics
+
+(Visitors)
+- Search by restaurant type
+- View a restaurant menu
+- Add dishes to the cart
+- Pay for an order
+
 
 ## Technologies 
 - HTML
