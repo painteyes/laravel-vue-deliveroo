@@ -33,8 +33,11 @@ You can see it soon !
 <!-- You can **[check it out here](https://painteyes.github.io/laravel-vue-deliveroo)** ! -->
 
 ### Screenshot
-<img style="width: 200px" src="https://i.postimg.cc/fTMjXGVk/deliveroo-home-page.png"/>
-<img style="width: 500px" src="https://i.postimg.cc/9XDj2kmR/deliveroo.png"/>
+<div>
+    <img style="width: 500px" src="https://i.postimg.cc/fTMjXGVk/deliveroo-home-page.png"/>
+    <img style="width: 500px" src="https://i.postimg.cc/9XDj2kmR/deliveroo.png"/>
+<div/>
+   
 
 
 
